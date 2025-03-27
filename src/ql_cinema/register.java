@@ -26,8 +26,31 @@ public class register extends javax.swing.JFrame {
 //        genderGroup = new ButtonGroup();
 //        genderGroup.add(jRadioButton1);
 //        genderGroup.add(jRadioButton2);
-    }
+        //layout fix
+        customizeComponents();
+        //layout fix
 
+    }
+    //layout fix
+  private void customizeComponents() {
+        // Đặt lại màu sắc cho radio button
+        jRadioButton1.setOpaque(false);
+        jRadioButton2.setOpaque(false);
+        
+        // Cấu hình lại jDateChooser
+        jDateChooser1.setBackground(new Color(102, 102, 102));
+        
+        // Nút đăng ký
+        jButton1.setBackground(new Color(255, 0, 51));
+        jButton1.setForeground(Color.WHITE);
+        jButton1.setBorderPainted(false);
+        jButton1.setFocusPainted(false);
+        
+        // Canh chỉnh layout
+        pack();
+        setLocationRelativeTo(null);
+    }
+  //layout fix
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,15 +160,12 @@ public class register extends javax.swing.JFrame {
                         .addComponent(roundedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
-                                    .addGap(47, 47, 47))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel3))
-                                    .addGap(46, 46, 46)))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel3))
+                                .addGap(47, 47, 47))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(52, 52, 52)))
@@ -153,7 +173,7 @@ public class register extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(roundedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)

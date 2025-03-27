@@ -23,8 +23,28 @@ public class login extends javax.swing.JFrame {
 //         UI.addPlaceHolderEffect(jPasswordField1,"Nhập mật khẩu");
          UI.addPlaceHolderEffect(roundedTextField1,"Email hoặc số điện thoại");
          UI.addPlaceHolderEffect(roundedPasswordField1,"Nhập mật khẩu");
-    }
+         //layout fix
+          customizeComponents();
+         //layout fix
 
+    }
+             //layout fix
+  private void customizeComponents() {
+        // Đặt lại màu sắc và kiểu dáng cho các component
+        jButton1.setBackground(new Color(51, 172, 193));
+        jButton1.setForeground(Color.BLACK);
+        jButton1.setBorderPainted(false);
+        jButton1.setFocusPainted(false);
+        
+        // Đối với các custom component
+        roundedTextField1.setBackground(new Color(204, 204, 204));
+        roundedPasswordField1.setBackground(new Color(204, 204, 204));
+        
+        // Canh chỉnh layout
+        pack(); // Tự động điều chỉnh kích thước
+        setLocationRelativeTo(null); // Đưa cửa sổ về giữa màn hình
+    }
+           //layout fix
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +64,6 @@ public class login extends javax.swing.JFrame {
         roundedPasswordField1 = new ql_cinema.RoundedPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        roundedButton1 = new ql_cinema.RoundedButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,10 +103,6 @@ public class login extends javax.swing.JFrame {
 
         jLabel4.setText("Mật khẩu:");
 
-        roundedButton1.setBackground(new java.awt.Color(51, 172, 193));
-        roundedButton1.setForeground(new java.awt.Color(0, 0, 0));
-        roundedButton1.setText("roundedButton1");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,9 +129,7 @@ public class login extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(roundedButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(133, 599, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -135,10 +148,8 @@ public class login extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(26, 26, 26)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(roundedButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
@@ -213,7 +224,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private ql_cinema.RoundedButton roundedButton1;
     private ql_cinema.RoundedPasswordField roundedPasswordField1;
     private ql_cinema.RoundedTextField roundedTextField1;
     // End of variables declaration//GEN-END:variables
