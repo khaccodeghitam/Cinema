@@ -1,4 +1,4 @@
-package ql_cinema;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ql_cinema;
+package gui;
 import java.awt.*;
 import javax.swing.*;
 /**
@@ -69,10 +69,10 @@ public class register extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        roundedTextField1 = new ql_cinema.RoundedTextField();
-        roundedTextField2 = new ql_cinema.RoundedTextField();
-        roundedPasswordField1 = new ql_cinema.RoundedPasswordField();
-        roundedTextField3 = new ql_cinema.RoundedTextField();
+        roundedTextField1 = new gui.RoundedTextField();
+        roundedTextField2 = new gui.RoundedTextField();
+        roundedPasswordField1 = new gui.RoundedPasswordField();
+        roundedTextField3 = new gui.RoundedTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -295,9 +295,9 @@ public class register extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private ql_cinema.RoundedPasswordField roundedPasswordField1;
-    private ql_cinema.RoundedTextField roundedTextField1;
-    private ql_cinema.RoundedTextField roundedTextField2;
-    private ql_cinema.RoundedTextField roundedTextField3;
+    private gui.RoundedPasswordField roundedPasswordField1;
+    private gui.RoundedTextField roundedTextField1;
+    private gui.RoundedTextField roundedTextField2;
+    private gui.RoundedTextField roundedTextField3;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ql_cinema;
+package gui;
 import java.awt.Color;
 import javax.swing.*;
 import java.awt.*;
@@ -60,8 +60,8 @@ public class login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        roundedTextField1 = new ql_cinema.RoundedTextField();
-        roundedPasswordField1 = new ql_cinema.RoundedPasswordField();
+        roundedTextField1 = new gui.RoundedTextField();
+        roundedPasswordField1 = new gui.RoundedPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -224,7 +224,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private ql_cinema.RoundedPasswordField roundedPasswordField1;
-    private ql_cinema.RoundedTextField roundedTextField1;
+    private gui.RoundedPasswordField roundedPasswordField1;
+    private gui.RoundedTextField roundedTextField1;
     // End of variables declaration//GEN-END:variables
 }

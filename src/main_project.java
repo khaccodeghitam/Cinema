@@ -7,8 +7,8 @@
  *
  * @author Admin
  */
-import ql_cinema.login;
-import ql_cinema.register;
+import gui.login;
+import gui.register;
 import javax.swing.*;
 import java.awt.*;
 public class main_project {
