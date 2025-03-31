@@ -4,16 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/img/cat.png</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/ql_cinema/BackgroundPanel.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/ql_cinema/login.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/ql_cinema/ImagePanel.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/ql_cinema/register.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/GUI/BackgroundPanel.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/GUI/login.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/GUI/ImagePanel.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/GUI/register.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/img/register.png</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/img/login.png</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/ql_cinema/UI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/ql_cinema/RoundedTextField.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/ql_cinema/RoundedPasswordField.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/ql_cinema/RoundedButton.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/GUI/UI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/GUI/RoundedTextField.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/GUI/RoundedPasswordField.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/GUI/RoundedButton.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/QL_Cinema/src/main_project.java</file>
         </group>
     </open-files>
