@@ -7,8 +7,8 @@
  *
  * @author Admin
  */
-import gui.login;
-import gui.register;
+import log_reg.login;
+import log_reg.register;
 import javax.swing.*;
 import java.awt.*;
 public class main_project {
