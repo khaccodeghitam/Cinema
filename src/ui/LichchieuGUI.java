@@ -92,7 +92,7 @@ public class LichchieuGUI extends javax.swing.JPanel {
 
         btnView.setBackground(new java.awt.Color(153, 153, 153));
         btnView.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view.png"))); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
         btnView.setText("Xem");
         btnView.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnView.setContentAreaFilled(false);
@@ -112,7 +112,7 @@ public class LichchieuGUI extends javax.swing.JPanel {
 
         btnThem.setBackground(new java.awt.Color(153, 153, 153));
         btnThem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add.png"))); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnThem.setContentAreaFilled(false);
@@ -132,7 +132,7 @@ public class LichchieuGUI extends javax.swing.JPanel {
 
         btnXemtong.setBackground(new java.awt.Color(153, 153, 153));
         btnXemtong.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnXemtong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view2.png"))); // NOI18N
+        btnXemtong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view2.png"))); // NOI18N
         btnXemtong.setText("Xem tổng");
         btnXemtong.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnXemtong.setContentAreaFilled(false);
@@ -152,7 +152,7 @@ public class LichchieuGUI extends javax.swing.JPanel {
 
         btnExport.setBackground(new java.awt.Color(153, 153, 153));
         btnExport.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/export.png"))); // NOI18N
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/export.png"))); // NOI18N
         btnExport.setText("Export");
         btnExport.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnExport.setContentAreaFilled(false);
@@ -167,7 +167,7 @@ public class LichchieuGUI extends javax.swing.JPanel {
 
         btnImport.setBackground(new java.awt.Color(153, 153, 153));
         btnImport.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/import.png"))); // NOI18N
+        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/import.png"))); // NOI18N
         btnImport.setText("Import");
         btnImport.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnImport.setContentAreaFilled(false);
@@ -187,7 +187,7 @@ public class LichchieuGUI extends javax.swing.JPanel {
 
         btnCapnhat.setBackground(new java.awt.Color(153, 153, 153));
         btnCapnhat.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnCapnhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/update.png"))); // NOI18N
+        btnCapnhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/update.png"))); // NOI18N
         btnCapnhat.setText("Cập nhật");
         btnCapnhat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnCapnhat.setContentAreaFilled(false);
@@ -197,7 +197,7 @@ public class LichchieuGUI extends javax.swing.JPanel {
 
         btnXoa.setBackground(new java.awt.Color(153, 153, 153));
         btnXoa.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete_i.png"))); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete_i.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnXoa.setContentAreaFilled(false);
@@ -228,6 +228,8 @@ public class LichchieuGUI extends javax.swing.JPanel {
         btnTimkiemLichchieu.setText("Tìm kiếm");
         btnTimkiemLichchieu.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
 
+        jScrollPane1.setBackground(new java.awt.Color(153, 153, 153));
+
         tbLichchieu.setAutoCreateRowSorter(true);
         tbLichchieu.setBackground(new java.awt.Color(153, 153, 153));
         tbLichchieu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -235,102 +237,6 @@ public class LichchieuGUI extends javax.swing.JPanel {
         tbLichchieu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"lc1", "con cặc", "12/12/1212/", "23:45", "110", "100", "50", "50"},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null}

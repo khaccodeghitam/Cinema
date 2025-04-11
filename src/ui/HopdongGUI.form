@@ -47,6 +47,8 @@
                   <Component id="Sodu" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="Tien" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="btnNaptien" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnView" min="-2" pref="67" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -79,6 +81,7 @@
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="Sodu" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Tien" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnNaptien" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -97,6 +100,9 @@
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="15" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/view.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Xem"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -122,6 +128,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="15" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Aha-Soft-Software-Signature.48.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="K&#xed; h&#x1ee3;p &#x111;&#x1ed3;ng"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -145,6 +154,9 @@
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="15" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/view2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Xem t&#x1ed5;ng"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -170,6 +182,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="15" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/export.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Export"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -192,6 +207,9 @@
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="15" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/import.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Import"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -222,6 +240,17 @@
               <Font name="Times New Roman" size="20" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="1000000"/>
+          </Properties>
+        </Component>
+        <Component class="testlib.RoundedButton" name="btnNaptien">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="N&#x1ea1;p th&#xea;m"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="GiaodienHopdong">
@@ -284,6 +313,8 @@
                                           <Component id="Timkiem" min="-2" pref="101" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txtTimkiem" min="-2" pref="199" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnTimkiem" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -305,6 +336,7 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="Timkiem" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtTimkiem" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnTimkiem" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jScrollPane1" min="-2" pref="321" max="-2" attributes="0"/>
@@ -333,7 +365,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="34" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -368,6 +400,20 @@
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTimkiemNhapchu"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTimkiemLammo"/>
                   </Events>
+                </Component>
+                <Component class="testlib.RoundedButton" name="btnTimkiem">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="15" style="1"/>
+                    </Property>
+                  </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
 
@@ -617,23 +663,39 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="298" max="32767" attributes="0"/>
+                          <EmptySpace pref="296" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Ngayki" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Giathau" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Sosuatchieu" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Thoiluong" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DsPhim" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Mahopdong" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Nhaphanphoi" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Sosuatchieu1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="btnHuybo" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
+                                  <Component id="btnKihd" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="337" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="Ngayki" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Giathau" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Sosuatchieu" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Thoiluong" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DsPhim" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Mahopdong" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Nhaphanphoi" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Sosuatchieu1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="txtGiathau" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtThoiluong" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtMahopdong" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbDanhsachPhim" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbNhaphanphoi" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtNgayki" max="32767" attributes="0"/>
+                                      <Component id="txtSosuatchieu1" max="32767" attributes="0"/>
+                                      <Component id="txtSosuatchieu" alignment="0" min="-2" pref="361" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="cbDanhsachPhim" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cbNhaphanphoi" alignment="0" pref="361" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -650,19 +712,42 @@
                               <Component id="DsPhim" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="cbDanhsachPhim" alignment="1" min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="Mahopdong" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="Thoiluong" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="Sosuatchieu1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="Sosuatchieu" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="Giathau" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="Ngayki" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="112" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="Mahopdong" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMahopdong" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="Thoiluong" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtThoiluong" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtSosuatchieu1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="Sosuatchieu1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="Sosuatchieu" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSosuatchieu" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="Giathau" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtGiathau" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="Ngayki" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNgayki" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="40" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnHuybo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btnKihd" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -710,12 +795,22 @@
                     <Property name="text" type="java.lang.String" value="M&#xe3; h&#x1ee3;p &#x111;&#x1ed3;ng:"/>
                   </Properties>
                 </Component>
+                <Component class="testlib.RoundedTextField" name="txtMahopdong">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="T&#x1ef1; &#x111;&#x1ed9;ng t&#x1ea1;o m&#xe3;"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JLabel" name="Thoiluong">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Th&#x1edd;i l&#x1b0;&#x1ee3;ng"/>
+                  </Properties>
+                </Component>
+                <Component class="testlib.RoundedTextField" name="txtThoiluong">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Truy xu&#x1ea5;t th&#x1edd;i l&#x1b0;&#x1ee3;ng d&#x1ef1;a theo danh s&#xe1;ch phim &#x111;&#xe3; b&#x1ea5;m"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="Sosuatchieu">
@@ -726,6 +821,11 @@
                     <Property name="text" type="java.lang.String" value="S&#x1ed1; su&#x1ea5;t chi&#x1ebf;u:"/>
                   </Properties>
                 </Component>
+                <Component class="testlib.RoundedTextField" name="txtSosuatchieu">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nh&#x1ead;p su&#x1ea5;t chi&#x1ebf;u"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JLabel" name="Giathau">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -734,12 +834,41 @@
                     <Property name="text" type="java.lang.String" value="Gi&#xe1; th&#x1ea7;u:"/>
                   </Properties>
                 </Component>
+                <Component class="testlib.RoundedTextField" name="txtGiathau">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="D&#x1ef1;a v&#xe0;o phim v&#xe0; su&#x1ea5;t chi&#x1ebf;u &#x111;&#x1ec3; t&#xed;nh gi&#xe1; ti&#x1ec1;n"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JLabel" name="Ngayki">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Ng&#xe0;y k&#xed;:"/>
+                  </Properties>
+                </Component>
+                <Component class="testlib.RoundedTextField" name="txtNgayki">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Theo &#x111;&#x1ecb;nh d&#x1ea1;ng dd/mm/yyyy"/>
+                  </Properties>
+                </Component>
+                <Component class="testlib.RoundedButton" name="btnHuybo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="H&#x1ee7;y b&#x1ecf;"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="15" style="1"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="testlib.RoundedButton" name="btnKihd">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="K&#xed; h&#x1ee3;p &#x111;&#x1ed3;ng"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="15" style="1"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="Nhaphanphoi">
@@ -784,6 +913,11 @@
                     <Property name="text" type="java.lang.String" value="Th&#x1ec3; lo&#x1ea1;i:"/>
                   </Properties>
                 </Component>
+                <Component class="testlib.RoundedTextField" name="txtSosuatchieu1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Truy xu&#x1ea5;t th&#x1ec3; lo&#x1ea1;i theo danh s&#xe1;ch phim"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="Xemtong">
@@ -808,6 +942,8 @@
                                   <Component id="Timkiem1" min="-2" pref="101" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtTimkiem2" min="-2" pref="199" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnTimkiem2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -826,14 +962,17 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtTimkiem2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="txtTimkiem2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnTimkiem2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="Timkiem1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="475" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace pref="7" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -958,6 +1097,20 @@
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTimkiem2Nhapchu"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTimkiem2Lammo"/>
                   </Events>
+                </Component>
+                <Component class="testlib.RoundedButton" name="btnTimkiem2">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="15" style="1"/>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

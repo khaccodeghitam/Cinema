@@ -64,7 +64,7 @@ public class UIa extends javax.swing.JFrame {
         Chucnang.setBackground(new java.awt.Color(0, 0, 0));
         Chucnang.setPreferredSize(new java.awt.Dimension(100, 500));
 
-        Avatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hopstarter-Sleek-Xp-Basic-Administrator.32.png"))); // NOI18N
+        Avatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Hopstarter-Sleek-Xp-Basic-Administrator.32.png"))); // NOI18N
         Avatar.setText("Avatar");
 
         Tennguoidung.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
@@ -77,7 +77,7 @@ public class UIa extends javax.swing.JFrame {
 
         Dangxuat.setFont(new java.awt.Font("Times New Roman", 1, 25)); // NOI18N
         Dangxuat.setForeground(new java.awt.Color(255, 255, 255));
-        Dangxuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hopstarter-Plastic-Mini-Button-Turn-Off.24.png"))); // NOI18N
+        Dangxuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Hopstarter-Plastic-Mini-Button-Turn-Off.24.png"))); // NOI18N
         Dangxuat.setText("Đăng xuất");
 
         buttonPhim.setText("Phim");
@@ -213,7 +213,7 @@ public class UIa extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
 
-        closeChucnang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete.png"))); // NOI18N
+        closeChucnang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
         closeChucnang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeChucnang(evt);
@@ -305,7 +305,7 @@ public class UIa extends javax.swing.JFrame {
         );
 
         openChucnang.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        openChucnang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons8-Ios7-Editing-Line-Width.48.png"))); // NOI18N
+        openChucnang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Icons8-Ios7-Editing-Line-Width.48.png"))); // NOI18N
         openChucnang.setText("Quản lý");
         openChucnang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

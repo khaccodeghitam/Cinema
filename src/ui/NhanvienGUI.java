@@ -74,7 +74,7 @@ public class NhanvienGUI extends javax.swing.JPanel {
 
         btnView.setBackground(new java.awt.Color(153, 153, 153));
         btnView.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view.png"))); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
         btnView.setText("Xem");
         btnView.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnView.setContentAreaFilled(false);
@@ -96,7 +96,7 @@ public class NhanvienGUI extends javax.swing.JPanel {
 
         btnXemtong.setBackground(new java.awt.Color(153, 153, 153));
         btnXemtong.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnXemtong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view2.png"))); // NOI18N
+        btnXemtong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view2.png"))); // NOI18N
         btnXemtong.setText("Xem tổng");
         btnXemtong.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnXemtong.setContentAreaFilled(false);
@@ -116,7 +116,7 @@ public class NhanvienGUI extends javax.swing.JPanel {
 
         btnExport.setBackground(new java.awt.Color(153, 153, 153));
         btnExport.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/export.png"))); // NOI18N
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/export.png"))); // NOI18N
         btnExport.setText("Export");
         btnExport.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnExport.setContentAreaFilled(false);
@@ -131,7 +131,7 @@ public class NhanvienGUI extends javax.swing.JPanel {
 
         btnImport.setBackground(new java.awt.Color(153, 153, 153));
         btnImport.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/import.png"))); // NOI18N
+        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/import.png"))); // NOI18N
         btnImport.setText("Import");
         btnImport.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnImport.setContentAreaFilled(false);
@@ -173,7 +173,7 @@ public class NhanvienGUI extends javax.swing.JPanel {
 
         btnCapnhat.setBackground(new java.awt.Color(153, 153, 153));
         btnCapnhat.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnCapnhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/update.png"))); // NOI18N
+        btnCapnhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/update.png"))); // NOI18N
         btnCapnhat.setText("Cập nhật");
         btnCapnhat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnCapnhat.setContentAreaFilled(false);
@@ -183,7 +183,7 @@ public class NhanvienGUI extends javax.swing.JPanel {
 
         btnSathai.setBackground(new java.awt.Color(153, 153, 153));
         btnSathai.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnSathai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete_i.png"))); // NOI18N
+        btnSathai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete_i.png"))); // NOI18N
         btnSathai.setText("Sa thải");
         btnSathai.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnSathai.setContentAreaFilled(false);
@@ -315,7 +315,7 @@ public class NhanvienGUI extends javax.swing.JPanel {
 
         btnThem.setBackground(new java.awt.Color(153, 153, 153));
         btnThem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add.png"))); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnThem.setContentAreaFilled(false);

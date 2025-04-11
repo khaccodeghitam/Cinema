@@ -3,12 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/register.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/login.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/RoundedPanel.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/RoundedPasswordField.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/ImagePanel.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/UI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/BackgroundPanel.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/ImagePanel.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedButton.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedPanel.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedPasswordField.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedTextField.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/UI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/login.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/register.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UIa.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/AnvatGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/HopdongGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/KhachhangGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/LichchieuGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/NhanvienGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/NhaphanphoiGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhimGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhongchieuGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/ThongkeGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UudaiGUI.java</file>
         </group>
     </open-files>
 </project-private>

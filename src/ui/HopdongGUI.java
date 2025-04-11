@@ -41,10 +41,12 @@ public class HopdongGUI extends javax.swing.JPanel {
         btnImport = new javax.swing.JButton();
         Sodu = new javax.swing.JLabel();
         Tien = new javax.swing.JLabel();
+        btnNaptien = new testlib.RoundedButton();
         GiaodienHopdong = new javax.swing.JPanel();
         View = new javax.swing.JPanel();
         Timkiem = new javax.swing.JLabel();
         txtTimkiem = new javax.swing.JTextField();
+        btnTimkiem = new testlib.RoundedButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHopdong = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
@@ -64,19 +66,28 @@ public class HopdongGUI extends javax.swing.JPanel {
         DsPhim = new javax.swing.JLabel();
         cbDanhsachPhim = new javax.swing.JComboBox<>();
         Mahopdong = new javax.swing.JLabel();
+        txtMahopdong = new testlib.RoundedTextField();
         Thoiluong = new javax.swing.JLabel();
+        txtThoiluong = new testlib.RoundedTextField();
         Sosuatchieu = new javax.swing.JLabel();
+        txtSosuatchieu = new testlib.RoundedTextField();
         Giathau = new javax.swing.JLabel();
+        txtGiathau = new testlib.RoundedTextField();
         Ngayki = new javax.swing.JLabel();
+        txtNgayki = new testlib.RoundedTextField();
+        btnHuybo = new testlib.RoundedButton();
+        btnKihd = new testlib.RoundedButton();
         Nhaphanphoi = new javax.swing.JLabel();
         cbNhaphanphoi = new javax.swing.JComboBox<>();
         Sosuatchieu1 = new javax.swing.JLabel();
+        txtSosuatchieu1 = new testlib.RoundedTextField();
         Xemtong = new javax.swing.JPanel();
         Timkiem1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbXemtong = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         txtTimkiem2 = new javax.swing.JTextField();
+        btnTimkiem2 = new testlib.RoundedButton();
         jSeparator3 = new javax.swing.JSeparator();
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
@@ -84,6 +95,7 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         btnView.setBackground(new java.awt.Color(153, 153, 153));
         btnView.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
         btnView.setText("Xem");
         btnView.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnView.setContentAreaFilled(false);
@@ -103,6 +115,7 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         btnKihopdong.setBackground(new java.awt.Color(153, 153, 153));
         btnKihopdong.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnKihopdong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Aha-Soft-Software-Signature.48.png"))); // NOI18N
         btnKihopdong.setText("Kí hợp đồng");
         btnKihopdong.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnKihopdong.setContentAreaFilled(false);
@@ -122,6 +135,7 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         btnXemtong.setBackground(new java.awt.Color(153, 153, 153));
         btnXemtong.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnXemtong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view2.png"))); // NOI18N
         btnXemtong.setText("Xem tổng");
         btnXemtong.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnXemtong.setContentAreaFilled(false);
@@ -141,6 +155,7 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         btnExport.setBackground(new java.awt.Color(153, 153, 153));
         btnExport.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/export.png"))); // NOI18N
         btnExport.setText("Export");
         btnExport.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnExport.setContentAreaFilled(false);
@@ -155,6 +170,7 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         btnImport.setBackground(new java.awt.Color(153, 153, 153));
         btnImport.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/import.png"))); // NOI18N
         btnImport.setText("Import");
         btnImport.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnImport.setContentAreaFilled(false);
@@ -172,6 +188,10 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         Tien.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         Tien.setText("1000000");
+
+        btnNaptien.setBackground(new java.awt.Color(204, 204, 204));
+        btnNaptien.setForeground(new java.awt.Color(0, 0, 0));
+        btnNaptien.setText("Nạp thêm");
 
         GiaodienHopdong.setLayout(new java.awt.CardLayout());
 
@@ -194,6 +214,11 @@ public class HopdongGUI extends javax.swing.JPanel {
                 txtTimkiemLammo(evt);
             }
         });
+
+        btnTimkiem.setBackground(new java.awt.Color(204, 204, 204));
+        btnTimkiem.setForeground(new java.awt.Color(0, 0, 0));
+        btnTimkiem.setText("Tìm kiếm");
+        btnTimkiem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
 
         tbHopdong.setAutoCreateRowSorter(true);
         tbHopdong.setBackground(new java.awt.Color(153, 153, 153));
@@ -405,7 +430,9 @@ public class HopdongGUI extends javax.swing.JPanel {
                             .addGroup(ViewLayout.createSequentialGroup()
                                 .addComponent(Timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         ViewLayout.setVerticalGroup(
@@ -419,7 +446,8 @@ public class HopdongGUI extends javax.swing.JPanel {
                     .addGroup(ViewLayout.createSequentialGroup()
                         .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Timkiem)
-                            .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -441,7 +469,7 @@ public class HopdongGUI extends javax.swing.JPanel {
                             .addComponent(txSosuatchieu)
                             .addComponent(truyxuatSosuatchieu, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txNhaphanphoi))))
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addGap(0, 34, Short.MAX_VALUE))
         );
 
         GiaodienHopdong.add(View, "card2");
@@ -458,17 +486,34 @@ public class HopdongGUI extends javax.swing.JPanel {
         Mahopdong.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         Mahopdong.setText("Mã hợp đồng:");
 
+        txtMahopdong.setText("Tự động tạo mã");
+
         Thoiluong.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         Thoiluong.setText("Thời lượng");
+
+        txtThoiluong.setText("Truy xuất thời lượng dựa theo danh sách phim đã bấm");
 
         Sosuatchieu.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         Sosuatchieu.setText("Số suất chiếu:");
 
+        txtSosuatchieu.setText("Nhập suất chiếu");
+
         Giathau.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         Giathau.setText("Giá thầu:");
 
+        txtGiathau.setText("Dựa vào phim và suất chiếu để tính giá tiền");
+
         Ngayki.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         Ngayki.setText("Ngày kí:");
+
+        txtNgayki.setText("Theo định dạng dd/mm/yyyy");
+
+        btnHuybo.setText("Hủy bỏ");
+        btnHuybo.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+
+        btnKihd.setBackground(new java.awt.Color(204, 0, 0));
+        btnKihd.setText("Kí hợp đồng");
+        btnKihd.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
 
         Nhaphanphoi.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         Nhaphanphoi.setText("Nhà phân phối:");
@@ -480,26 +525,41 @@ public class HopdongGUI extends javax.swing.JPanel {
         Sosuatchieu1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         Sosuatchieu1.setText("Thể loại:");
 
+        txtSosuatchieu1.setText("Truy xuất thể loại theo danh sách phim");
+
         javax.swing.GroupLayout KihopdongLayout = new javax.swing.GroupLayout(Kihopdong);
         Kihopdong.setLayout(KihopdongLayout);
         KihopdongLayout.setHorizontalGroup(
             KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(KihopdongLayout.createSequentialGroup()
-                .addContainerGap(298, Short.MAX_VALUE)
+                .addContainerGap(296, Short.MAX_VALUE)
                 .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Ngayki)
-                    .addComponent(Giathau)
-                    .addComponent(Sosuatchieu)
-                    .addComponent(Thoiluong)
-                    .addComponent(DsPhim)
-                    .addComponent(Mahopdong)
-                    .addComponent(Nhaphanphoi)
-                    .addComponent(Sosuatchieu1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(cbDanhsachPhim, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbNhaphanphoi, javax.swing.GroupLayout.Alignment.LEADING, 0, 361, Short.MAX_VALUE))
-                .addGap(273, 273, 273))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, KihopdongLayout.createSequentialGroup()
+                        .addComponent(btnHuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(162, 162, 162)
+                        .addComponent(btnKihd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(337, 337, 337))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, KihopdongLayout.createSequentialGroup()
+                        .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Ngayki)
+                            .addComponent(Giathau)
+                            .addComponent(Sosuatchieu)
+                            .addComponent(Thoiluong)
+                            .addComponent(DsPhim)
+                            .addComponent(Mahopdong)
+                            .addComponent(Nhaphanphoi)
+                            .addComponent(Sosuatchieu1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtGiathau, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtThoiluong, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtMahopdong, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbDanhsachPhim, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbNhaphanphoi, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNgayki, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtSosuatchieu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtSosuatchieu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(273, 273, 273))))
         );
         KihopdongLayout.setVerticalGroup(
             KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,19 +572,35 @@ public class HopdongGUI extends javax.swing.JPanel {
                 .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(DsPhim)
                     .addComponent(cbDanhsachPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(Mahopdong)
-                .addGap(30, 30, 30)
-                .addComponent(Thoiluong)
                 .addGap(24, 24, 24)
-                .addComponent(Sosuatchieu1)
-                .addGap(36, 36, 36)
-                .addComponent(Sosuatchieu)
-                .addGap(30, 30, 30)
-                .addComponent(Giathau)
-                .addGap(30, 30, 30)
-                .addComponent(Ngayki)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Mahopdong)
+                    .addComponent(txtMahopdong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Thoiluong)
+                    .addComponent(txtThoiluong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSosuatchieu1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Sosuatchieu1))
+                .addGap(24, 24, 24)
+                .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Sosuatchieu)
+                    .addComponent(txtSosuatchieu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Giathau)
+                    .addComponent(txtGiathau, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Ngayki)
+                    .addComponent(txtNgayki, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(KihopdongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnKihd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42))
         );
 
         GiaodienHopdong.add(Kihopdong, "card3");
@@ -671,6 +747,11 @@ public class HopdongGUI extends javax.swing.JPanel {
             }
         });
 
+        btnTimkiem2.setBackground(new java.awt.Color(204, 204, 204));
+        btnTimkiem2.setForeground(new java.awt.Color(0, 0, 0));
+        btnTimkiem2.setText("Tìm kiếm");
+        btnTimkiem2.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+
         javax.swing.GroupLayout XemtongLayout = new javax.swing.GroupLayout(Xemtong);
         Xemtong.setLayout(XemtongLayout);
         XemtongLayout.setHorizontalGroup(
@@ -681,7 +762,9 @@ public class HopdongGUI extends javax.swing.JPanel {
                         .addGap(12, 12, 12)
                         .addComponent(Timkiem1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimkiem2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTimkiem2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTimkiem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(XemtongLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(XemtongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -694,13 +777,15 @@ public class HopdongGUI extends javax.swing.JPanel {
             XemtongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(XemtongLayout.createSequentialGroup()
                 .addGroup(XemtongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTimkiem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(XemtongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtTimkiem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTimkiem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Timkiem1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         GiaodienHopdong.add(Xemtong, "card4");
@@ -717,6 +802,8 @@ public class HopdongGUI extends javax.swing.JPanel {
                 .addComponent(Sodu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Tien)
+                .addGap(42, 42, 42)
+                .addComponent(btnNaptien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -745,7 +832,8 @@ public class HopdongGUI extends javax.swing.JPanel {
                     .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Sodu)
-                        .addComponent(Tien)))
+                        .addComponent(Tien)
+                        .addComponent(btnNaptien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -844,8 +932,13 @@ public class HopdongGUI extends javax.swing.JPanel {
     private javax.swing.JPanel View;
     private javax.swing.JPanel Xemtong;
     private javax.swing.JButton btnExport;
+    private testlib.RoundedButton btnHuybo;
     private javax.swing.JButton btnImport;
+    private testlib.RoundedButton btnKihd;
     private javax.swing.JButton btnKihopdong;
+    private testlib.RoundedButton btnNaptien;
+    private testlib.RoundedButton btnTimkiem;
+    private testlib.RoundedButton btnTimkiem2;
     private javax.swing.JButton btnView;
     private javax.swing.JButton btnXemtong;
     private javax.swing.JComboBox<String> cbDanhsachPhim;
@@ -870,6 +963,12 @@ public class HopdongGUI extends javax.swing.JPanel {
     private javax.swing.JLabel txPhim;
     private javax.swing.JLabel txSosuatchieu;
     private javax.swing.JLabel txThoiluong;
+    private testlib.RoundedTextField txtGiathau;
+    private testlib.RoundedTextField txtMahopdong;
+    private testlib.RoundedTextField txtNgayki;
+    private testlib.RoundedTextField txtSosuatchieu;
+    private testlib.RoundedTextField txtSosuatchieu1;
+    private testlib.RoundedTextField txtThoiluong;
     private javax.swing.JTextField txtTimkiem;
     private javax.swing.JTextField txtTimkiem2;
     // End of variables declaration//GEN-END:variables

@@ -51,6 +51,7 @@ public class AnvatGUI extends javax.swing.JPanel {
         tbAnvat = new javax.swing.JTable();
         Timkiem = new javax.swing.JLabel();
         TimkiemAnvat = new javax.swing.JTextField();
+        buttonTimkiemPhim = new testlib.RoundedButton();
         jSeparator1 = new javax.swing.JSeparator();
         txSucchua = new javax.swing.JLabel();
         truyxuatTencombo = new javax.swing.JTextField();
@@ -71,6 +72,7 @@ public class AnvatGUI extends javax.swing.JPanel {
         Xemtong = new javax.swing.JPanel();
         TimkiemTong = new javax.swing.JLabel();
         txtTimkiemTong = new javax.swing.JTextField();
+        btnTimkiemTong = new testlib.RoundedButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbXemtong = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
@@ -81,9 +83,12 @@ public class AnvatGUI extends javax.swing.JPanel {
 
         btnView.setBackground(new java.awt.Color(153, 153, 153));
         btnView.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
         btnView.setText("Xem");
         btnView.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnView.setContentAreaFilled(false);
+        btnView.setDisabledIcon(null);
+        btnView.setDisabledSelectedIcon(null);
         btnView.setFocusPainted(false);
         btnView.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnView.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -100,6 +105,7 @@ public class AnvatGUI extends javax.swing.JPanel {
 
         btnLichsu.setBackground(new java.awt.Color(153, 153, 153));
         btnLichsu.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnLichsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Kyo-Tux-Ginux-Network-URL-History.48.png"))); // NOI18N
         btnLichsu.setText("Lịch sử");
         btnLichsu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnLichsu.setContentAreaFilled(false);
@@ -119,6 +125,7 @@ public class AnvatGUI extends javax.swing.JPanel {
 
         btnxemAnvat.setBackground(new java.awt.Color(153, 153, 153));
         btnxemAnvat.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnxemAnvat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view2.png"))); // NOI18N
         btnxemAnvat.setText("Xem tổng");
         btnxemAnvat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnxemAnvat.setContentAreaFilled(false);
@@ -138,6 +145,7 @@ public class AnvatGUI extends javax.swing.JPanel {
 
         btnexport.setBackground(new java.awt.Color(153, 153, 153));
         btnexport.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnexport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/export.png"))); // NOI18N
         btnexport.setText("Export");
         btnexport.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnexport.setContentAreaFilled(false);
@@ -152,6 +160,7 @@ public class AnvatGUI extends javax.swing.JPanel {
 
         btnimport.setBackground(new java.awt.Color(153, 153, 153));
         btnimport.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnimport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/import.png"))); // NOI18N
         btnimport.setText("Import");
         btnimport.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnimport.setContentAreaFilled(false);
@@ -310,6 +319,11 @@ public class AnvatGUI extends javax.swing.JPanel {
             }
         });
 
+        buttonTimkiemPhim.setBackground(new java.awt.Color(204, 204, 204));
+        buttonTimkiemPhim.setForeground(new java.awt.Color(0, 0, 0));
+        buttonTimkiemPhim.setText("Tìm kiếm");
+        buttonTimkiemPhim.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -331,6 +345,7 @@ public class AnvatGUI extends javax.swing.JPanel {
 
         btncapnhatAnvat.setBackground(new java.awt.Color(153, 153, 153));
         btncapnhatAnvat.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btncapnhatAnvat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/update.png"))); // NOI18N
         btncapnhatAnvat.setText("Cập nhật");
         btncapnhatAnvat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btncapnhatAnvat.setContentAreaFilled(false);
@@ -340,6 +355,7 @@ public class AnvatGUI extends javax.swing.JPanel {
 
         btnxoaAnvat.setBackground(new java.awt.Color(153, 153, 153));
         btnxoaAnvat.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnxoaAnvat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete_i.png"))); // NOI18N
         btnxoaAnvat.setText("Xóa");
         btnxoaAnvat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnxoaAnvat.setContentAreaFilled(false);
@@ -365,6 +381,7 @@ public class AnvatGUI extends javax.swing.JPanel {
 
         btnthemAnvat.setBackground(new java.awt.Color(153, 153, 153));
         btnthemAnvat.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnthemAnvat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
         btnthemAnvat.setText("Thêm");
         btnthemAnvat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnthemAnvat.setContentAreaFilled(false);
@@ -412,7 +429,9 @@ public class AnvatGUI extends javax.swing.JPanel {
                             .addGroup(ViewLayout.createSequentialGroup()
                                 .addComponent(Timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TimkiemAnvat, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TimkiemAnvat, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonTimkiemPhim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1044, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(ViewLayout.createSequentialGroup()
                         .addGap(278, 278, 278)
@@ -425,7 +444,8 @@ public class AnvatGUI extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Timkiem)
-                    .addComponent(TimkiemAnvat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TimkiemAnvat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonTimkiemPhim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ViewLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -637,6 +657,11 @@ public class AnvatGUI extends javax.swing.JPanel {
             }
         });
 
+        btnTimkiemTong.setBackground(new java.awt.Color(204, 204, 204));
+        btnTimkiemTong.setForeground(new java.awt.Color(0, 0, 0));
+        btnTimkiemTong.setText("Tìm kiếm");
+        btnTimkiemTong.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+
         tbXemtong.setAutoCreateRowSorter(true);
         tbXemtong.setBackground(new java.awt.Color(153, 153, 153));
         tbXemtong.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -778,9 +803,11 @@ public class AnvatGUI extends javax.swing.JPanel {
                         .addComponent(TimkiemTong, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTimkiemTong, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(206, 206, 206)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTimkiemTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(164, 164, 164)
                         .addComponent(jLabel2)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         XemtongLayout.setVerticalGroup(
             XemtongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -789,7 +816,8 @@ public class AnvatGUI extends javax.swing.JPanel {
                     .addGroup(XemtongLayout.createSequentialGroup()
                         .addGroup(XemtongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TimkiemTong)
-                            .addComponent(txtTimkiemTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTimkiemTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTimkiemTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, XemtongLayout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -797,7 +825,7 @@ public class AnvatGUI extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         GiaodienAnvat.add(Xemtong, "Xemtong");
@@ -926,6 +954,7 @@ public class AnvatGUI extends javax.swing.JPanel {
     private javax.swing.JPanel View;
     private javax.swing.JPanel Xemtong;
     private javax.swing.JButton btnLichsu;
+    private testlib.RoundedButton btnTimkiemTong;
     private javax.swing.JButton btnView;
     private javax.swing.JButton btncapnhatAnvat;
     private javax.swing.JButton btnexport;
@@ -933,6 +962,7 @@ public class AnvatGUI extends javax.swing.JPanel {
     private javax.swing.JButton btnthemAnvat;
     private javax.swing.JButton btnxemAnvat;
     private javax.swing.JButton btnxoaAnvat;
+    private testlib.RoundedButton buttonTimkiemPhim;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
