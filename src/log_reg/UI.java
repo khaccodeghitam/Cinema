@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  * @author Admin
  */
 public class UI {
- public static void addPlaceHolderEffect(JTextField textField, String placeholder) {
+public static void addPlaceHolderEffect(JTextField textField ,String placeholder) {
     textField.setForeground(Color.GRAY);
     
     // Kiểm tra nếu là JPasswordField để đặc biệt xử lý
