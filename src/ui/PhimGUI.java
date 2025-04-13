@@ -1,5 +1,6 @@
 package ui;
         
+import log_reg.UI;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -7,9 +8,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.table.JTableHeader;
+import java.awt.*;
+import javax.swing.*;
+import java.io.*;
 
 
 public class PhimGUI extends javax.swing.JPanel {
+private ImageHandler imageHandler;
 
     private JButton selectedButton = null;
     
@@ -21,14 +26,40 @@ public class PhimGUI extends javax.swing.JPanel {
         GiaodienPhim.add(Xemtong, "Xemtong");
         cbDanhsachPhim.setMaximumRowCount(7);
         
-
+ // Initialize the ImageHandler with the display panel
+    imageHandler = new ImageHandler(disPoster);
+    // Attach click listener to the addImg panel
+    imageHandler.attachClickListener(addImg);
+    
+    addImg.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    addImg.setToolTipText("Nhấn để chọn ảnh");
+    
+    // Add a simple label to guide users
+    JLabel addImgLabel = new JLabel("+ Chọn ảnh", SwingConstants.CENTER);
+    addImgLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+    addImg.setLayout(new BorderLayout());
+    addImg.add(addImgLabel, BorderLayout.CENTER);
+        
         JTableHeader header = tbPhim.getTableHeader(); 
         header.setFont(new Font("Times New Roman", Font.BOLD, 16));
         
         JTableHeader headerXem = tbXemtong.getTableHeader(); 
         headerXem.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        
+    UI.addPlaceHolderEffect(txtMaPhim, "Nhập mã phim");
+    
+    // You can also add placeholder effects to other text fields
+    UI.addPlaceHolderEffect(txtTenPhim, "Truy xuất tên phim dựa vào danh sách phim đã bấm");
+    UI.addPlaceHolderEffect(txtThoiluong, "Truy xuất thời lượng dựa theo danh sách phim đã bấm");
+    UI.addPlaceHolderEffect(txtTheloai, "Truy xuất thời lượng dựa theo danh sách phim đã bấm");
+    UI.addPlaceHolderEffect(txtTuoi, "Nhập độ tuổi cho phép xem");
+    UI.addPlaceHolderEffect(txtNgaychieu, "Theo định dạng dd/mm/yyyy");
+   
+  
 
     }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,6 +108,9 @@ public class PhimGUI extends javax.swing.JPanel {
         MaPhim = new javax.swing.JLabel();
         txtMaPhim = new testlib.RoundedTextField();
         cbDanhsachPhim = new javax.swing.JComboBox<>();
+        themAnh = new javax.swing.JLabel();
+        addImg = new my_component.RoundedPanel();
+        disPoster = new javax.swing.JPanel();
         Xemtong = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbXemtong = new javax.swing.JTable();
@@ -437,22 +471,59 @@ public class PhimGUI extends javax.swing.JPanel {
         cbDanhsachPhim.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Truy xuất theo dữ liệu phim đã thầu (Hợp đồng)", "Item 2", "Item 3", "Item 4", "5", "6", "7", "8", "9" }));
         cbDanhsachPhim.setBorder(null);
 
+        themAnh.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        themAnh.setText("Thêm ảnh");
+
+        addImg.setBackground(new java.awt.Color(204, 204, 204));
+        addImg.setForeground(new java.awt.Color(0, 0, 0));
+        addImg.setOpaque(true);
+
+        javax.swing.GroupLayout addImgLayout = new javax.swing.GroupLayout(addImg);
+        addImg.setLayout(addImgLayout);
+        addImgLayout.setHorizontalGroup(
+            addImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        addImgLayout.setVerticalGroup(
+            addImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        disPoster.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout disPosterLayout = new javax.swing.GroupLayout(disPoster);
+        disPoster.setLayout(disPosterLayout);
+        disPosterLayout.setHorizontalGroup(
+            disPosterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 211, Short.MAX_VALUE)
+        );
+        disPosterLayout.setVerticalGroup(
+            disPosterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 328, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout ThemPhimLayout = new javax.swing.GroupLayout(ThemPhim);
         ThemPhim.setLayout(ThemPhimLayout);
         ThemPhimLayout.setHorizontalGroup(
             ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ThemPhimLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(themAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Ngaychieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Dotuoi)
+                    .addComponent(TheloaiPhim)
+                    .addComponent(ThoiLuongPhim)
+                    .addComponent(TenPhim)
+                    .addComponent(DsPhim)
+                    .addComponent(MaPhim)
+                    .addComponent(btnHuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ThemPhimLayout.createSequentialGroup()
-                        .addGap(297, 297, 297)
-                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Ngaychieu)
-                            .addComponent(Dotuoi)
-                            .addComponent(TheloaiPhim)
-                            .addComponent(ThoiLuongPhim)
-                            .addComponent(TenPhim)
-                            .addComponent(DsPhim)
-                            .addComponent(MaPhim))
+                        .addGap(75, 75, 75)
+                        .addComponent(btnThemPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ThemPhimLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtTuoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -461,13 +532,11 @@ public class PhimGUI extends javax.swing.JPanel {
                             .addComponent(txtThoiluong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtTenPhim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtMaPhim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbDanhsachPhim, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(ThemPhimLayout.createSequentialGroup()
-                        .addGap(342, 342, 342)
-                        .addComponent(btnHuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(162, 162, 162)
-                        .addComponent(btnThemPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(239, Short.MAX_VALUE))
+                            .addComponent(cbDanhsachPhim, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addComponent(disPoster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))))
         );
         ThemPhimLayout.setVerticalGroup(
             ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -476,37 +545,47 @@ public class PhimGUI extends javax.swing.JPanel {
                 .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(DsPhim)
                     .addComponent(cbDanhsachPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ThemPhimLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(MaPhim)
+                            .addComponent(txtMaPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(ThemPhimLayout.createSequentialGroup()
+                                .addComponent(TenPhim)
+                                .addGap(37, 37, 37)
+                                .addComponent(ThoiLuongPhim))
+                            .addGroup(ThemPhimLayout.createSequentialGroup()
+                                .addComponent(txtTenPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(txtThoiluong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
+                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TheloaiPhim)
+                            .addComponent(txtTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Dotuoi)
+                            .addComponent(txtTuoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Ngaychieu)
+                            .addComponent(txtNgaychieu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThemPhimLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(disPoster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)))
+                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(themAnh)
+                    .addComponent(addImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(23, 23, 23)
-                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(MaPhim)
-                    .addComponent(txtMaPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(ThemPhimLayout.createSequentialGroup()
-                        .addComponent(TenPhim)
-                        .addGap(37, 37, 37)
-                        .addComponent(ThoiLuongPhim))
-                    .addGroup(ThemPhimLayout.createSequentialGroup()
-                        .addComponent(txtTenPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(txtThoiluong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TheloaiPhim)
-                    .addComponent(txtTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Dotuoi)
-                    .addComponent(txtTuoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Ngaychieu)
-                    .addComponent(txtNgaychieu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnThemPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
+                .addGap(23, 23, 23))
         );
 
         GiaodienPhim.add(ThemPhim, "ThemPhim");
@@ -521,96 +600,6 @@ public class PhimGUI extends javax.swing.JPanel {
         tbXemtong.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         tbXemtong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -834,6 +823,7 @@ public class PhimGUI extends javax.swing.JPanel {
     private javax.swing.JLabel TimkiemTong;
     private javax.swing.JPanel View;
     private javax.swing.JPanel Xemtong;
+    private my_component.RoundedPanel addImg;
     private javax.swing.JButton btnCapnhat;
     private javax.swing.JButton btnExport;
     private testlib.RoundedButton btnHuybo;
@@ -846,6 +836,7 @@ public class PhimGUI extends javax.swing.JPanel {
     private javax.swing.JButton btnXemtong;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cbDanhsachPhim;
+    private javax.swing.JPanel disPoster;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
@@ -853,6 +844,7 @@ public class PhimGUI extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable tbPhim;
     private javax.swing.JTable tbXemtong;
+    private javax.swing.JLabel themAnh;
     private javax.swing.JTextField truyxuatNgaychieu;
     private javax.swing.JTextField truyxuatPhim;
     private javax.swing.JTextField truyxuatTheloai;

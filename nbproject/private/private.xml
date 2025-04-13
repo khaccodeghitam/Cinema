@@ -13,16 +13,18 @@
             <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/login.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/register.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UIa.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/AnvatGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/HopdongGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/KhachhangGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/LichchieuGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/NhanvienGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/NhaphanphoiGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhimGUI.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhongchieuGUI.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/ThongkeGUI.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UudaiGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/main_project.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/sql_cnm.sql</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UIu.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/PhimDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/PhimDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedLabel.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhimGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/ImageHandler.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/MoviePosterManager.java</file>
         </group>
     </open-files>
 </project-private>
