@@ -25,6 +25,19 @@
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhimGUI.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/ImageHandler.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/MoviePosterManager.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/AnvatGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/IntroGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/NhanvienGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/DatabaseConnection.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/HopDongDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/HopDongDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/HopdongGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/NhaPhanPhoiDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/NhanVienDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/Screenshot%202025-04-06%20181047.png</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/Screenshot%202025-04-08%20000450.png</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/PhongChieuDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/PhongChieuDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -87,7 +87,7 @@
               <Font name="Times New Roman" size="15" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/view.png"/>
+              <Image iconType="3" name="/icon/view.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Xem"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -114,7 +114,7 @@
               <Font name="Times New Roman" size="15" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/add.png"/>
+              <Image iconType="3" name="/icon/add.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -141,7 +141,7 @@
               <Font name="Times New Roman" size="15" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/view2.png"/>
+              <Image iconType="3" name="/icon/view2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Xem t&#x1ed5;ng"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -168,7 +168,7 @@
               <Font name="Times New Roman" size="15" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/export.png"/>
+              <Image iconType="3" name="/icon/export.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Export"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -194,7 +194,7 @@
               <Font name="Times New Roman" size="15" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/import.png"/>
+              <Image iconType="3" name="/icon/import.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Import"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -284,7 +284,6 @@
                           <Component id="jScrollPane1" min="-2" pref="321" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -310,7 +309,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="35" max="32767" attributes="0"/>
+                          <EmptySpace pref="47" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -325,7 +324,7 @@
                       <Font name="Times New Roman" size="15" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/update.png"/>
+                      <Image iconType="3" name="/icon/update.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -348,7 +347,7 @@
                       <Font name="Times New Roman" size="15" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/delete_i.png"/>
+                      <Image iconType="3" name="/icon/delete_i.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -426,10 +425,10 @@
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="100">
-                            <Column editable="true" title="M&#xe3; ph&#xf2;ng" type="java.lang.String"/>
-                            <Column editable="true" title="S&#x1ee9;c ch&#x1ee9;a" type="java.lang.Integer"/>
-                            <Column editable="true" title="Lo&#x1ea1;i chi&#x1ebf;u" type="java.lang.String"/>
-                            <Column editable="true" title="Gi&#xe1; v&#xe9;" type="java.lang.Long"/>
+                            <Column editable="false" title="M&#xe3; ph&#xf2;ng" type="java.lang.String"/>
+                            <Column editable="false" title="S&#x1ee9;c ch&#x1ee9;a" type="java.lang.Integer"/>
+                            <Column editable="false" title="Lo&#x1ea1;i chi&#x1ebf;u" type="java.lang.String"/>
+                            <Column editable="false" title="Gi&#xe1; v&#xe9;" type="java.lang.Long"/>
                           </Table>
                         </Property>
                         <Property name="rowHeight" type="int" value="30"/>
@@ -548,7 +547,6 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="306" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="MaPhong" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="TheloaiPhim" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="Loaichieu" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="Succhua" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -557,24 +555,18 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtTheloai" alignment="0" min="-2" pref="338" max="-2" attributes="0"/>
                                       <Component id="txtSucchua" alignment="0" min="-2" pref="338" max="-2" attributes="0"/>
-                                      <Component id="txtMaPhong" alignment="0" min="-2" pref="338" max="-2" attributes="0"/>
                                       <Component id="cbLoaichieu" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="306" max="32767" attributes="0"/>
+                          <EmptySpace pref="307" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="MaPhong" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtMaPhong" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="Succhua" min="-2" max="-2" attributes="0"/>
@@ -605,14 +597,6 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="MaPhong">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="20" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="M&#xe3; ph&#xf2;ng:"/>
-                  </Properties>
-                </Component>
                 <Component class="testlib.RoundedTextField" name="txtSucchua">
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" Nh&#x1ead;p s&#x1ee9;c ch&#x1ee9;a"/>
@@ -624,11 +608,6 @@
                       <Font name="Times New Roman" size="20" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1ee9;c ch&#x1ee9;a:"/>
-                  </Properties>
-                </Component>
-                <Component class="testlib.RoundedTextField" name="txtMaPhong">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value=" Nh&#x1ead;p m&#xe3; ph&#xf2;ng"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="Loaichieu">

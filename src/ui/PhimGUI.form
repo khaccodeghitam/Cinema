@@ -417,12 +417,12 @@
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="6" rowCount="10">
-                            <Column editable="true" title="M&#xe3; phim" type="java.lang.String"/>
-                            <Column editable="true" title="T&#xea;n phim" type="java.lang.String"/>
-                            <Column editable="true" title="Th&#x1edd;i l&#x1b0;&#x1ee3;ng" type="java.lang.String"/>
-                            <Column editable="true" title="Th&#x1ec3; lo&#x1ea1;i" type="java.lang.String"/>
-                            <Column editable="true" title="&#x110;&#x1ed9; tu&#x1ed5;i" type="java.lang.String"/>
-                            <Column editable="true" title="Ng&#xe0;y c&#xf4;ng chi&#x1ebf;u" type="java.lang.String"/>
+                            <Column editable="false" title="M&#xe3; phim" type="java.lang.String"/>
+                            <Column editable="false" title="T&#xea;n phim" type="java.lang.String"/>
+                            <Column editable="false" title="Th&#x1edd;i l&#x1b0;&#x1ee3;ng" type="java.lang.String"/>
+                            <Column editable="false" title="Th&#x1ec3; lo&#x1ea1;i" type="java.lang.String"/>
+                            <Column editable="false" title="&#x110;&#x1ed9; tu&#x1ed5;i" type="java.lang.String"/>
+                            <Column editable="false" title="Ng&#xe0;y c&#xf4;ng chi&#x1ebf;u" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="autoResizeMode" type="int" value="4"/>
@@ -648,311 +648,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="ThemPhim">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                  <CardConstraints cardName="ThemPhim"/>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="themAnh" max="32767" attributes="0"/>
-                              <Component id="Ngaychieu" max="32767" attributes="0"/>
-                              <Component id="Dotuoi" min="-2" max="-2" attributes="0"/>
-                              <Component id="TheloaiPhim" min="-2" max="-2" attributes="0"/>
-                              <Component id="ThoiLuongPhim" min="-2" max="-2" attributes="0"/>
-                              <Component id="TenPhim" min="-2" max="-2" attributes="0"/>
-                              <Component id="DsPhim" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="MaPhim" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnHuybo" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Component id="btnThemPhim" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtTuoi" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtTheloai" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtNgaychieu" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtThoiluong" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtTenPhim" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtMaPhim" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cbDanhsachPhim" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="addImg" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="71" max="32767" attributes="0"/>
-                                  <Component id="disPoster" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="DsPhim" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbDanhsachPhim" min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="MaPhim" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtMaPhim" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="TenPhim" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                          <Component id="ThoiLuongPhim" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="txtTenPhim" min="-2" pref="30" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                          <Component id="txtThoiluong" min="-2" pref="30" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="TheloaiPhim" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTheloai" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="Dotuoi" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTuoi" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="Ngaychieu" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtNgaychieu" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="20" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="disPoster" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="themAnh" min="-2" max="-2" attributes="0"/>
-                              <Component id="addImg" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnHuybo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="btnThemPhim" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="DsPhim">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="20" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch phim: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="TenPhim">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="20" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="T&#xea;n phim:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="ThoiLuongPhim">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="20" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Th&#x1edd;i l&#x1b0;&#x1ee3;ng"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="TheloaiPhim">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="20" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Th&#x1ec3; lo&#x1ea1;i: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="Dotuoi">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="20" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="&#x110;&#x1ed9; tu&#x1ed5;i:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="Ngaychieu">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="20" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Ng&#xe0;y c&#xf4;ng chi&#x1ebf;u: "/>
-                  </Properties>
-                </Component>
-                <Component class="testlib.RoundedButton" name="btnThemPhim">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Th&#xea;m phim"/>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="15" style="1"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="testlib.RoundedButton" name="btnHuybo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="H&#x1ee7;y b&#x1ecf;"/>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="15" style="1"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="testlib.RoundedTextField" name="txtTuoi">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value=" Nh&#x1ead;p &#x111;&#x1ed9; tu&#x1ed5;i cho ph&#xe9;p xem"/>
-                  </Properties>
-                </Component>
-                <Component class="testlib.RoundedTextField" name="txtTheloai">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Truy xu&#x1ea5;t th&#x1edd;i l&#x1b0;&#x1ee3;ng d&#x1ef1;a theo danh s&#xe1;ch phim &#x111;&#xe3; b&#x1ea5;m"/>
-                  </Properties>
-                </Component>
-                <Component class="testlib.RoundedTextField" name="txtNgaychieu">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Theo &#x111;&#x1ecb;nh d&#x1ea1;ng dd/mm/yyyy"/>
-                  </Properties>
-                </Component>
-                <Component class="testlib.RoundedTextField" name="txtThoiluong">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Truy xu&#x1ea5;t th&#x1edd;i l&#x1b0;&#x1ee3;ng d&#x1ef1;a theo danh s&#xe1;ch phim &#x111;&#xe3; b&#x1ea5;m"/>
-                  </Properties>
-                </Component>
-                <Component class="testlib.RoundedTextField" name="txtTenPhim">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Truy xu&#x1ea5;t t&#xea;n phim d&#x1ef1;a v&#xe0;o danh s&#xe1;ch phim &#x111;&#xe3; b&#x1ea5;m"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="MaPhim">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="20" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="M&#xe3; phim"/>
-                  </Properties>
-                </Component>
-                <Component class="testlib.RoundedTextField" name="txtMaPhim">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Nh&#x1ead;p m&#xe3; phim"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbDanhsachPhim">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="15" style="1"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="9">
-                        <StringItem index="0" value="Truy xu&#x1ea5;t theo d&#x1eef; li&#x1ec7;u phim &#x111;&#xe3; th&#x1ea7;u (H&#x1ee3;p &#x111;&#x1ed3;ng)"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                        <StringItem index="4" value="5"/>
-                        <StringItem index="5" value="6"/>
-                        <StringItem index="6" value="7"/>
-                        <StringItem index="7" value="8"/>
-                        <StringItem index="8" value="9"/>
-                      </StringArray>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="themAnh">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="20" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Th&#xea;m &#x1ea3;nh"/>
-                  </Properties>
-                </Component>
-                <Container class="my_component.RoundedPanel" name="addImg">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
-                    </Property>
-                    <Property name="opaque" type="boolean" value="true"/>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
-                <Container class="javax.swing.JPanel" name="disPoster">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
-                    </Property>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="211" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="328" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
-              </SubComponents>
-            </Container>
             <Container class="javax.swing.JPanel" name="Xemtong">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1028,15 +723,15 @@
                           <Font name="Times New Roman" size="15" style="1"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="8" rowCount="10">
-                            <Column editable="true" title="M&#xe3; phim" type="java.lang.String"/>
-                            <Column editable="true" title="T&#xea;n phim" type="java.lang.String"/>
-                            <Column editable="true" title="Th&#x1edd;i l&#x1b0;&#x1ee3;ng" type="java.lang.String"/>
-                            <Column editable="true" title="Th&#x1ec3; lo&#x1ea1;i" type="java.lang.String"/>
-                            <Column editable="true" title="&#x110;&#x1ed9; tu&#x1ed5;i" type="java.lang.String"/>
-                            <Column editable="true" title="Ng&#xe0;y chi&#x1ebf;u" type="java.lang.String"/>
-                            <Column editable="true" title="Su&#x1ea5;t &#x111;&#xe3; chi&#x1ebf;u" type="java.lang.String"/>
-                            <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.String"/>
+                          <Table columnCount="8" rowCount="100">
+                            <Column editable="false" title="M&#xe3; phim" type="java.lang.String"/>
+                            <Column editable="false" title="T&#xea;n phim" type="java.lang.String"/>
+                            <Column editable="false" title="Th&#x1edd;i l&#x1b0;&#x1ee3;ng" type="java.lang.String"/>
+                            <Column editable="false" title="Th&#x1ec3; lo&#x1ea1;i" type="java.lang.String"/>
+                            <Column editable="false" title="&#x110;&#x1ed9; tu&#x1ed5;i" type="java.lang.String"/>
+                            <Column editable="false" title="Ng&#xe0;y chi&#x1ebf;u" type="java.lang.String"/>
+                            <Column editable="false" title="Su&#x1ea5;t &#x111;&#xe3; chi&#x1ebf;u" type="java.lang.String"/>
+                            <Column editable="false" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="autoResizeMode" type="int" value="4"/>
@@ -1142,6 +837,278 @@
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="ThemPhim">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="99" red="99" type="rgb"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                  <CardConstraints cardName="ThemPhim"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="themAnh" max="32767" attributes="0"/>
+                              <Component id="Ngaychieu" max="32767" attributes="0"/>
+                              <Component id="Dotuoi" min="-2" max="-2" attributes="0"/>
+                              <Component id="TheloaiPhim" min="-2" max="-2" attributes="0"/>
+                              <Component id="ThoiLuongPhim" min="-2" max="-2" attributes="0"/>
+                              <Component id="DsPhim" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtTuoi" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtTheloai" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtThoiluong" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cbDanhsachPhim" alignment="0" max="32767" attributes="0"/>
+                              <Component id="addImg" max="32767" attributes="0"/>
+                              <Component id="dtCongChieu" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="174" max="32767" attributes="0"/>
+                          <Component id="disPoster" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
+                          <Component id="btnHuybo" min="-2" pref="120" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
+                          <Component id="btnThemPhim" min="-2" pref="120" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="DsPhim" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbDanhsachPhim" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                                  <Component id="disPoster" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="ThoiLuongPhim" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtThoiluong" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="TheloaiPhim" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTheloai" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                          <Component id="Dotuoi" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <Component id="txtTuoi" min="-2" pref="30" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="Ngaychieu" max="32767" attributes="0"/>
+                                      <Component id="dtCongChieu" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="themAnh" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addImg" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnThemPhim" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="btnHuybo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="DsPhim">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="20" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch phim: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="ThoiLuongPhim">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="20" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Th&#x1edd;i l&#x1b0;&#x1ee3;ng"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="TheloaiPhim">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="20" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Th&#x1ec3; lo&#x1ea1;i: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="Dotuoi">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="20" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="&#x110;&#x1ed9; tu&#x1ed5;i:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="Ngaychieu">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="20" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Ng&#xe0;y c&#xf4;ng chi&#x1ebf;u: "/>
+                  </Properties>
+                </Component>
+                <Component class="testlib.RoundedButton" name="btnThemPhim">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Th&#xea;m phim"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="15" style="1"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemPhimActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="testlib.RoundedButton" name="btnHuybo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="H&#x1ee7;y b&#x1ecf;"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="15" style="1"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="testlib.RoundedTextField" name="txtTuoi">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" Nh&#x1ead;p &#x111;&#x1ed9; tu&#x1ed5;i cho ph&#xe9;p xem"/>
+                  </Properties>
+                </Component>
+                <Component class="testlib.RoundedTextField" name="txtTheloai">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Truy xu&#x1ea5;t th&#x1edd;i l&#x1b0;&#x1ee3;ng d&#x1ef1;a theo danh s&#xe1;ch phim &#x111;&#xe3; b&#x1ea5;m"/>
+                  </Properties>
+                </Component>
+                <Component class="testlib.RoundedTextField" name="txtThoiluong">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Truy xu&#x1ea5;t th&#x1edd;i l&#x1b0;&#x1ee3;ng d&#x1ef1;a theo danh s&#xe1;ch phim &#x111;&#xe3; b&#x1ea5;m"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbDanhsachPhim">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="15" style="1"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="9">
+                        <StringItem index="0" value="Truy xu&#x1ea5;t theo d&#x1eef; li&#x1ec7;u phim &#x111;&#xe3; th&#x1ea7;u (H&#x1ee3;p &#x111;&#x1ed3;ng)"/>
+                        <StringItem index="1" value="Item 2"/>
+                        <StringItem index="2" value="Item 3"/>
+                        <StringItem index="3" value="Item 4"/>
+                        <StringItem index="4" value="5"/>
+                        <StringItem index="5" value="6"/>
+                        <StringItem index="6" value="7"/>
+                        <StringItem index="7" value="8"/>
+                        <StringItem index="8" value="9"/>
+                      </StringArray>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="themAnh">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="20" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Th&#xea;m &#x1ea3;nh:"/>
+                  </Properties>
+                </Component>
+                <Container class="my_component.RoundedPanel" name="addImg">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="opaque" type="boolean" value="true"/>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                </Container>
+                <Container class="javax.swing.JPanel" name="disPoster">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="211" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="328" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                </Container>
+                <Component class="com.toedter.calendar.JDateChooser" name="dtCongChieu">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>

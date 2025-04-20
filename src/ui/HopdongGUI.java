@@ -1,6 +1,10 @@
 
 package ui;
 
+import DAO.HopDongDAO;
+import DAO.PhimDAO;
+import DTO.HopDongDTO;
+import DTO.PhimDTO;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -8,14 +12,23 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.table.JTableHeader;
-
+import java.util.*;
+import javax.swing.table.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import javax.swing.*;
+import java.awt.event.*;
 
 public class HopdongGUI extends javax.swing.JPanel {
 
     private JButton selectedButton = null;
+     private HopDongDAO hopDongDAO = new HopDongDAO();
+    private PhimDAO phimDAO = new PhimDAO();
     
     public HopdongGUI() {
-        initComponents();
+        initComponents();   
         GiaodienHopdong.setLayout(new CardLayout());
         GiaodienHopdong.add(View, "View");
         GiaodienHopdong.add(Kihopdong, "Kihopdong");
@@ -27,6 +40,17 @@ public class HopdongGUI extends javax.swing.JPanel {
         
         JTableHeader headerXem = tbXemtong.getTableHeader(); 
         headerXem.setFont(new Font("Times New Roman", Font.BOLD, 16));
+
+            // Gọi phương thức để hiển thị dữ liệu hợp đồng
+        hienThiDuLieuHopDong();
+        
+        // Thêm sự kiện tìm kiếm
+        btnTimkiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timKiemHopDong();
+            }
+        });
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -95,7 +119,6 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         btnView.setBackground(new java.awt.Color(153, 153, 153));
         btnView.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
         btnView.setText("Xem");
         btnView.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnView.setContentAreaFilled(false);
@@ -115,7 +138,6 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         btnKihopdong.setBackground(new java.awt.Color(153, 153, 153));
         btnKihopdong.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnKihopdong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Aha-Soft-Software-Signature.48.png"))); // NOI18N
         btnKihopdong.setText("Kí hợp đồng");
         btnKihopdong.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnKihopdong.setContentAreaFilled(false);
@@ -135,7 +157,6 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         btnXemtong.setBackground(new java.awt.Color(153, 153, 153));
         btnXemtong.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnXemtong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view2.png"))); // NOI18N
         btnXemtong.setText("Xem tổng");
         btnXemtong.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnXemtong.setContentAreaFilled(false);
@@ -155,7 +176,6 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         btnExport.setBackground(new java.awt.Color(153, 153, 153));
         btnExport.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/export.png"))); // NOI18N
         btnExport.setText("Export");
         btnExport.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnExport.setContentAreaFilled(false);
@@ -170,7 +190,6 @@ public class HopdongGUI extends javax.swing.JPanel {
 
         btnImport.setBackground(new java.awt.Color(153, 153, 153));
         btnImport.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/import.png"))); // NOI18N
         btnImport.setText("Import");
         btnImport.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnImport.setContentAreaFilled(false);
@@ -226,86 +245,6 @@ public class HopdongGUI extends javax.swing.JPanel {
         tbHopdong.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         tbHopdong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -854,6 +793,149 @@ public class HopdongGUI extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+     private void hienThiDuLieuHopDong() {
+        try {
+            // Lấy danh sách hợp đồng
+            List<HopDongDTO> danhSachHopDong = hopDongDAO.layDanhSachHopDong();
+            
+            // Lấy map nhà phân phối và nhân viên
+            Map<String, String> nhaPhanPhoiMap = hopDongDAO.layDanhSachNhaPhanPhoi();
+            Map<String, String> nhanVienMap = hopDongDAO.layDanhSachNhanVien();
+            
+            // Lấy map thời lượng phim
+            Map<String, Integer> phimThoiLuongMap = hopDongDAO.layThongTinThoiLuongPhim();
+            
+            // Tạo model cho bảng
+            DefaultTableModel model = (DefaultTableModel) tbHopdong.getModel();
+            model.setRowCount(0); // Xóa dữ liệu cũ
+            
+            // Đổ dữ liệu vào bảng
+            for (HopDongDTO hopDong : danhSachHopDong) {
+                String tenPhim = hopDong.getTenPhim();
+                
+                // Lấy thời lượng từ map phim
+                Integer thoiLuong = phimThoiLuongMap.get(tenPhim);
+                String thoiLuongStr = (thoiLuong != null) ? thoiLuong + " phút" : "Chưa có";
+                
+                // Lấy tên nhà phân phối
+                String tenNhaPhanPhoi = nhaPhanPhoiMap.getOrDefault(hopDong.getMaNhaPhanPhoi(), "Chưa có");
+                
+                // Lấy tên người kí
+                String tenNguoiKi = nhanVienMap.getOrDefault(hopDong.getNguoiKi(), "Chưa có");
+                
+                // Đổ dữ liệu vào model
+                model.addRow(new Object[] {
+                    hopDong.getMaHopDong(),
+                    tenPhim,
+                    thoiLuongStr,
+                    hopDong.getSoSuatChieu(),
+                    formatCurrency(hopDong.getGiaThau()),
+                    tenNhaPhanPhoi,
+                    tenNguoiKi
+                });
+            }
+            
+            // Thiết lập sự kiện khi chọn một dòng trên bảng
+            tbHopdong.getSelectionModel().addListSelectionListener(e -> {
+                if (!e.getValueIsAdjusting() && tbHopdong.getSelectedRow() != -1) {
+                    hienThiChiTietHopDong();
+                }
+            });
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi hiển thị dữ liệu: " + e.getMessage(), 
+                                         "Lỗi", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+    
+    // Phương thức hỗ trợ định dạng tiền tệ
+    private String formatCurrency(int amount) {
+        return String.format("%,d VNĐ", amount);
+    }
+    
+    // Phương thức hiển thị chi tiết hợp đồng khi chọn một dòng trong bảng
+    private void hienThiChiTietHopDong() {
+        int selectedRow = tbHopdong.getSelectedRow();
+        if (selectedRow >= 0) {
+            String tenPhim = tbHopdong.getValueAt(selectedRow, 1).toString();
+            String thoiLuong = tbHopdong.getValueAt(selectedRow, 2).toString();
+            String soSuatChieu = tbHopdong.getValueAt(selectedRow, 3).toString();
+            String giaThau = tbHopdong.getValueAt(selectedRow, 4).toString();
+            String nhaPhanPhoi = tbHopdong.getValueAt(selectedRow, 5).toString();
+            String nguoiKi = tbHopdong.getValueAt(selectedRow, 6).toString();
+            
+            truyxuatPhim.setText(tenPhim);
+            truyxuatThoiluong.setText(thoiLuong);
+            truyxuatSosuatchieu.setText(soSuatChieu);
+            truyxuatGiathau.setText(giaThau);
+            truyxuatNhaphanphoi.setText(nhaPhanPhoi);
+            truyxuatNguoiki.setText(nguoiKi);
+        }
+    }
+    
+    // Phương thức tìm kiếm hợp đồng
+    private void timKiemHopDong() {
+        String tuKhoa = txtTimkiem.getText().trim();
+        
+        if (tuKhoa.equals(" Nhập tên phim.....") || tuKhoa.isEmpty()) {
+            hienThiDuLieuHopDong(); // Hiển thị toàn bộ dữ liệu nếu không có từ khóa
+            return;
+        }
+        
+        try {
+            // Lấy danh sách hợp đồng theo từ khóa
+            List<HopDongDTO> ketQuaTimKiem = hopDongDAO.timKiemHopDongTheoTenPhim(tuKhoa);
+            
+            // Lấy map nhà phân phối và nhân viên
+            Map<String, String> nhaPhanPhoiMap = hopDongDAO.layDanhSachNhaPhanPhoi();
+            Map<String, String> nhanVienMap = hopDongDAO.layDanhSachNhanVien();
+            
+            // Lấy map thời lượng phim
+            Map<String, Integer> phimThoiLuongMap = hopDongDAO.layThongTinThoiLuongPhim();
+            
+            // Tạo model cho bảng
+            DefaultTableModel model = (DefaultTableModel) tbHopdong.getModel();
+            model.setRowCount(0); // Xóa dữ liệu cũ
+            
+            // Đổ dữ liệu vào bảng
+            for (HopDongDTO hopDong : ketQuaTimKiem) {
+                String tenPhim = hopDong.getTenPhim();
+                
+                // Lấy thời lượng từ map phim
+                Integer thoiLuong = phimThoiLuongMap.get(tenPhim);
+                String thoiLuongStr = (thoiLuong != null) ? thoiLuong + " phút" : "Chưa có";
+                
+                // Lấy tên nhà phân phối
+                String tenNhaPhanPhoi = nhaPhanPhoiMap.getOrDefault(hopDong.getMaNhaPhanPhoi(), "Chưa có");
+                
+                // Lấy tên người kí
+                String tenNguoiKi = nhanVienMap.getOrDefault(hopDong.getNguoiKi(), "Chưa có");
+                
+                // Đổ dữ liệu vào model
+                model.addRow(new Object[] {
+                    hopDong.getMaHopDong(),
+                    tenPhim,
+                    thoiLuongStr,
+                    hopDong.getSoSuatChieu(),
+                    formatCurrency(hopDong.getGiaThau()),
+                    tenNhaPhanPhoi,
+                    tenNguoiKi
+                });
+            }
+            
+            if (ketQuaTimKiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy hợp đồng với tên phim: " + tuKhoa, 
+                                           "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi tìm kiếm hợp đồng: " + e.getMessage(), 
+                                         "Lỗi", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    } 
+    
     private void txtTimkiemNhapchu(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimkiemNhapchu
         if(txtTimkiem.getText().equals(" Nhập tên phim.....")){
             txtTimkiem.setText("");
@@ -889,6 +971,7 @@ public class HopdongGUI extends javax.swing.JPanel {
     private void View(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View
         CardLayout card = (CardLayout) GiaodienHopdong.getLayout();
         card.show(GiaodienHopdong, "View");
+          
     }//GEN-LAST:event_View
 
     private void Kihopdong(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Kihopdong
@@ -899,7 +982,9 @@ public class HopdongGUI extends javax.swing.JPanel {
     private void Xemtong(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Xemtong
         CardLayout card = (CardLayout) GiaodienHopdong.getLayout();
         card.show(GiaodienHopdong, "Xemtong");
+
     }//GEN-LAST:event_Xemtong
+
 
     private void Change_Border(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Change_Border
         JButton clickedButton = (JButton) evt.getSource();
