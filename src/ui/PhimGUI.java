@@ -4,6 +4,11 @@ import DAO.PhimDAO;
 import DAO.HopDongDAO;
 import DTO.PhimDTO;
 import log_reg.UI;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -93,6 +98,12 @@ btnXoa.addActionListener(new java.awt.event.ActionListener() {
     }
 });
   
+btnExport.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExportActionPerformed(evt);
+    }
+});
+
     }
     
     
@@ -866,6 +877,122 @@ btnXoa.addActionListener(new java.awt.event.ActionListener() {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {
+    try {
+        // Create a new workbook
+        Workbook workbook = new XSSFWorkbook();
+        
+        // Determine which table is currently visible
+        CardLayout cardLayout = (CardLayout) GiaodienPhim.getLayout();
+        JTable activeTable;
+        String sheetName;
+        String[] columns;
+        
+        // Check which panel is currently visible
+        if (View.isVisible()) {
+            activeTable = tbPhim;
+            sheetName = "Danh Sách Phim";
+            columns = new String[]{"Mã phim", "Tên phim", "Thời lượng", "Thể loại", "Độ tuổi", "Ngày công chiếu"};
+        } else if (Xemtong.isVisible()) {
+            activeTable = tbXemtong;
+            sheetName = "Tổng Hợp Phim";
+            columns = new String[]{"Mã phim", "Tên phim", "Thời lượng", "Thể loại", "Độ tuổi", "Ngày chiếu", "Suất đã chiếu", "Trạng thái"};
+        } else {
+            // Default to tbPhim if neither view is visible (shouldn't happen in normal operation)
+            activeTable = tbPhim;
+            sheetName = "Danh Sách Phim";
+            columns = new String[]{"Mã phim", "Tên phim", "Thời lượng", "Thể loại", "Độ tuổi", "Ngày công chiếu"};
+        }
+        
+        // Create sheet with appropriate name
+        Sheet sheet = workbook.createSheet(sheetName);
+        
+        // Create header row
+        Row headerRow = sheet.createRow(0);
+        
+        // Create a cell style for the header
+        CellStyle headerStyle = workbook.createCellStyle();
+        org.apache.poi.ss.usermodel.Font headerFont = workbook.createFont();
+        headerFont.setBold(true);
+        headerStyle.setFont(headerFont);
+        
+        // Create header cells
+        for (int i = 0; i < columns.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(columns[i]);
+            cell.setCellStyle(headerStyle);
+        }
+        
+        // Get data from the active table model
+        DefaultTableModel model = (DefaultTableModel) activeTable.getModel();
+        int rowCount = model.getRowCount();
+        int colCount = Math.min(model.getColumnCount(), columns.length);
+        
+        // Create data rows
+        for (int i = 0; i < rowCount; i++) {
+            Row row = sheet.createRow(i + 1);
+            for (int j = 0; j < colCount; j++) {
+                Object value = model.getValueAt(i, j);
+                Cell cell = row.createCell(j);
+                if (value != null) {
+                    cell.setCellValue(value.toString());
+                } else {
+                    cell.setCellValue("");
+                }
+            }
+        }
+        
+        // Resize all columns to fit the content size
+        for (int i = 0; i < columns.length; i++) {
+            sheet.autoSizeColumn(i);
+        }
+        
+        // Ask user where to save the file
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Lưu file Excel");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Excel Files", "xlsx"));
+        
+        // Set default filename based on the active table
+        String defaultFileName = (activeTable == tbPhim) ? "DanhSachPhim.xlsx" : "TongHopPhim.xlsx";
+        fileChooser.setSelectedFile(new File(defaultFileName));
+        
+        int result = fileChooser.showSaveDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // Get the selected file
+            File selectedFile = fileChooser.getSelectedFile();
+            String filePath = selectedFile.getAbsolutePath();
+            
+            // Add .xlsx extension if not present
+            if (!filePath.endsWith(".xlsx")) {
+                filePath += ".xlsx";
+                selectedFile = new File(filePath);
+            }
+            
+            // Write the workbook to the file
+            try (FileOutputStream outputStream = new FileOutputStream(selectedFile)) {
+                workbook.write(outputStream);
+                JOptionPane.showMessageDialog(this, 
+                    "Xuất file thành công!\nĐường dẫn: " + filePath, 
+                    "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        
+        // Close the workbook
+        workbook.close();
+        
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, 
+            "Lỗi khi xuất file: " + e.getMessage(), 
+            "Lỗi", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, 
+            "Lỗi không xác định: " + e.getMessage(), 
+            "Lỗi", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    }
+}
+    
     private void btnCapnhatActionPerformed(java.awt.event.ActionEvent evt) {
     int selectedRow = tbPhim.getSelectedRow();
     if (selectedRow == -1) {

@@ -3,41 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/BackgroundPanel.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/ImagePanel.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedButton.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedPanel.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedPasswordField.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedTextField.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/UI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/login.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/register.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UIa.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhongchieuGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/ThongkeGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UudaiGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/main_project.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/sql_cnm.sql</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UIu.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/PhimDAO.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/PhimDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedPasswordField.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/ImagePanel.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/BackgroundPanel.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedLabel.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhimGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/ImageHandler.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/MoviePosterManager.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/AnvatGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/IntroGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/NhanvienGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/DatabaseConnection.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/HopDongDTO.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/HopDongDAO.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/HopdongGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/NhaPhanPhoiDTO.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/NhanVienDTO.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/Screenshot%202025-04-06%20181047.png</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/Screenshot%202025-04-08%20000450.png</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/PhongChieuDTO.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/PhongChieuDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhimGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UIa.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/ThongkeGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/register.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/PhimDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/PhimDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UIu.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/LichchieuGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhongchieuGUI.java</file>
         </group>
     </open-files>
 </project-private>
