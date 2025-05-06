@@ -22,6 +22,9 @@ public class PhimDTO {
         this.ngayChieu = ngayChieu;
         this.suatDaChieu = 0;
     }
+
+    public PhimDTO() {
+    }
     
      public PhimDTO(String maPhim, String tenPhim, int thoiLuong, String theLoai, String doTuoi, 
                   Date ngayChieu, int suatDaChieu, String trangThai, byte[] poster) {

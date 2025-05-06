@@ -49,77 +49,74 @@ public class PhongChieuDAO {
     }
     
     public List<String> getAllLoaiChieu() {
-    List<String> danhSachLoaiChieu = new ArrayList<>();
-    Connection conn = null;
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
-    
-    try {
-        conn = DatabaseConnection.getConnection();
-        // Lấy các loại chiếu riêng biệt từ cơ sở dữ liệu
-        String sql = "SELECT DISTINCT loai_chieu FROM PhongChieu ORDER BY loai_chieu";
-        stmt = conn.prepareStatement(sql);
-        rs = stmt.executeQuery();
+        List<String> danhSachLoaiChieu = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
         
-        while (rs.next()) {
-            String loaiChieu = rs.getString("loai_chieu");
-            if (loaiChieu != null && !loaiChieu.trim().isEmpty()) {
-                danhSachLoaiChieu.add(loaiChieu);
+        try {
+            conn = DatabaseConnection.getConnection();
+            // Lấy các loại chiếu riêng biệt từ cơ sở dữ liệu
+            String sql = "SELECT DISTINCT loai_chieu FROM PhongChieu ORDER BY loai_chieu";
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                String loaiChieu = rs.getString("loai_chieu");
+                if (loaiChieu != null && !loaiChieu.trim().isEmpty()) {
+                    danhSachLoaiChieu.add(loaiChieu);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy danh sách loại chiếu:");
+            e.printStackTrace();
+        } finally {
+            // Đóng tất cả các tài nguyên
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
-    } catch (SQLException e) {
-        System.out.println("Lỗi khi lấy danh sách loại chiếu:");
-        e.printStackTrace();
-    } finally {
-        // Đóng tất cả các tài nguyên
-        try {
-            if (rs != null) rs.close();
-            if (stmt != null) stmt.close();
-            if (conn != null) conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        
+        return danhSachLoaiChieu;
     }
     
-    return danhSachLoaiChieu;
-}
-    
-public boolean updateTrangThaiToNgungHoatDong(String maPhongChieu) {
-    Connection conn = null;
-    PreparedStatement stmt = null;
-    boolean success = false;
-    
-    try {
-        conn = DatabaseConnection.getConnection();
-        // Thay đổi từ hardcoded text sang tham số
-        String sql = "UPDATE PhongChieu SET trang_thai = ? WHERE ma_phong_chieu = ?";
-        stmt = conn.prepareStatement(sql);
+    public boolean updateTrangThaiToNgungHoatDong(String maPhongChieu) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        boolean success = false;
         
-        // Sử dụng setNString thay vì setString để xử lý Unicode
-        stmt.setNString(1, "Ngừng hoạt động");
-        stmt.setString(2, maPhongChieu);
-        
-        int rowsAffected = stmt.executeUpdate();
-        if (rowsAffected > 0) {
-            success = true;
-        }
-    } catch (SQLException e) {
-        System.out.println("Lỗi khi cập nhật trạng thái phòng chiếu:");
-        e.printStackTrace();
-    } finally {
         try {
-            if (stmt != null) stmt.close();
-            if (conn != null) conn.close();
+            conn = DatabaseConnection.getConnection();
+            // Sử dụng setString thay vì setNString cho MySQL
+            String sql = "UPDATE PhongChieu SET trang_thai = ? WHERE ma_phong_chieu = ?";
+            stmt = conn.prepareStatement(sql);
+            
+            stmt.setString(1, "Ngừng hoạt động");
+            stmt.setString(2, maPhongChieu);
+            
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                success = true;
+            }
         } catch (SQLException e) {
+            System.out.println("Lỗi khi cập nhật trạng thái phòng chiếu:");
             e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+        
+        return success;
     }
-    
-    return success;
-}
 
-
-    
     // Phương thức tìm kiếm phòng chiếu theo mã
     public List<PhongChieuDTO> findByMaPhong(String maPhong) {
         List<PhongChieuDTO> ketQua = new ArrayList<>();
@@ -162,38 +159,38 @@ public boolean updateTrangThaiToNgungHoatDong(String maPhongChieu) {
     }
     
     public boolean updatePhongChieu(String maPhongChieu, int sucChua, String loaiChieu, int giaVe) {
-    Connection conn = null;
-    PreparedStatement stmt = null;
-    boolean success = false;
-    
-    try {
-        conn = DatabaseConnection.getConnection();
-        String sql = "UPDATE PhongChieu SET suc_chua = ?, loai_chieu = ?, gia_ve = ? WHERE ma_phong_chieu = ?";
-        stmt = conn.prepareStatement(sql);
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        boolean success = false;
         
-        stmt.setInt(1, sucChua);
-        stmt.setNString(2, loaiChieu); // Sử dụng setNString để hỗ trợ Unicode
-        stmt.setInt(3, giaVe);
-        stmt.setString(4, maPhongChieu);
-        
-        int rowsAffected = stmt.executeUpdate();
-        if (rowsAffected > 0) {
-            success = true;
-        }
-    } catch (SQLException e) {
-        System.out.println("Lỗi khi cập nhật thông tin phòng chiếu:");
-        e.printStackTrace();
-    } finally {
         try {
-            if (stmt != null) stmt.close();
-            if (conn != null) conn.close();
+            conn = DatabaseConnection.getConnection();
+            String sql = "UPDATE PhongChieu SET suc_chua = ?, loai_chieu = ?, gia_ve = ? WHERE ma_phong_chieu = ?";
+            stmt = conn.prepareStatement(sql);
+            
+            stmt.setInt(1, sucChua);
+            stmt.setString(2, loaiChieu); // Đã thay đổi setNString thành setString
+            stmt.setInt(3, giaVe);
+            stmt.setString(4, maPhongChieu);
+            
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                success = true;
+            }
         } catch (SQLException e) {
+            System.out.println("Lỗi khi cập nhật thông tin phòng chiếu:");
             e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+        
+        return success;
     }
-    
-    return success;
-}
     
     public String getMaxMaPhongChieu() {
         String maxMaPhong = "PC000"; // Giá trị mặc định
@@ -203,7 +200,8 @@ public boolean updateTrangThaiToNgungHoatDong(String maPhongChieu) {
         
         try {
             conn = DatabaseConnection.getConnection();
-            String sql = "SELECT TOP 1 ma_phong_chieu FROM PhongChieu ORDER BY ma_phong_chieu DESC";
+            // Thay đổi từ "SELECT TOP 1" sang "SELECT ... LIMIT 1" cho MySQL
+            String sql = "SELECT ma_phong_chieu FROM PhongChieu ORDER BY ma_phong_chieu DESC LIMIT 1";
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
             
@@ -275,5 +273,4 @@ public boolean updateTrangThaiToNgungHoatDong(String maPhongChieu) {
         
         return success;
     }
-    
 }

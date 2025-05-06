@@ -1,9 +1,6 @@
 package DAO;
 
 import DTO.HopDongDTO;
-import DTO.NhaPhanPhoiDTO;
-import DTO.NhanVienDTO;
-import DTO.PhimDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,10 +16,14 @@ public class HopDongDAO {
     public List<HopDongDTO> layDanhSachHopDong() {
         List<HopDongDTO> danhSachHopDong = new ArrayList<>();
         String sql = "SELECT * FROM HopDong";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
         
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+        try {
+            conn = DatabaseConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
             
             while (rs.next()) {
                 HopDongDTO hopDong = new HopDongDTO();
@@ -40,6 +41,14 @@ public class HopDongDAO {
         } catch (SQLException e) {
             System.out.println("Lỗi khi lấy danh sách hợp đồng: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) DatabaseConnection.closeConnection(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         
         return danhSachHopDong;
@@ -49,10 +58,14 @@ public class HopDongDAO {
     public Map<String, String> layDanhSachNhaPhanPhoi() {
         Map<String, String> nhaPhanPhoiMap = new HashMap<>();
         String sql = "SELECT ma_nha_phan_phoi, ten_nha_phan_phoi FROM NhaPhanPhoi";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
         
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+        try {
+            conn = DatabaseConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
             
             while (rs.next()) {
                 String maNhaPhanPhoi = rs.getString("ma_nha_phan_phoi");
@@ -62,6 +75,14 @@ public class HopDongDAO {
         } catch (SQLException e) {
             System.out.println("Lỗi khi lấy danh sách nhà phân phối: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) DatabaseConnection.closeConnection(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         
         return nhaPhanPhoiMap;
@@ -71,10 +92,14 @@ public class HopDongDAO {
     public Map<String, String> layDanhSachNhanVien() {
         Map<String, String> nhanVienMap = new HashMap<>();
         String sql = "SELECT ma_nhan_vien, ten_nhan_vien FROM NhanVien";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
         
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+        try {
+            conn = DatabaseConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
             
             while (rs.next()) {
                 String maNhanVien = rs.getString("ma_nhan_vien");
@@ -84,6 +109,14 @@ public class HopDongDAO {
         } catch (SQLException e) {
             System.out.println("Lỗi khi lấy danh sách nhân viên: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) DatabaseConnection.closeConnection(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         
         return nhanVienMap;
@@ -93,10 +126,14 @@ public class HopDongDAO {
     public Map<String, Integer> layThongTinThoiLuongPhim() {
         Map<String, Integer> phimThoiLuongMap = new HashMap<>();
         String sql = "SELECT ten_phim, thoi_luong FROM Phim";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
         
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+        try {
+            conn = DatabaseConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
             
             while (rs.next()) {
                 String tenPhim = rs.getString("ten_phim");
@@ -106,6 +143,14 @@ public class HopDongDAO {
         } catch (SQLException e) {
             System.out.println("Lỗi khi lấy thông tin thời lượng phim: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) DatabaseConnection.closeConnection(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         
         return phimThoiLuongMap;
@@ -115,12 +160,15 @@ public class HopDongDAO {
     public List<HopDongDTO> timKiemHopDongTheoTenPhim(String tenPhim) {
         List<HopDongDTO> ketQua = new ArrayList<>();
         String sql = "SELECT * FROM HopDong WHERE ten_phim LIKE ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
         
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
+        try {
+            conn = DatabaseConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, "%" + tenPhim + "%");
-            ResultSet rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
             
             while (rs.next()) {
                 HopDongDTO hopDong = new HopDongDTO();
@@ -138,30 +186,49 @@ public class HopDongDAO {
         } catch (SQLException e) {
             System.out.println("Lỗi khi tìm kiếm hợp đồng: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) DatabaseConnection.closeConnection(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         
         return ketQua;
     }
     
     // Phương thức lấy danh sách tên phim từ HopDong
-public List<String> layDanhSachTenPhim() {
-    List<String> danhSachTenPhim = new ArrayList<>();
-    String sql = "SELECT ten_phim FROM HopDong";
-    
-    try (Connection conn = DatabaseConnection.getConnection();
-         PreparedStatement pstmt = conn.prepareStatement(sql);
-         ResultSet rs = pstmt.executeQuery()) {
+    public List<String> layDanhSachTenPhim() {
+        List<String> danhSachTenPhim = new ArrayList<>();
+        String sql = "SELECT ten_phim FROM HopDong";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
         
-        while (rs.next()) {
-            String tenPhim = rs.getString("ten_phim");
-            danhSachTenPhim.add(tenPhim);
+        try {
+            conn = DatabaseConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                String tenPhim = rs.getString("ten_phim");
+                danhSachTenPhim.add(tenPhim);
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy danh sách tên phim: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) DatabaseConnection.closeConnection(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-    } catch (SQLException e) {
-        System.out.println("Lỗi khi lấy danh sách tên phim: " + e.getMessage());
-        e.printStackTrace();
+        
+        return danhSachTenPhim;
     }
-    
-    return danhSachTenPhim;
-}
-    
-}
+    }

@@ -18,6 +18,13 @@
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UIu.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/LichchieuGUI.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhongchieuGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/DatabaseConnection.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/HopDongDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/PhongChieuDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/NhanvienGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/NhaphanphoiGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/TaikhoanGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/LichChieuDAO.java</file>
         </group>
     </open-files>
 </project-private>
