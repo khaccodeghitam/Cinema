@@ -11,7 +11,7 @@ public class PhimDTO {
     private Date ngayChieu;
      private int suatDaChieu;
     private String trangThai;
-    private byte[] poster;
+//    private byte[] poster;
     // Constructor
      public PhimDTO(String maPhim, String tenPhim, int thoiLuong, String theLoai, String doTuoi, Date ngayChieu) {
         this.maPhim = maPhim;
@@ -27,7 +27,7 @@ public class PhimDTO {
     }
     
      public PhimDTO(String maPhim, String tenPhim, int thoiLuong, String theLoai, String doTuoi, 
-                  Date ngayChieu, int suatDaChieu, String trangThai, byte[] poster) {
+                  Date ngayChieu, int suatDaChieu, String trangThai) {
         this.maPhim = maPhim;
         this.tenPhim = tenPhim;
         this.thoiLuong = thoiLuong;
@@ -36,7 +36,7 @@ public class PhimDTO {
         this.ngayChieu = ngayChieu;
         this.suatDaChieu = suatDaChieu;
         this.trangThai = trangThai;
-        this.poster = poster;
+//        this.poster = poster;
     }
     
     // Getters và Setters
@@ -113,13 +113,13 @@ public class PhimDTO {
         this.trangThai = trangThai;
     }
     
-    public byte[] getPoster() {
-        return poster;
-    }
-    
-    public void setPoster(byte[] poster) {
-        this.poster = poster;
-    }
+//    public byte[] getPoster() {
+//        return poster;
+//    }
+//    
+//    public void setPoster(byte[] poster) {
+//        this.poster = poster;
+//    }
 
     public boolean isActiveOrUpcoming() {
     // Phim đang chiếu

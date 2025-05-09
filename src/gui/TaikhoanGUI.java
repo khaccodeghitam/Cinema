@@ -4,17 +4,93 @@
  */
 package gui;
 
-/**
- *
- * @author dinhp
- */
+import log_reg.UI;
+import BUS.NhanVienBUS;
+import DAO.PhanQuyenDAO;
+import DAO.TaiKhoanDAO;
+import DTO.NhanVienDTO;
+import DTO.TaiKhoanDTO;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 public class TaikhoanGUI extends javax.swing.JPanel {
-
-    /**
-     * Creates new form TaikhoanGUI
-     */
+   private NhanVienBUS nhanVienBUS;
+    private TaiKhoanDAO taiKhoanDAO;
+    private PhanQuyenDAO phanQuyenDAO;
+    private DefaultTableModel tableModel;
+    private Map<String, String> mapTenToMaPhanQuyen;
+    private String selectedMaTaiKhoan;
     public TaikhoanGUI() {
-        initComponents();
+       initComponents();
+        txTennv.setEditable(false);
+        txNgayvaolam.setEditable(false);
+        UI.addPlaceHolderEffect(txDangnhap,"Nhập tên đăng nhập");
+        
+        nhanVienBUS = new NhanVienBUS();
+        taiKhoanDAO = new TaiKhoanDAO();
+        phanQuyenDAO = new PhanQuyenDAO();
+        mapTenToMaPhanQuyen = new HashMap<>();
+
+        // Load employee IDs into combobox
+        loadEmployeeIDs();
+        tableModel = (DefaultTableModel) tbTaikhoan.getModel();
+        loadTableData();
+        loadPhanQuyen();
+
+        // Add listener to combobox for employee selection
+        cbManv.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    updateEmployeeInfo();
+                }
+            }
+        });
+    
+        btnXacnhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themTaiKhoanButtonActionPerformed(evt);
+            }
+        });
+        
+        // Thêm sự kiện cho nút Reset
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+        
+        // Thêm sự kiện cho nút Cập nhật
+        btnCapnhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capNhatTaiKhoanButtonActionPerformed(evt);
+            }
+        });
+        
+        // Thêm sự kiện cho nút Xóa
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xoaTaiKhoanButtonActionPerformed(evt);
+            }
+        });
+        
+        // Thêm sự kiện cho bảng - xử lý khi click vào một hàng
+        tbTaikhoan.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int selectedRow = tbTaikhoan.getSelectedRow();
+                if (selectedRow >= 0) {
+                    hienThiThongTinTaiKhoan(selectedRow);
+                }
+            }
+        });
     }
 
     /**
@@ -39,7 +115,7 @@ public class TaikhoanGUI extends javax.swing.JPanel {
         btnXacnhan = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         Ngayvaolam1 = new javax.swing.JLabel();
-        txNgayvaolam1 = new javax.swing.JTextField();
+        txDangnhap = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbTaikhoan = new javax.swing.JTable();
         btnCapnhat = new javax.swing.JButton();
@@ -91,8 +167,8 @@ public class TaikhoanGUI extends javax.swing.JPanel {
         Ngayvaolam1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         Ngayvaolam1.setText("Tên đăng nhập:");
 
-        txNgayvaolam1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        txNgayvaolam1.setText("Tự nhập thêm");
+        txDangnhap.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txDangnhap.setText("Tự nhập thêm");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -120,7 +196,7 @@ public class TaikhoanGUI extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(Ngayvaolam1)
                         .addGap(25, 25, 25)
-                        .addComponent(txNgayvaolam1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)))
+                        .addComponent(txDangnhap, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)))
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
@@ -147,7 +223,7 @@ public class TaikhoanGUI extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Ngayvaolam1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txNgayvaolam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txDangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Nhomquyen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,8 +422,320 @@ public class TaikhoanGUI extends javax.swing.JPanel {
     private void txTennvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txTennvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txTennvActionPerformed
+        
+    private void hienThiThongTinTaiKhoan(int selectedRow) {
+        // Lấy thông tin từ hàng được chọn
+        String maNV = tableModel.getValueAt(selectedRow, 0).toString();
+        String tenDangNhap = tableModel.getValueAt(selectedRow, 2).toString();
+        String maPhanQuyen = tableModel.getValueAt(selectedRow, 3).toString();
+        
+        // Lấy mã tài khoản từ tên đăng nhập
+        ArrayList<TaiKhoanDTO> danhSachTaiKhoan = taiKhoanDAO.getDanhSachTaiKhoan();
+        for (TaiKhoanDTO tk : danhSachTaiKhoan) {
+            if (tk.getTenDangNhap().equals(tenDangNhap)) {
+                selectedMaTaiKhoan = tk.getMaTaiKhoan();
+                break;
+            }
+        }
+        
+        // Cập nhật thông tin lên các trường nhập liệu
+        // Chọn mã nhân viên trong combobox
+        for (int i = 0; i < cbManv.getItemCount(); i++) {
+            if (cbManv.getItemAt(i).equals(maNV)) {
+                cbManv.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+        // Hiển thị tên đăng nhập
+        txDangnhap.setText(tenDangNhap);
+        
+        // Chọn phân quyền trong combobox
+        String tenPhanQuyen = phanQuyenDAO.getTenPhanQuyenByMa(maPhanQuyen);
+        if (tenPhanQuyen != null) {
+            for (int i = 0; i < cb_txPhanquyen.getItemCount(); i++) {
+                if (cb_txPhanquyen.getItemAt(i).equals(tenPhanQuyen)) {
+                    cb_txPhanquyen.setSelectedIndex(i);
+                    break;
+                }
+            }
+        } else {
+            cb_txPhanquyen.setSelectedIndex(0);
+        }
+    }
+    
+    // Phương thức cập nhật tài khoản
+    private void capNhatTaiKhoanButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // Kiểm tra xem đã chọn tài khoản chưa
+        if (selectedMaTaiKhoan == null || selectedMaTaiKhoan.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn tài khoản cần cập nhật từ bảng!");
+            return;
+        }
+        
+        // Kiểm tra tên đăng nhập
+        String tenDangNhap = txDangnhap.getText().trim();
+        if (tenDangNhap.isEmpty() || tenDangNhap.equals("Nhập tên đăng nhập")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên đăng nhập!");
+            txDangnhap.requestFocus();
+            return;
+        }
+        
+        // Lấy tài khoản hiện tại để kiểm tra nếu tên đăng nhập thay đổi
+        ArrayList<TaiKhoanDTO> danhSachTaiKhoan = taiKhoanDAO.getDanhSachTaiKhoan();
+        String tenDangNhapCu = "";
+        for (TaiKhoanDTO tk : danhSachTaiKhoan) {
+            if (tk.getMaTaiKhoan().equals(selectedMaTaiKhoan)) {
+                tenDangNhapCu = tk.getTenDangNhap();
+                break;
+            }
+        }
+        
+        // Kiểm tra nếu tên đăng nhập thay đổi và đã tồn tại
+        if (!tenDangNhap.equals(tenDangNhapCu) && taiKhoanDAO.kiemTraTenDangNhap(tenDangNhap)) {
+            JOptionPane.showMessageDialog(this, "Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác!");
+            txDangnhap.requestFocus();
+            return;
+        }
+        
+        // Lấy mã nhân viên từ combobox
+        String maNV = cbManv.getSelectedItem().toString();
+        
+        // Lấy mã phân quyền từ tên phân quyền đã chọn
+        String maPhanQuyen = null;
+        String selectedPhanQuyen = cb_txPhanquyen.getSelectedItem().toString();
+        if (!selectedPhanQuyen.equals("Truy xuất bảng phân quyền")) {
+            maPhanQuyen = mapTenToMaPhanQuyen.get(selectedPhanQuyen);
+        }
+        
+        // Tạo đối tượng TaiKhoanDTO để cập nhật
+        TaiKhoanDTO taiKhoanCapNhat = new TaiKhoanDTO(
+            selectedMaTaiKhoan,
+            tenDangNhap,
+            null, // Không cập nhật mật khẩu
+            maPhanQuyen,
+            maNV
+        );
+        
+        // Cập nhật tài khoản trong database
+        boolean ketQua = taiKhoanDAO.capNhatTaiKhoan(taiKhoanCapNhat);
+        
+        if (ketQua) {
+            JOptionPane.showMessageDialog(this, "Cập nhật tài khoản thành công!");
+            
+            // Cập nhật bảng
+            loadTableData();
+            
+            // Reset form
+            resetForm();
+            selectedMaTaiKhoan = null;
+        } else {
+            JOptionPane.showMessageDialog(this, "Cập nhật tài khoản thất bại!");
+        }
+    }
+    
+    // Phương thức xóa tài khoản
+    private void xoaTaiKhoanButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // Kiểm tra xem đã chọn tài khoản chưa
+        if (selectedMaTaiKhoan == null || selectedMaTaiKhoan.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn tài khoản cần xóa từ bảng!");
+            return;
+        }
+        
+        // Hiển thị hộp thoại xác nhận
+        int option = JOptionPane.showConfirmDialog(this, 
+                "Bạn có chắc muốn xóa tài khoản này?", 
+                "Xác nhận xóa", 
+                JOptionPane.YES_NO_OPTION);
+        
+        if (option == JOptionPane.YES_OPTION) {
+            // Thực hiện xóa tài khoản
+            boolean ketQua = taiKhoanDAO.xoaTaiKhoan(selectedMaTaiKhoan);
+            
+            if (ketQua) {
+                JOptionPane.showMessageDialog(this, "Xóa tài khoản thành công!");
+                
+                // Cập nhật bảng
+                loadTableData();
+                
+                // Reset form
+                resetForm();
+                selectedMaTaiKhoan = null;
+            } else {
+                JOptionPane.showMessageDialog(this, "Xóa tài khoản thất bại!");
+            }
+        }
+    }
+    
+      private void loadEmployeeIDs() {
+        cbManv.removeAllItems();    
+        cbManv.addItem("Chọn mã nhân viên");        
+        // Get list of employees from BUS
+        ArrayList<NhanVienDTO> danhSachNhanVien = nhanVienBUS.getDanhSachNhanVien();        
+        // Add employee IDs to combobox
+        for (NhanVienDTO nv : danhSachNhanVien) {
+            if (nv.getTrangThai() == 1) {
+                cbManv.addItem(nv.getMaNhanVien());
+            }
+        }
+    }
+    
+  private void updateEmployeeInfo() {
+        // Get selected employee ID
+        Object selectedItem = cbManv.getSelectedItem();
+        
+        if (selectedItem != null && !selectedItem.equals("Chọn mã nhân viên")) {
+            String maNV = selectedItem.toString();
+
+            NhanVienDTO nv = nhanVienBUS.timTheoMa(maNV);
+            
+            if (nv != null) {
+                txTennv.setText(nv.getTenNhanVien());
+                if (nv.getNgayVaoCnmm() != null) {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    txNgayvaolam.setText(dateFormat.format(nv.getNgayVaoCnmm()));
+                } else {
+                    txNgayvaolam.setText("Không có thông tin");
+                }
+            }
+        } else {
+            txTennv.setText("");
+            txNgayvaolam.setText("");
+        }
+    }
+    
+    private void loadTableData() {
+        // Xóa dữ liệu cũ
+        tableModel.setRowCount(0);
+        
+        // Lấy danh sách tài khoản từ DAO
+        ArrayList<TaiKhoanDTO> danhSachTaiKhoan = taiKhoanDAO.getDanhSachTaiKhoan();
+        
+        // Thêm từng tài khoản vào bảng
+        for (TaiKhoanDTO taiKhoan : danhSachTaiKhoan) {
+            String maNV = taiKhoan.getMaNhanVien() != null ? taiKhoan.getMaNhanVien().toString() : "";
+            
+            // Lấy tên nhân viên từ mã nhân viên
+            String tenNV = "";
+            if (!maNV.isEmpty()) {
+                NhanVienDTO nv = nhanVienBUS.timTheoMa(maNV);
+                if (nv != null) {
+                    tenNV = nv.getTenNhanVien();
+                }
+            }
+            
+            // Hiển thị mã phân quyền
+            String maPhanQuyen = taiKhoan.getMaPhanQuyen() != null ? taiKhoan.getMaPhanQuyen() : "Không có quyền";
+            
+            // Thêm dòng mới vào bảng
+            Object[] row = {
+                maNV,
+                tenNV,
+                taiKhoan.getTenDangNhap(),
+                maPhanQuyen
+            };
+            
+            tableModel.addRow(row);
+        }
+    }
+    
+    private void loadPhanQuyen() {
+        cb_txPhanquyen.removeAllItems();
+        cb_txPhanquyen.addItem("Truy xuất bảng phân quyền");
+        
+        // Lấy danh sách phân quyền từ database
+        mapTenToMaPhanQuyen = phanQuyenDAO.getMapTenMaPhanQuyen();
+        
+        // Thêm tên phân quyền vào combobox
+        for (String tenPhanQuyen : mapTenToMaPhanQuyen.keySet()) {
+            cb_txPhanquyen.addItem(tenPhanQuyen);
+        }
+    }
 
 
+  private void themTaiKhoanButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // Kiểm tra xem đã chọn nhân viên chưa
+        if (cbManv.getSelectedItem() == null || cbManv.getSelectedItem().equals("Chọn mã nhân viên")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên cần thêm tài khoản!");
+            return;
+        }
+        
+        // Kiểm tra tên đăng nhập
+        String tenDangNhap = txDangnhap.getText().trim();
+        if (tenDangNhap.isEmpty() || tenDangNhap.equals("Nhập tên đăng nhập")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên đăng nhập!");
+            txDangnhap.requestFocus();
+            return;
+        }
+        
+        // Kiểm tra tên đăng nhập đã tồn tại chưa
+        if (taiKhoanDAO.kiemTraTenDangNhap(tenDangNhap)) {
+            JOptionPane.showMessageDialog(this, "Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác!");
+            txDangnhap.requestFocus();
+            return;
+        }
+        
+        // Lấy mã nhân viên từ combobox (giữ nguyên là String)
+        String maNV = cbManv.getSelectedItem().toString();
+        
+        // Tạo mã tài khoản ngẫu nhiên
+        String maTaiKhoan = taiKhoanDAO.taoMaTaiKhoan();
+        
+        // Lấy mã phân quyền từ tên phân quyền đã chọn
+        String maPhanQuyen = null;
+        String selectedPhanQuyen = cb_txPhanquyen.getSelectedItem().toString();
+        if (!selectedPhanQuyen.equals("Truy xuất bảng phân quyền")) {
+            maPhanQuyen = mapTenToMaPhanQuyen.get(selectedPhanQuyen);
+        }
+        
+        // Tạo đối tượng TaiKhoanDTO
+        TaiKhoanDTO taiKhoanMoi = new TaiKhoanDTO(
+            maTaiKhoan,
+            tenDangNhap,
+            "123456789", // Mật khẩu mặc định
+            maPhanQuyen,
+            maNV      // Sử dụng trực tiếp maNV là String
+        );
+        
+        // Thêm tài khoản vào database
+        boolean ketQua = taiKhoanDAO.themTaiKhoan(taiKhoanMoi);
+        
+        if (ketQua) {
+            JOptionPane.showMessageDialog(this, "Thêm tài khoản thành công!\nMật khẩu mặc định là: 123456789");
+            
+            // Cập nhật bảng
+            loadTableData();
+            
+            // Reset các trường nhập liệu
+            resetForm();
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm tài khoản thất bại!");
+        }
+    }
+    
+    // Phương thức xử lý sự kiện khi nhấn nút Reset
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        resetForm();
+    }
+    
+    // Phương thức reset form
+    private void resetForm() {
+        try{
+            cbManv.setSelectedIndex(0);
+            txTennv.setText("");
+            txNgayvaolam.setText("");
+            txDangnhap.setText("");
+            cb_txPhanquyen.setSelectedIndex(0);
+            loadEmployeeIDs();
+            loadPhanQuyen();
+            selectedMaTaiKhoan = null;
+            JOptionPane.showMessageDialog(this, "Đã làm mới dữ liệu thành công!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi làm mới dữ liệu: " + e.getMessage());
+        }
+    }
+    
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Manv;
     private javax.swing.JLabel Ngayvaolam;
@@ -364,8 +752,8 @@ public class TaikhoanGUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbTaikhoan;
+    private javax.swing.JTextField txDangnhap;
     private javax.swing.JTextField txNgayvaolam;
-    private javax.swing.JTextField txNgayvaolam1;
     private javax.swing.JTextField txTennv;
     // End of variables declaration//GEN-END:variables
 }

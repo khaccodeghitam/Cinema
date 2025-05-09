@@ -4,17 +4,82 @@
  */
 package gui;
 
+import DAO.ChucNangDAO;
+import DAO.PhanQuyenDAO;
+import DTO.PhanQuyenDTO;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import log_reg.UI;
 /**
  *
  * @author dinhp
  */
 public class PhanquyenGUI extends javax.swing.JPanel {
-
-    /**
-     * Creates new form PhanquyenGUI
-     */
+ public CardLayout card = new CardLayout();
+    private PhanQuyenDAO phanQuyenDAO;
+    private ChucNangDAO chucNangDAO;
+    private DefaultTableModel tableModel;
     public PhanquyenGUI() {
         initComponents();
+                Giaodien.setLayout(new CardLayout());
+                Giaodien.add(ThemPhanquyen,"Them");
+                Giaodien.add(XemPhanquyen,"Xem");
+                UI.addPlaceHolderEffect(txtNhapten, "Nhập tên phân quyền");
+                   // Khởi tạo DAO
+        phanQuyenDAO = new PhanQuyenDAO();
+        chucNangDAO = new ChucNangDAO();
+        
+        // Thiết lập model cho bảng phân quyền
+        tableModel = (DefaultTableModel) tbPhanquyen.getModel();
+        
+        // Load dữ liệu phân quyền vào bảng
+        loadTableData();
+        
+        // Thêm sự kiện cho nút "Thêm quyền"
+        btnThemquyen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemquyenActionPerformed(evt);
+            }
+        });
+        
+        // Thêm sự kiện cho các nút chức năng
+        btnXem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXemActionPerformed(evt);
+            }
+        });
+        
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        
+        btnXoaphieu.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnXoaphieuActionPerformed(evt);
+    }
+});
+
+btnChitiet.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnChitietActionPerformed(evt);
+    }
+});
+
+// Thêm sự kiện để xử lý click vào bảng phân quyền
+tbPhanquyen.addMouseListener(new java.awt.event.MouseAdapter() {
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        int selectedRow = tbPhanquyen.getSelectedRow();
+        if (selectedRow >= 0) {
+            // Có thể thêm code ở đây để cập nhật thông tin khi click vào bảng nếu cần
+        }
+    }
+});
+        
     }
 
     /**
@@ -51,23 +116,22 @@ public class PhanquyenGUI extends javax.swing.JPanel {
         txQuanlytaikhoan = new javax.swing.JLabel();
         txQuanlythongke = new javax.swing.JLabel();
         txQuanlynguonnhap = new javax.swing.JLabel();
-        Quanlysach = new javax.swing.JCheckBox();
+        Quanlyphim = new javax.swing.JCheckBox();
+        Quanlylichchieu = new javax.swing.JCheckBox();
+        Quanlyphongchieu = new javax.swing.JCheckBox();
+        Quanlyanvat = new javax.swing.JCheckBox();
+        Quanlyuudai = new javax.swing.JCheckBox();
         Quanlynhanvien = new javax.swing.JCheckBox();
-        Quanlyphieunhapsach = new javax.swing.JCheckBox();
-        Quanlydocgia = new javax.swing.JCheckBox();
-        Quanlyphanquyen = new javax.swing.JCheckBox();
-        Quanlyphieumuon = new javax.swing.JCheckBox();
-        Quanlytaikhoan = new javax.swing.JCheckBox();
+        Quanlykhachhang = new javax.swing.JCheckBox();
         Quanlythongke = new javax.swing.JCheckBox();
-        Quanlynguonnhap = new javax.swing.JCheckBox();
-        btnCapnhat = new javax.swing.JButton();
+        Quanlyhopdong = new javax.swing.JCheckBox();
         btnThemquyen = new javax.swing.JButton();
         txQuanlysach1 = new javax.swing.JLabel();
-        Quanlysach1 = new javax.swing.JCheckBox();
+        Quanlynpp = new javax.swing.JCheckBox();
         txQuanlysach2 = new javax.swing.JLabel();
-        Quanlysach2 = new javax.swing.JCheckBox();
+        Quanlytaikhoan = new javax.swing.JCheckBox();
         txQuanlysach3 = new javax.swing.JLabel();
-        Quanlysach3 = new javax.swing.JCheckBox();
+        Quanlyphanquyen = new javax.swing.JCheckBox();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1092, 533));
 
@@ -86,6 +150,11 @@ public class PhanquyenGUI extends javax.swing.JPanel {
         btnXem.setMinimumSize(new java.awt.Dimension(50, 72));
         btnXem.setPreferredSize(new java.awt.Dimension(50, 72));
         btnXem.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnXem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXemActionPerformed(evt);
+            }
+        });
 
         btnThem.setBackground(new java.awt.Color(153, 153, 153));
         btnThem.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -96,6 +165,11 @@ public class PhanquyenGUI extends javax.swing.JPanel {
         btnThem.setFocusPainted(false);
         btnThem.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnThem.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnXoaphieu.setBackground(new java.awt.Color(153, 153, 153));
         btnXoaphieu.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -109,6 +183,7 @@ public class PhanquyenGUI extends javax.swing.JPanel {
 
         btnChitiet.setBackground(new java.awt.Color(153, 153, 153));
         btnChitiet.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        btnChitiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/update.png"))); // NOI18N
         btnChitiet.setText("Chi tiết");
         btnChitiet.setToolTipText("");
         btnChitiet.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -122,7 +197,7 @@ public class PhanquyenGUI extends javax.swing.JPanel {
         ThanhChucnangLayout.setHorizontalGroup(
             ThanhChucnangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThanhChucnangLayout.createSequentialGroup()
-                .addContainerGap(689, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnXem, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,11 +309,6 @@ public class PhanquyenGUI extends javax.swing.JPanel {
         txQuanlynguonnhap.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         txQuanlynguonnhap.setText("Quản lý hợp đồng");
 
-        btnCapnhat.setBackground(new java.awt.Color(255, 204, 0));
-        btnCapnhat.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        btnCapnhat.setText("Cập nhật");
-        btnCapnhat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 242, 242), 3));
-
         btnThemquyen.setBackground(new java.awt.Color(0, 122, 77));
         btnThemquyen.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         btnThemquyen.setForeground(new java.awt.Color(255, 255, 255));
@@ -283,38 +353,38 @@ public class PhanquyenGUI extends javax.swing.JPanel {
                 .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanPhanquyenLayout.createSequentialGroup()
                         .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Quanlydocgia)
-                            .addComponent(Quanlyphieunhapsach)
-                            .addComponent(Quanlyphanquyen)
-                            .addComponent(Quanlyphieumuon)
-                            .addComponent(Quanlytaikhoan)
-                            .addComponent(Quanlythongke)
-                            .addComponent(Quanlynguonnhap))
-                        .addGap(620, 620, 620)
-                        .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCapnhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnThemquyen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(32, 32, 32))
+                            .addComponent(Quanlyanvat)
+                            .addComponent(Quanlyphongchieu)
+                            .addComponent(Quanlyuudai)
+                            .addComponent(Quanlynhanvien)
+                            .addComponent(Quanlyhopdong)
+                            .addGroup(PanPhanquyenLayout.createSequentialGroup()
+                                .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Quanlykhachhang)
+                                    .addComponent(Quanlythongke))
+                                .addGap(618, 618, 618)
+                                .addComponent(btnThemquyen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(34, 34, 34))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
                         .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(PanPhanquyenLayout.createSequentialGroup()
-                                .addComponent(Quanlysach)
+                                .addComponent(Quanlyphim)
                                 .addGap(97, 97, 97)
                                 .addComponent(txQuanlysach1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(100, 100, 100)
-                                .addComponent(Quanlysach1))
+                                .addComponent(Quanlynpp))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanPhanquyenLayout.createSequentialGroup()
-                                .addComponent(Quanlynhanvien)
+                                .addComponent(Quanlylichchieu)
                                 .addGap(97, 97, 97)
                                 .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PanPhanquyenLayout.createSequentialGroup()
                                         .addComponent(txQuanlysach3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(100, 100, 100)
-                                        .addComponent(Quanlysach3))
+                                        .addComponent(Quanlyphanquyen))
                                     .addGroup(PanPhanquyenLayout.createSequentialGroup()
                                         .addComponent(txQuanlysach2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(100, 100, 100)
-                                        .addComponent(Quanlysach2)))))
+                                        .addComponent(Quanlytaikhoan)))))
                         .addGap(387, 387, 387))))
         );
         PanPhanquyenLayout.setVerticalGroup(
@@ -326,82 +396,79 @@ public class PhanquyenGUI extends javax.swing.JPanel {
                     .addComponent(Nhapten, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PanPhanquyenLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
-                        .addComponent(btnThemquyen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCapnhat, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))
+                        .addGap(334, 334, 334)
+                        .addComponent(Quanlyhopdong))
                     .addGroup(PanPhanquyenLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txQuanlyphieumuon)
                             .addGroup(PanPhanquyenLayout.createSequentialGroup()
-                                .addGap(334, 334, 334)
-                                .addComponent(Quanlynguonnhap))
-                            .addGroup(PanPhanquyenLayout.createSequentialGroup()
-                                .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txQuanlyphieumuon)
-                                    .addGroup(PanPhanquyenLayout.createSequentialGroup()
+                                .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
                                         .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
-                                                .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
-                                                        .addComponent(Quanlychucnang)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(txQuanlysach)
-                                                        .addGap(37, 37, 37))
-                                                    .addComponent(Quanlynhanvien, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(PanPhanquyenLayout.createSequentialGroup()
-                                                            .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
-                                                                    .addComponent(txQuanlysach1)
-                                                                    .addGap(1, 1, 1))
-                                                                .addComponent(Quanlysach1, javax.swing.GroupLayout.Alignment.TRAILING))
-                                                            .addGap(18, 18, 18)
-                                                            .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
-                                                                    .addComponent(txQuanlysach2)
-                                                                    .addGap(1, 1, 1))
-                                                                .addComponent(Quanlysach2, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                                        .addGroup(PanPhanquyenLayout.createSequentialGroup()
-                                                            .addComponent(Quanlysach)
-                                                            .addGap(18, 18, 18)
-                                                            .addComponent(txQuanlynhanvien))))
+                                                .addComponent(Quanlychucnang)
                                                 .addGap(18, 18, 18)
-                                                .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(PanPhanquyenLayout.createSequentialGroup()
-                                                        .addComponent(txQuanlyphieunhapsach)
-                                                        .addGap(37, 37, 37))
+                                                .addComponent(txQuanlysach)
+                                                .addGap(37, 37, 37))
+                                            .addComponent(Quanlylichchieu, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(PanPhanquyenLayout.createSequentialGroup()
                                                     .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
-                                                            .addComponent(txQuanlysach3)
+                                                            .addComponent(txQuanlysach1)
                                                             .addGap(1, 1, 1))
-                                                        .addComponent(Quanlysach3, javax.swing.GroupLayout.Alignment.TRAILING))))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
-                                                .addComponent(Quanlyphieunhapsach)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txQuanlydocgia))
-                                            .addComponent(Quanlydocgia, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                        .addComponent(Quanlynpp, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                    .addGap(18, 18, 18)
+                                                    .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
+                                                            .addComponent(txQuanlysach2)
+                                                            .addGap(1, 1, 1))
+                                                        .addComponent(Quanlytaikhoan, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                                .addGroup(PanPhanquyenLayout.createSequentialGroup()
+                                                    .addComponent(Quanlyphim)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(txQuanlynhanvien))))
                                         .addGap(18, 18, 18)
-                                        .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txQuanlyphanquyen)
-                                            .addComponent(Quanlyphanquyen))
+                                        .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(PanPhanquyenLayout.createSequentialGroup()
+                                                .addComponent(txQuanlyphieunhapsach)
+                                                .addGap(37, 37, 37))
+                                            .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
+                                                    .addComponent(txQuanlysach3)
+                                                    .addGap(1, 1, 1))
+                                                .addComponent(Quanlyphanquyen, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
+                                        .addComponent(Quanlyphongchieu)
                                         .addGap(18, 18, 18)
-                                        .addComponent(Quanlyphieumuon)))
+                                        .addComponent(txQuanlydocgia))
+                                    .addComponent(Quanlyanvat, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txQuanlyphanquyen)
+                                    .addComponent(Quanlyuudai))
+                                .addGap(18, 18, 18)
+                                .addComponent(Quanlynhanvien)))
+                        .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanPhanquyenLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Quanlythongke, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(PanPhanquyenLayout.createSequentialGroup()
                                         .addGroup(PanPhanquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(Quanlytaikhoan)
+                                            .addComponent(Quanlykhachhang)
                                             .addComponent(txQuanlytaikhoan))
                                         .addGap(18, 18, 18)
                                         .addComponent(txQuanlythongke)))
                                 .addGap(18, 18, 18)
-                                .addComponent(txQuanlynguonnhap)))
-                        .addContainerGap())))
+                                .addComponent(txQuanlynguonnhap))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanPhanquyenLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnThemquyen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ThemPhanquyenLayout = new javax.swing.GroupLayout(ThemPhanquyen);
@@ -463,28 +530,254 @@ public class PhanquyenGUI extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+           CardLayout card = (CardLayout) Giaodien.getLayout();
+        card.show(Giaodien, "Them");
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemActionPerformed
+       // TODO add your handling code here:
+       CardLayout card = (CardLayout) Giaodien.getLayout();
+       card.show(Giaodien,"Xem");
+    }//GEN-LAST:event_btnXemActionPerformed
+
+    private void btnXoaphieuActionPerformed(java.awt.event.ActionEvent evt) {
+    // Kiểm tra xem đã chọn dòng nào trong bảng chưa
+    int selectedRow = tbPhanquyen.getSelectedRow();
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, 
+                "Vui lòng chọn phân quyền cần xóa!", 
+                "Thông báo", 
+                JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    // Lấy mã phân quyền từ dòng đã chọn (cột đầu tiên)
+    String maPhanQuyen = tbPhanquyen.getValueAt(selectedRow, 0).toString();
+    String tenPhanQuyen = tbPhanquyen.getValueAt(selectedRow, 1).toString();
+    
+    // Kiểm tra xem phân quyền có đang được sử dụng bởi tài khoản nào không
+    if (phanQuyenDAO.kiemTraPhanQuyenDangSuDung(maPhanQuyen)) {
+        JOptionPane.showMessageDialog(this, 
+                "Không thể xóa phân quyền '" + tenPhanQuyen + "' vì đang được sử dụng bởi một hoặc nhiều tài khoản!",
+                "Lỗi", 
+                JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // Hiển thị hộp thoại xác nhận
+    int option = JOptionPane.showConfirmDialog(this, 
+            "Bạn có chắc muốn xóa phân quyền '" + tenPhanQuyen + "'?", 
+            "Xác nhận xóa", 
+            JOptionPane.YES_NO_OPTION);
+    
+    if (option == JOptionPane.YES_OPTION) {
+        // Thực hiện xóa phân quyền
+        boolean ketQua = phanQuyenDAO.xoaPhanQuyen(maPhanQuyen);
+        
+        if (ketQua) {
+            JOptionPane.showMessageDialog(this, 
+                    "Xóa phân quyền thành công!", 
+                    "Thông báo", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            
+            // Load lại bảng phân quyền
+            loadTableData();
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                    "Xóa phân quyền thất bại!", 
+                    "Lỗi", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+// Phương thức xử lý khi nhấn nút Chi tiết
+private void btnChitietActionPerformed(java.awt.event.ActionEvent evt) {
+    // Kiểm tra xem đã chọn dòng nào trong bảng chưa
+    int selectedRow = tbPhanquyen.getSelectedRow();
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, 
+                "Vui lòng chọn phân quyền để xem chi tiết!", 
+                "Thông báo", 
+                JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    // Lấy mã phân quyền và tên phân quyền từ dòng đã chọn
+    String maPhanQuyen = tbPhanquyen.getValueAt(selectedRow, 0).toString();
+    String tenPhanQuyen = tbPhanquyen.getValueAt(selectedRow, 1).toString();
+    
+    // Lấy danh sách chức năng của phân quyền
+    ArrayList<String> danhSachChucNang = phanQuyenDAO.getChiTietPhanQuyen(maPhanQuyen);
+    
+    if (danhSachChucNang.isEmpty()) {
+        JOptionPane.showMessageDialog(this, 
+                "Phân quyền '" + tenPhanQuyen + "' không có chức năng nào!", 
+                "Thông báo", 
+                JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
+    
+    // Tạo nội dung hiển thị chi tiết
+    StringBuilder message = new StringBuilder();
+    message.append("Chi tiết phân quyền: ").append(tenPhanQuyen).append(" (").append(maPhanQuyen).append(")\n\n");
+    message.append("Các chức năng:\n");
+    
+    for (int i = 0; i < danhSachChucNang.size(); i++) {
+        message.append(i + 1).append(". ").append(danhSachChucNang.get(i)).append("\n");
+    }
+    
+    // Hiển thị hộp thoại thông báo chi tiết
+    JOptionPane.showMessageDialog(this, 
+            message.toString(), 
+            "Chi tiết phân quyền", 
+            JOptionPane.INFORMATION_MESSAGE);
+}
+    
+     // Phương thức load dữ liệu phân quyền vào bảng
+    private void loadTableData() {
+        // Xóa dữ liệu cũ
+        tableModel.setRowCount(0);
+        
+        // Lấy danh sách phân quyền từ DAO
+        ArrayList<PhanQuyenDTO> danhSachPhanQuyen = phanQuyenDAO.getDanhSachPhanQuyen();
+        
+        // Thêm từng phân quyền vào bảng
+        for (PhanQuyenDTO phanQuyen : danhSachPhanQuyen) {
+            Object[] row = {
+                phanQuyen.getMaPhanQuyen(),
+                phanQuyen.getTenPhanQuyen()
+            };
+            
+            tableModel.addRow(row);
+        }
+    }
+    
+    // Sự kiện khi nhấn nút "Thêm quyền"
+    private void btnThemquyenActionPerformed(java.awt.event.ActionEvent evt) {
+        // Lấy tên phân quyền từ textfield
+        String tenPhanQuyen = txtNhapten.getText().trim();
+        
+        // Kiểm tra tên phân quyền
+        if (tenPhanQuyen.isEmpty() || tenPhanQuyen.equals("Nhập tên phân quyền")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên phân quyền!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            txtNhapten.requestFocus();
+            return;
+        }
+        
+        // Kiểm tra tên phân quyền đã tồn tại chưa
+        if (phanQuyenDAO.kiemTraTenPhanQuyen(tenPhanQuyen)) {
+            JOptionPane.showMessageDialog(this, "Tên phân quyền đã tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            txtNhapten.requestFocus();
+            return;
+        }
+        
+        // Tạo danh sách chứa các checkbox được chọn
+        ArrayList<String> danhSachMaChucNang = new ArrayList<>();
+        
+        // Kiểm tra từng checkbox và thêm mã chức năng tương ứng vào danh sách
+        if (Quanlyphim.isSelected()) {
+            danhSachMaChucNang.add("Q1");
+        }
+        if (Quanlylichchieu.isSelected()) {
+            danhSachMaChucNang.add("Q2");
+        }
+        if (Quanlyphongchieu.isSelected()) {
+            danhSachMaChucNang.add("Q3");
+        }
+        if (Quanlyanvat.isSelected()) {
+            danhSachMaChucNang.add("Q4");
+        }
+        if (Quanlyuudai.isSelected()) {
+            danhSachMaChucNang.add("Q5");
+        }
+        if (Quanlynhanvien.isSelected()) {
+            danhSachMaChucNang.add("Q6");
+        }
+        if (Quanlykhachhang.isSelected()) {
+            danhSachMaChucNang.add("Q7");
+        }
+        if (Quanlythongke.isSelected()) {
+            danhSachMaChucNang.add("Q8");
+        }
+        if (Quanlyhopdong.isSelected()) {
+            danhSachMaChucNang.add("Q9");
+        }
+        if (Quanlynpp.isSelected()) {
+            danhSachMaChucNang.add("Q10");
+        }
+        if (Quanlytaikhoan.isSelected()) {
+            danhSachMaChucNang.add("Q11");
+        }
+        if (Quanlyphanquyen.isSelected()) {
+            danhSachMaChucNang.add("Q12");
+        }
+        
+        // Kiểm tra xem có chọn ít nhất một chức năng không
+        if (danhSachMaChucNang.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn ít nhất một chức năng!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Tạo mã phân quyền mới
+        String maPhanQuyen = phanQuyenDAO.taoMaPhanQuyenMoi();
+        
+        // Thêm phân quyền với các chức năng đã chọn
+        boolean ketQua = phanQuyenDAO.themPhanQuyen(maPhanQuyen, tenPhanQuyen, danhSachMaChucNang);
+        
+        if (ketQua) {
+            JOptionPane.showMessageDialog(this, "Thêm phân quyền thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            
+            // Load lại bảng phân quyền
+            loadTableData();
+            
+            // Reset form
+            resetForm();
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm phân quyền thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    // Phương thức reset form
+    private void resetForm() {
+        txtNhapten.setText("Nhập tên phân quyền");
+        
+        // Bỏ chọn tất cả checkbox
+        Quanlyphim.setSelected(false);
+        Quanlylichchieu.setSelected(false);
+        Quanlyphongchieu.setSelected(false);
+        Quanlyanvat.setSelected(false);
+        Quanlyuudai.setSelected(false);
+        Quanlynhanvien.setSelected(false);
+        Quanlykhachhang.setSelected(false);
+        Quanlythongke.setSelected(false);
+        Quanlyhopdong.setSelected(false);
+        Quanlynpp.setSelected(false);
+        Quanlytaikhoan.setSelected(false);
+        Quanlyphanquyen.setSelected(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Giaodien;
     private javax.swing.JLabel Nhapten;
     private javax.swing.JPanel PanPhanquyen;
+    private javax.swing.JCheckBox Quanlyanvat;
     private javax.swing.JLabel Quanlychucnang;
-    private javax.swing.JCheckBox Quanlydocgia;
-    private javax.swing.JCheckBox Quanlynguonnhap;
+    private javax.swing.JCheckBox Quanlyhopdong;
+    private javax.swing.JCheckBox Quanlykhachhang;
+    private javax.swing.JCheckBox Quanlylichchieu;
     private javax.swing.JCheckBox Quanlynhanvien;
+    private javax.swing.JCheckBox Quanlynpp;
     private javax.swing.JCheckBox Quanlyphanquyen;
-    private javax.swing.JCheckBox Quanlyphieumuon;
-    private javax.swing.JCheckBox Quanlyphieunhapsach;
-    private javax.swing.JCheckBox Quanlysach;
-    private javax.swing.JCheckBox Quanlysach1;
-    private javax.swing.JCheckBox Quanlysach2;
-    private javax.swing.JCheckBox Quanlysach3;
+    private javax.swing.JCheckBox Quanlyphim;
+    private javax.swing.JCheckBox Quanlyphongchieu;
     private javax.swing.JCheckBox Quanlytaikhoan;
     private javax.swing.JCheckBox Quanlythongke;
+    private javax.swing.JCheckBox Quanlyuudai;
     private javax.swing.JPanel ThanhChucnang;
     private javax.swing.JPanel ThemPhanquyen;
     private javax.swing.JPanel XemPhanquyen;
-    private javax.swing.JButton btnCapnhat;
     private javax.swing.JButton btnChitiet;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemquyen;

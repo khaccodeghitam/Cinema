@@ -2,18 +2,31 @@ package gui;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import javax.swing.JButton;
-
-
+import javax.swing.JOptionPane;
+import DTO.TaiKhoanDTO;
+import DTO.NhanVienDTO;
+import DAO.PhanQuyenDAO;
+import java.util.ArrayList;
 public class UIa extends javax.swing.JFrame {
     
-    private JButton selectedButton = null;
+private JButton selectedButton = null;
     public CardLayout card = new CardLayout();
+    private TaiKhoanDTO currentTaiKhoan = null;
+    private NhanVienDTO currentNhanVien = null;
+    private IntroGUI introPanel; // Reference to the IntroGUI panel
+    private ArrayList<String> userPermissions; // Store user permissions
+    private PhanQuyenDAO phanQuyenDAO; // Thêm PhanQuyenDAO để truy vấn quyền hạn
     
     public UIa() {
-        initComponents();
+          initComponents();
         formTrinhbay.setLayout(card);
-        formTrinhbay.add(new IntroGUI(), "IntroGUI");
+        
+        // Create IntroGUI panel and keep a reference to it
+        introPanel = new IntroGUI();
+        formTrinhbay.add(introPanel, "IntroGUI");
+        
         formTrinhbay.add(new PhimGUI(), "PhimGUI");
         formTrinhbay.add(new LichchieuGUI(), "LichchieuGUI");
         formTrinhbay.add(new PhongchieuGUI(), "PhongchieuGUI");
@@ -26,6 +39,13 @@ public class UIa extends javax.swing.JFrame {
         formTrinhbay.add(new HopdongGUI(), "HopdongGUI");
         formTrinhbay.add(new TaikhoanGUI(), "TaikhoanGUI");
         formTrinhbay.add(new PhanquyenGUI(), "PhanquyenGUI");
+        
+        // Show the intro panel by default
+        card.show(formTrinhbay, "IntroGUI");
+        
+        // Initialize PhanQuyenDAO and permissions list
+        phanQuyenDAO = new PhanQuyenDAO();
+        userPermissions = new ArrayList<>();    
     }
 
     
@@ -371,6 +391,140 @@ public class UIa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ public void setTaiKhoan(TaiKhoanDTO taiKhoan) {
+        this.currentTaiKhoan = taiKhoan;
+        
+        if (taiKhoan != null) {
+            if (taiKhoan.getMaPhanQuyen() == null) {
+                // Account has no permissions, disable all function buttons
+                disableAllFunctionButtons();
+            } else {
+                // Load permissions for the user's role directly from database
+                userPermissions = phanQuyenDAO.getDanhSachTenChucNangByMaPhanQuyen(taiKhoan.getMaPhanQuyen());
+                
+                // Apply permissions to function buttons
+                applyButtonPermissions();
+            }
+        }
+        
+        // Update the intro panel if we already have employee information
+        if (currentNhanVien != null) {
+            updateIntroPanel();
+        }
+    }
+        
+      // Apply permissions to function buttons
+    private void applyButtonPermissions() {
+        // Map of buttons to their corresponding permission names
+        setupButtonPermission(buttonPhim, "Quanlyphim", "PhimGUI");
+        setupButtonPermission(buttonLichchieu, "Quanlylichchieu", "LichchieuGUI");
+        setupButtonPermission(buttonPhongchieu, "Quanlyphongchieu", "PhongchieuGUI");
+        setupButtonPermission(buttonAnvat, "Quanlyanvat", "AnvatGUI");
+        setupButtonPermission(buttonUudai, "Quanlyuudai", "UudaiGUI");
+        setupButtonPermission(buttonNhanvien, "Quanlynhanvien", "NhanvienGUI");
+        setupButtonPermission(buttonKhachhang, "Quanlykhachhang", "KhachhangGUI");
+        setupButtonPermission(buttonThongke, "Quanlythongke", "ThongkeGUI");
+        setupButtonPermission(buttonHopdong, "Quanlyhopdong", "HopdongGUI");
+        setupButtonPermission(buttonNhaphanphoi, "Quanlynpp", "NhaphanphoiGUI");
+        setupButtonPermission(btnTaikhoan, "Quanlytaikhoan", "TaikhoanGUI");
+        setupButtonPermission(btnPhanquyen, "Quanlyphanquyen", "PhanquyenGUI");
+    }
+    
+    // Setup permission for a single button
+    private void setupButtonPermission(JButton button, String permissionName, String panelName) {
+        // Clear all existing action listeners
+        for (java.awt.event.ActionListener listener : button.getActionListeners()) {
+            button.removeActionListener(listener);
+        }
+        
+        // Check if user has permission for this function
+        if (userPermissions.contains(permissionName)) {
+            // User has permission, allow access to the function
+            button.setEnabled(true);
+            button.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    // Set this button as the selected button (for visual indication)
+                    if (selectedButton != null) {
+                        selectedButton.setBackground(null); // Reset previous button color
+                    }
+                    button.setBackground(new Color(204, 255, 204)); // Highlight selected button
+                    selectedButton = button;
+                    
+                    // Show the corresponding panel
+                    card.show(formTrinhbay, panelName);
+                }
+            });
+        } else {
+            // User doesn't have permission, show warning message
+            button.setEnabled(true); // Keep button enabled for visual consistency
+            button.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    JOptionPane.showMessageDialog(UIa.this, 
+                        "Bạn không có quyền để xử lý chức năng này!", 
+                        "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                }
+            });
+        }
+    }
+
+    
+ 
+    
+  
+    public void setNhanVienInfo(NhanVienDTO nhanVien) {
+        this.currentNhanVien = nhanVien;
+        
+        // Update the intro panel with employee information
+        if (nhanVien != null) {
+            updateIntroPanel();
+        }
+    }
+    
+    
+  private void updateIntroPanel() {
+    // Make sure we have both the employee and account information
+    if (currentNhanVien == null || introPanel == null) {
+        return;
+    }
+    
+    // Set employee ID
+    introPanel.setMaNhanVien(currentNhanVien.getMaNhanVien());
+    
+    // Format dates for display
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    String ngaySinh = (currentNhanVien.getNgaySinh() != null) ? 
+                      dateFormat.format(currentNhanVien.getNgaySinh()) : "Không có thông tin";
+    String ngayVaoLam = (currentNhanVien.getNgayVaoCnmm() != null) ? 
+                       dateFormat.format(currentNhanVien.getNgayVaoCnmm()) : "Không có thông tin";
+    
+    // Update employee info fields
+    introPanel.setHoTen(currentNhanVien.getTenNhanVien());
+    introPanel.setNgaySinh(ngaySinh);
+    introPanel.setGioiTinh(currentNhanVien.getGioiTinh());
+    introPanel.setNgayVaoLam(ngayVaoLam);
+    introPanel.setSoDienThoai(currentNhanVien.getSoDienThoai());
+    introPanel.setEmail(currentNhanVien.getEmail());
+    
+    // Set role information - Modified to show ten_phan_quyen instead of ma_phan_quyen
+    String vaiTro = "Chưa phân quyền";
+    
+    if (currentTaiKhoan != null && currentTaiKhoan.getMaPhanQuyen() != null) {
+        // Create PhanQuyenDAO to get role name
+        PhanQuyenDAO phanQuyenDAO = new PhanQuyenDAO();
+        
+        // Retrieve role name based on role ID - We need to add this method to PhanQuyenDAO
+        String tenPhanQuyen = phanQuyenDAO.getTenPhanQuyenByMa(currentTaiKhoan.getMaPhanQuyen());
+        
+        if (tenPhanQuyen != null && !tenPhanQuyen.isEmpty()) {
+            vaiTro = tenPhanQuyen;
+        } else {
+            vaiTro = currentTaiKhoan.getMaPhanQuyen() + " (Không xác định)";
+        }
+    }
+    
+    introPanel.setVaiTro(vaiTro);
+}
+    
     private void OpenChucnang(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OpenChucnang
         new Thread(new Runnable(){
             @Override
@@ -479,7 +633,26 @@ public class UIa extends javax.swing.JFrame {
         card.show(formTrinhbay, "PhanquyenGUI");
     }//GEN-LAST:event_ChuyenPhanquyen
 
-    
+   private void disableAllFunctionButtons() {
+        JButton[] buttons = {buttonPhim, buttonLichchieu, buttonPhongchieu, buttonAnvat, 
+                           btnPhanquyen, buttonUudai, btnTaikhoan, buttonNhanvien, buttonKhachhang, buttonThongke, buttonHopdong, buttonNhaphanphoi};
+        
+        for (JButton button : buttons) {
+            // Xóa tất cả action listeners cũ
+            for (java.awt.event.ActionListener listener : button.getActionListeners()) {
+                button.removeActionListener(listener);
+            }
+            
+            // Thêm action listener mới hiển thị thông báo không có quyền
+            button.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    JOptionPane.showMessageDialog(UIa.this, 
+                        "Bạn không có quyền để xử lý chức năng này!", 
+                        "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                }
+            });
+        }
+    }
     
     
     public static void main(String args[]) {

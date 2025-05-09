@@ -12,9 +12,7 @@ import java.awt.Color;
  */
 public class IntroGUI extends javax.swing.JPanel {
 
-    /**
-     * Creates new form IntroGUI
-     */
+
     public IntroGUI() {
         initComponents();
     }
@@ -360,6 +358,54 @@ public class IntroGUI extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+       public void setMaNhanVien(String maNV) {
+        if (maNV != null && !maNV.isEmpty()) {
+            manv.setText(maNV);
+        }
+    }
+    
+ public void setHoTen(String hoTen) {
+        if (hoTen != null && !hoTen.isEmpty()) {
+            txhoten.setText(hoTen);
+        }
+    }
+    
+    public void setNgaySinh(String ngaySinh) {
+        if (ngaySinh != null && !ngaySinh.isEmpty()) {
+            txngaysinh.setText(ngaySinh);
+        }
+    }
+    
+    public void setVaiTro(String vaiTro) {
+        if (vaiTro != null && !vaiTro.isEmpty()) {
+            txvaitro.setText(vaiTro);
+        }
+    }
+    
+    public void setNgayVaoLam(String ngayVaoLam) {
+        if (ngayVaoLam != null && !ngayVaoLam.isEmpty()) {
+            txngayvaolam.setText(ngayVaoLam);
+        }
+    }
+    
+    public void setGioiTinh(String gioiTinh) {
+        if (gioiTinh != null && !gioiTinh.isEmpty()) {
+            txgioitinh.setText(gioiTinh);
+        }
+    }
+    
+    public void setSoDienThoai(String soDienThoai) {
+        if (soDienThoai != null && !soDienThoai.isEmpty()) {
+            txsodienthoai.setText(soDienThoai);
+        }
+    }
+    
+    public void setEmail(String email) {
+        if (email != null && !email.isEmpty()) {
+            txemail.setText(email);
+        }
+    }
+    
     private void nhapchu(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nhapchu
         if(textmatkhaucu.getText().equals("Nhập mật khẩu cũ")){
             textmatkhaucu.setText("");

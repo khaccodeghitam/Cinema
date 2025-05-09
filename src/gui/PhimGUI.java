@@ -1,14 +1,10 @@
 package gui;
 
+import BUS.PhimBUS;
 import DAO.PhimDAO;
 import DAO.HopDongDAO;
 import DTO.PhimDTO;
 import log_reg.UI;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -29,7 +25,8 @@ public class PhimGUI extends javax.swing.JPanel {
 private ImageHandler imageHandler;
 
     private JButton selectedButton = null;
-    
+        private PhimBUS phimBUS;
+
     public PhimGUI() {
         initComponents();
         loadPhimToTable();
@@ -42,19 +39,7 @@ private ImageHandler imageHandler;
         GiaodienPhim.add(Xemtong, "Xemtong");
         cbDanhsachPhim.setMaximumRowCount(7);
         
- // Initialize the ImageHandler with the display panel
-    imageHandler = new ImageHandler(disPoster);
-    // Attach click listener to the addImg panel
-    imageHandler.attachClickListener(addImg);
-    
-    addImg.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    addImg.setToolTipText("Nhấn để chọn ảnh");
-    
-    // Add a simple label to guide users
-    JLabel addImgLabel = new JLabel("+ Chọn ảnh", SwingConstants.CENTER);
-    addImgLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
-    addImg.setLayout(new BorderLayout());
-    addImg.add(addImgLabel, BorderLayout.CENTER);
+
         
         JTableHeader header = tbPhim.getTableHeader(); 
         header.setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -66,8 +51,12 @@ private ImageHandler imageHandler;
     UI.addPlaceHolderEffect(txtThoiluong, "Nhập thời lượng phim theo số phút");
     UI.addPlaceHolderEffect(txtTheloai, "Nhập thể loại phim");
     UI.addPlaceHolderEffect(txtTuoi, "Nhập độ tuổi cho phép xem");
+             UI.addPlaceHolderEffect(txNangCao,"Nhập tìm kiếm");
 //    UI.addPlaceHolderEffect(txtNgaychieu, "Theo định dạng dd/mm/yyyy");
    
+        phimBUS = new PhimBUS();
+
+
   btnTimkiemTong.addActionListener(new java.awt.event.ActionListener() {
     public void actionPerformed(java.awt.event.ActionEvent evt) {
         TimKiemTong(evt);
@@ -104,6 +93,12 @@ btnExport.addActionListener(new java.awt.event.ActionListener() {
     }
 });
 
+btnNangCao.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnNangCaoActionPerformed(evt);
+    }
+});
+
     }
     
     
@@ -112,6 +107,11 @@ btnExport.addActionListener(new java.awt.event.ActionListener() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
         Phim = new javax.swing.JPanel();
         btnView = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
@@ -157,11 +157,14 @@ btnExport.addActionListener(new java.awt.event.ActionListener() {
         txtTheloai = new testlib.RoundedTextField();
         txtThoiluong = new testlib.RoundedTextField();
         cbDanhsachPhim = new javax.swing.JComboBox<>();
-        themAnh = new javax.swing.JLabel();
-        addImg = new my_component.RoundedPanel();
-        disPoster = new javax.swing.JPanel();
         dtCongChieu = new com.toedter.calendar.JDateChooser();
         jSeparator3 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        txNangCao = new javax.swing.JTextField();
+        btnNangCao = new javax.swing.JButton();
+        rMaPhim = new javax.swing.JRadioButton();
+        rTenPhim = new javax.swing.JRadioButton();
+        rAll = new javax.swing.JRadioButton();
 
         Phim.setBackground(new java.awt.Color(153, 153, 153));
         Phim.setPreferredSize(new java.awt.Dimension(1086, 633));
@@ -710,37 +713,6 @@ btnExport.addActionListener(new java.awt.event.ActionListener() {
         cbDanhsachPhim.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Truy xuất theo dữ liệu phim đã thầu (Hợp đồng)", "Item 2", "Item 3", "Item 4", "5", "6", "7", "8", "9" }));
         cbDanhsachPhim.setBorder(null);
 
-        themAnh.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        themAnh.setText("Thêm ảnh:");
-
-        addImg.setBackground(new java.awt.Color(204, 204, 204));
-        addImg.setForeground(new java.awt.Color(0, 0, 0));
-        addImg.setOpaque(true);
-
-        javax.swing.GroupLayout addImgLayout = new javax.swing.GroupLayout(addImg);
-        addImg.setLayout(addImgLayout);
-        addImgLayout.setHorizontalGroup(
-            addImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        addImgLayout.setVerticalGroup(
-            addImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
-        );
-
-        disPoster.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout disPosterLayout = new javax.swing.GroupLayout(disPoster);
-        disPoster.setLayout(disPosterLayout);
-        disPosterLayout.setHorizontalGroup(
-            disPosterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 211, Short.MAX_VALUE)
-        );
-        disPosterLayout.setVerticalGroup(
-            disPosterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 328, Short.MAX_VALUE)
-        );
-
         dtCongChieu.setBackground(new java.awt.Color(204, 204, 204));
         dtCongChieu.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -749,30 +721,27 @@ btnExport.addActionListener(new java.awt.event.ActionListener() {
         ThemPhimLayout.setHorizontalGroup(
             ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ThemPhimLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(themAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Ngaychieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Dotuoi)
-                    .addComponent(TheloaiPhim)
-                    .addComponent(ThoiLuongPhim)
-                    .addComponent(DsPhim))
-                .addGap(56, 56, 56)
-                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtTuoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTheloai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtThoiluong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbDanhsachPhim, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dtCongChieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
-                .addComponent(disPoster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(ThemPhimLayout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(btnHuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(215, 215, 215)
-                .addComponent(btnThemPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ThemPhimLayout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Ngaychieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Dotuoi)
+                            .addComponent(TheloaiPhim)
+                            .addComponent(ThoiLuongPhim)
+                            .addComponent(DsPhim))
+                        .addGap(56, 56, 56)
+                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTuoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTheloai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtThoiluong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbDanhsachPhim, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dtCongChieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(ThemPhimLayout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(btnHuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(215, 215, 215)
+                        .addComponent(btnThemPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ThemPhimLayout.setVerticalGroup(
@@ -782,40 +751,30 @@ btnExport.addActionListener(new java.awt.event.ActionListener() {
                 .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(DsPhim)
                     .addComponent(cbDanhsachPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ThoiLuongPhim)
+                    .addComponent(txtThoiluong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TheloaiPhim)
+                    .addComponent(txtTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ThemPhimLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(disPoster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117))
-                    .addGroup(ThemPhimLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ThoiLuongPhim)
-                            .addComponent(txtThoiluong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TheloaiPhim)
-                            .addComponent(txtTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ThemPhimLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(Dotuoi))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThemPhimLayout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(txtTuoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(35, 35, 35)
-                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Ngaychieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dtCongChieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(42, 42, 42)
-                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(themAnh)
-                            .addComponent(addImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnThemPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnHuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(62, 62, 62))))
+                        .addComponent(Dotuoi))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThemPhimLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(txtTuoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Ngaychieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dtCongChieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addGroup(ThemPhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThemPhim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62))
         );
 
         GiaodienPhim.add(ThemPhim, "ThemPhim");
@@ -823,12 +782,53 @@ btnExport.addActionListener(new java.awt.event.ActionListener() {
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Tìm kiếm nâng cao");
+
+        txNangCao.setBackground(new java.awt.Color(204, 204, 204));
+        txNangCao.setText("jTextField1");
+
+        btnNangCao.setBackground(new java.awt.Color(204, 204, 204));
+        btnNangCao.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNangCao.setForeground(new java.awt.Color(0, 0, 0));
+        btnNangCao.setText("Tìm Kiếm");
+
+        buttonGroup1.add(rMaPhim);
+        rMaPhim.setForeground(new java.awt.Color(0, 0, 0));
+        rMaPhim.setText("Mã phim");
+
+        buttonGroup1.add(rTenPhim);
+        rTenPhim.setForeground(new java.awt.Color(0, 0, 0));
+        rTenPhim.setText("Tên phim");
+
+        buttonGroup1.add(rAll);
+        rAll.setForeground(new java.awt.Color(0, 0, 0));
+        rAll.setText("Tất cả");
+
         javax.swing.GroupLayout PhimLayout = new javax.swing.GroupLayout(Phim);
         Phim.setLayout(PhimLayout);
         PhimLayout.setHorizontalGroup(
             PhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PhimLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PhimLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PhimLayout.createSequentialGroup()
+                                .addComponent(txNangCao, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNangCao))
+                            .addGroup(PhimLayout.createSequentialGroup()
+                                .addComponent(rMaPhim)
+                                .addGap(29, 29, 29)
+                                .addComponent(rTenPhim))))
+                    .addGroup(PhimLayout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(rAll)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -843,18 +843,29 @@ btnExport.addActionListener(new java.awt.event.ActionListener() {
                 .addGroup(PhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(GiaodienPhim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator3))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
         PhimLayout.setVerticalGroup(
             PhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PhimLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXemtong, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PhimLayout.createSequentialGroup()
+                        .addGroup(PhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txNangCao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNangCao))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PhimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rMaPhim)
+                            .addComponent(rTenPhim))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rAll)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -873,125 +884,174 @@ btnExport.addActionListener(new java.awt.event.ActionListener() {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Phim, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addComponent(Phim, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {
-    try {
-        // Create a new workbook
-        Workbook workbook = new XSSFWorkbook();
+    private void btnNangCaoActionPerformed(java.awt.event.ActionEvent evt) {
+    // Lấy từ khóa tìm kiếm và xử lý placeholder text
+    String keyword = txNangCao.getText().trim();
+    
+    // Kiểm tra placeholder text
+     if (keyword.isEmpty() || keyword.equals("Nhập tìm kiếm")) {
+        // Reset cả hai bảng
+        loadPhimToTable();
+        loadPhimToXemTongTable();
         
-        // Determine which table is currently visible
-        CardLayout cardLayout = (CardLayout) GiaodienPhim.getLayout();
-        JTable activeTable;
-        String sheetName;
-        String[] columns;
+        // Thông báo cho người dùng
+        JOptionPane.showMessageDialog(this, "Đã làm mới danh sách phim!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
+    
+    // Kiểm tra xem đã chọn tiêu chí tìm kiếm chưa
+    if (!rMaPhim.isSelected() && !rTenPhim.isSelected() && !rAll.isSelected()) {
+        JOptionPane.showMessageDialog(this, "Vui lòng chọn một tiêu chí tìm kiếm (Mã phim, Tên phim hoặc Tất cả)!", 
+                                      "Thông báo", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    // Xác định panel hiện tại để biết bảng nào đang được hiển thị
+    CardLayout cardLayout = (CardLayout) GiaodienPhim.getLayout();
+    
+    // Thực hiện tìm kiếm dựa trên tiêu chí đã chọn
+    if (View.isVisible()) {
+        // Tìm kiếm trên bảng tbPhim
+        searchOnPhimTable(keyword);
+    } else if (Xemtong.isVisible()) {
+        // Tìm kiếm trên bảng tbXemtong
+        searchOnXemTongTable(keyword);
+    } else {
+        // Mặc định tìm trên cả hai bảng
+        searchOnPhimTable(keyword);
         
-        // Check which panel is currently visible
-        if (View.isVisible()) {
-            activeTable = tbPhim;
-            sheetName = "Danh Sách Phim";
-            columns = new String[]{"Mã phim", "Tên phim", "Thời lượng", "Thể loại", "Độ tuổi", "Ngày công chiếu"};
-        } else if (Xemtong.isVisible()) {
-            activeTable = tbXemtong;
-            sheetName = "Tổng Hợp Phim";
-            columns = new String[]{"Mã phim", "Tên phim", "Thời lượng", "Thể loại", "Độ tuổi", "Ngày chiếu", "Suất đã chiếu", "Trạng thái"};
-        } else {
-            // Default to tbPhim if neither view is visible (shouldn't happen in normal operation)
-            activeTable = tbPhim;
-            sheetName = "Danh Sách Phim";
-            columns = new String[]{"Mã phim", "Tên phim", "Thời lượng", "Thể loại", "Độ tuổi", "Ngày công chiếu"};
-        }
-        
-        // Create sheet with appropriate name
-        Sheet sheet = workbook.createSheet(sheetName);
-        
-        // Create header row
-        Row headerRow = sheet.createRow(0);
-        
-        // Create a cell style for the header
-        CellStyle headerStyle = workbook.createCellStyle();
-        org.apache.poi.ss.usermodel.Font headerFont = workbook.createFont();
-        headerFont.setBold(true);
-        headerStyle.setFont(headerFont);
-        
-        // Create header cells
-        for (int i = 0; i < columns.length; i++) {
-            Cell cell = headerRow.createCell(i);
-            cell.setCellValue(columns[i]);
-            cell.setCellStyle(headerStyle);
-        }
-        
-        // Get data from the active table model
-        DefaultTableModel model = (DefaultTableModel) activeTable.getModel();
-        int rowCount = model.getRowCount();
-        int colCount = Math.min(model.getColumnCount(), columns.length);
-        
-        // Create data rows
-        for (int i = 0; i < rowCount; i++) {
-            Row row = sheet.createRow(i + 1);
-            for (int j = 0; j < colCount; j++) {
-                Object value = model.getValueAt(i, j);
-                Cell cell = row.createCell(j);
-                if (value != null) {
-                    cell.setCellValue(value.toString());
-                } else {
-                    cell.setCellValue("");
-                }
-            }
-        }
-        
-        // Resize all columns to fit the content size
-        for (int i = 0; i < columns.length; i++) {
-            sheet.autoSizeColumn(i);
-        }
-        
-        // Ask user where to save the file
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Lưu file Excel");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Excel Files", "xlsx"));
-        
-        // Set default filename based on the active table
-        String defaultFileName = (activeTable == tbPhim) ? "DanhSachPhim.xlsx" : "TongHopPhim.xlsx";
-        fileChooser.setSelectedFile(new File(defaultFileName));
-        
-        int result = fileChooser.showSaveDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            // Get the selected file
-            File selectedFile = fileChooser.getSelectedFile();
-            String filePath = selectedFile.getAbsolutePath();
-            
-            // Add .xlsx extension if not present
-            if (!filePath.endsWith(".xlsx")) {
-                filePath += ".xlsx";
-                selectedFile = new File(filePath);
-            }
-            
-            // Write the workbook to the file
-            try (FileOutputStream outputStream = new FileOutputStream(selectedFile)) {
-                workbook.write(outputStream);
-                JOptionPane.showMessageDialog(this, 
-                    "Xuất file thành công!\nĐường dẫn: " + filePath, 
-                    "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        
-        // Close the workbook
-        workbook.close();
-        
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, 
-            "Lỗi khi xuất file: " + e.getMessage(), 
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, 
-            "Lỗi không xác định: " + e.getMessage(), 
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();
+        // Chuyển sang view để hiển thị kết quả
+        cardLayout.show(GiaodienPhim, "View");
     }
 }
+
+// Phương thức tìm kiếm trên bảng tbPhim
+private void searchOnPhimTable(String keyword) {
+    PhimDAO dao = new PhimDAO();
+    java.util.List<PhimDTO> listPhim = dao.layDanhSachPhim();
+    
+    DefaultTableModel model = (DefaultTableModel) tbPhim.getModel();
+    model.setRowCount(0); // Xóa dữ liệu cũ
+    
+    keyword = keyword.toLowerCase(); // Chuyển từ khóa sang chữ thường để so sánh không phân biệt hoa thường
+    
+    for (PhimDTO phim : listPhim) {
+        if (phim.isActiveOrUpcoming()) { // Chỉ hiển thị phim đang chiếu hoặc sắp chiếu
+            boolean match = false;
+            
+            if (rMaPhim.isSelected()) {
+                // Tìm theo mã phim
+                match = phim.getMaPhim().toLowerCase().contains(keyword);
+            } else if (rTenPhim.isSelected()) {
+                // Tìm theo tên phim
+                match = phim.getTenPhim().toLowerCase().contains(keyword);
+            } else if (rAll.isSelected()) {
+                // Tìm theo tất cả các trường
+                match = phim.getMaPhim().toLowerCase().contains(keyword) ||
+                        phim.getTenPhim().toLowerCase().contains(keyword) ||
+                        String.valueOf(phim.getThoiLuong()).contains(keyword) ||
+                        phim.getTheLoai().toLowerCase().contains(keyword) ||
+                        phim.getDoTuoi().toLowerCase().contains(keyword) ||
+                        phim.getNgayChieuFormatted().toLowerCase().contains(keyword);
+            }
+            
+            if (match) {
+                model.addRow(new Object[] {
+                    phim.getMaPhim(),
+                    phim.getTenPhim(),
+                    phim.getThoiLuong() + " phút",
+                    phim.getTheLoai(),
+                    phim.getDoTuoi(),
+                    phim.getNgayChieuFormatted()
+                });
+            }
+        }
+    }
+    
+    // Thông báo nếu không tìm thấy kết quả
+    if (model.getRowCount() == 0) {
+        JOptionPane.showMessageDialog(this, "Không tìm thấy phim phù hợp với từ khóa!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+
+// Phương thức tìm kiếm trên bảng tbXemtong
+private void searchOnXemTongTable(String keyword) {
+    PhimDAO phimDAO = new PhimDAO();
+    java.util.List<PhimDTO> listPhim = phimDAO.getAllPhim();
+    
+    DefaultTableModel model = (DefaultTableModel) tbXemtong.getModel();
+    model.setRowCount(0); // Xóa dữ liệu cũ
+    
+    keyword = keyword.toLowerCase(); // Chuyển từ khóa sang chữ thường để so sánh không phân biệt hoa thường
+    
+    for (PhimDTO phim : listPhim) {
+        boolean match = false;
+        
+        if (rMaPhim.isSelected()) {
+            // Tìm theo mã phim
+            match = phim.getMaPhim().toLowerCase().contains(keyword);
+        } else if (rTenPhim.isSelected()) {
+            // Tìm theo tên phim
+            match = phim.getTenPhim().toLowerCase().contains(keyword);
+        } else if (rAll.isSelected()) {
+            // Tìm theo tất cả các trường
+            match = phim.getMaPhim().toLowerCase().contains(keyword) ||
+                    phim.getTenPhim().toLowerCase().contains(keyword) ||
+                    String.valueOf(phim.getThoiLuong()).contains(keyword) ||
+                    phim.getTheLoai().toLowerCase().contains(keyword) ||
+                    phim.getDoTuoi().toLowerCase().contains(keyword) ||
+                    phim.getNgayChieuFormatted().toLowerCase().contains(keyword) ||
+                    String.valueOf(phim.getSuatDaChieu()).contains(keyword) ||
+                    phim.getTrangThai().toLowerCase().contains(keyword);
+        }
+        
+        if (match) {
+            Object[] row = {
+                phim.getMaPhim(),
+                phim.getTenPhim(),
+                phim.getThoiLuong() + " phút",
+                phim.getTheLoai(),
+                phim.getDoTuoi(),
+                phim.getNgayChieuFormatted(),
+                phim.getSuatDaChieu(),
+                phim.getTrangThai()
+            };
+            model.addRow(row);
+        }
+    }
+    
+    // Thông báo nếu không tìm thấy kết quả
+    if (model.getRowCount() == 0) {
+        JOptionPane.showMessageDialog(this, "Không tìm thấy phim phù hợp với từ khóa!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+    
+ private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {
+        // Xác định bảng nào đang được hiển thị
+        CardLayout cardLayout = (CardLayout) GiaodienPhim.getLayout();
+        JTable activeTable;
+        boolean isPhimTable;
+        
+        // Kiểm tra panel nào đang hiển thị
+        if (View.isVisible()) {
+            activeTable = tbPhim;
+            isPhimTable = true;
+        } else if (Xemtong.isVisible()) {
+            activeTable = tbXemtong;
+            isPhimTable = false;
+        } else {
+            // Mặc định là bảng tbPhim nếu không xác định được
+            activeTable = tbPhim;
+            isPhimTable = true;
+        }
+        
+        // Gọi phương thức xuất Excel từ PhimBUS
+        phimBUS.xuatFileExcel(this, activeTable, isPhimTable);
+    }
     
     private void btnCapnhatActionPerformed(java.awt.event.ActionEvent evt) {
     int selectedRow = tbPhim.getSelectedRow();
@@ -1208,15 +1268,26 @@ private void TimKiemPhim(java.awt.event.ActionEvent evt) {
     }
 }
     
-    private void loadPhimToXemTongTable() {
+   private void loadPhimToXemTongTable() {
     try {
         PhimDAO phimDAO = new PhimDAO();
         java.util.List<PhimDTO> listPhim = phimDAO.getAllPhim();
+        
+        // Lấy thông tin suat_da_chieu từ HopDong
+        HopDongDAO hopDongDAO = new HopDongDAO();
         
         DefaultTableModel model = (DefaultTableModel) tbXemtong.getModel();
         model.setRowCount(0); // Xóa tất cả dữ liệu hiện tại trên bảng
         
         for (PhimDTO phim : listPhim) {
+            // Cập nhật suat_da_chieu từ HopDong nếu cần
+            int suatDaChieuFromHopDong = hopDongDAO.laySuatDaChieuTheoTenPhim(phim.getTenPhim());
+            
+            // Nếu suat_da_chieu trong HopDong khác với giá trị hiện tại, cập nhật lại
+            if (suatDaChieuFromHopDong != phim.getSuatDaChieu()) {
+                phim.setSuatDaChieu(suatDaChieuFromHopDong);
+            }
+            
             Object[] row = {
                 phim.getMaPhim(),
                 phim.getTenPhim(),
@@ -1350,163 +1421,132 @@ private void TimKiemPhim(java.awt.event.ActionEvent evt) {
     txtTuoi.setText("Nhập độ tuổi cho phép xem");
     dtCongChieu.setDate(null);
     
-    // Reset ảnh poster
-    disPoster.removeAll();
-    disPoster.revalidate();
-    disPoster.repaint();
+  
     
-    // Tạo lại đối tượng ImageHandler
-    imageHandler = new ImageHandler(disPoster);
-    imageHandler.attachClickListener(addImg);
-    
-    // Reset lại giao diện addImg
-    addImg.removeAll();
-    JLabel addImgLabel = new JLabel("+ Chọn ảnh", SwingConstants.CENTER);
-    addImgLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
-    addImg.setLayout(new BorderLayout());
-    addImg.add(addImgLabel, BorderLayout.CENTER);
-    addImg.revalidate();
-    addImg.repaint();
+
 }
     
     private void btnThemPhimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemPhimActionPerformed
-       // Kiểm tra dữ liệu nhập vào
-    String tenPhim = cbDanhsachPhim.getSelectedItem().toString();
+   // Kiểm tra dữ liệu nhập vào
+   String tenPhim = cbDanhsachPhim.getSelectedItem().toString();
     
-    // Kiểm tra tên phim đã chọn
-    if (tenPhim.equals("Không có phim nào trong cơ sở dữ liệu") || tenPhim.isEmpty()) {
-        JOptionPane.showMessageDialog(this,
-            "Vui lòng chọn tên phim từ danh sách!",
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+   // Kiểm tra tên phim đã chọn
+   if (tenPhim.equals("Không có phim nào trong cơ sở dữ liệu") || tenPhim.isEmpty()) {
+       JOptionPane.showMessageDialog(this,
+           "Vui lòng chọn tên phim từ danh sách!",
+           "Lỗi", JOptionPane.ERROR_MESSAGE);
+       return;
+   }
     
-    // Lấy thời lượng
-    int thoiLuong;
-    try {
-        thoiLuong = Integer.parseInt(txtThoiluong.getText().trim());
-        if (thoiLuong <= 0) {
-            JOptionPane.showMessageDialog(this,
-                "Thời lượng phim phải lớn hơn 0!",
-                "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this,
-            "Thời lượng phải là số nguyên!",
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+   // Lấy thời lượng
+   int thoiLuong;
+   try {
+       thoiLuong = Integer.parseInt(txtThoiluong.getText().trim());
+       if (thoiLuong <= 0) {
+           JOptionPane.showMessageDialog(this,
+               "Thời lượng phim phải lớn hơn 0!",
+               "Lỗi", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+   } catch (NumberFormatException e) {
+       JOptionPane.showMessageDialog(this,
+           "Thời lượng phải là số nguyên!",
+           "Lỗi", JOptionPane.ERROR_MESSAGE);
+       return;
+   }
     
-    // Lấy thể loại
-    String theLoai = txtTheloai.getText().trim();
-    if (theLoai.isEmpty() || theLoai.equals("Nhập thể loại phim")) {
-        JOptionPane.showMessageDialog(this,
-            "Vui lòng nhập thể loại phim!",
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+   // Lấy thể loại
+   String theLoai = txtTheloai.getText().trim();
+   if (theLoai.isEmpty() || theLoai.equals("Nhập thể loại phim")) {
+       JOptionPane.showMessageDialog(this,
+           "Vui lòng nhập thể loại phim!",
+           "Lỗi", JOptionPane.ERROR_MESSAGE);
+       return;
+   }
     
-    // Lấy độ tuổi
-    String doTuoi = txtTuoi.getText().trim();
-    if (doTuoi.isEmpty() || doTuoi.equals("Nhập độ tuổi cho phép xem")) {
-        JOptionPane.showMessageDialog(this,
-            "Vui lòng nhập độ tuổi cho phép xem!",
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+   // Lấy độ tuổi
+   String doTuoi = txtTuoi.getText().trim();
+   if (doTuoi.isEmpty() || doTuoi.equals("Nhập độ tuổi cho phép xem")) {
+       JOptionPane.showMessageDialog(this,
+           "Vui lòng nhập độ tuổi cho phép xem!",
+           "Lỗi", JOptionPane.ERROR_MESSAGE);
+       return;
+   }
     
-    // Lấy ngày chiếu từ JDateChooser
-    Date ngayChieu = dtCongChieu.getDate();
-    if (ngayChieu == null) {
-        JOptionPane.showMessageDialog(this,
-            "Vui lòng chọn ngày công chiếu!",
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+   // Lấy ngày chiếu từ JDateChooser
+   Date ngayChieu = dtCongChieu.getDate();
+   if (ngayChieu == null) {
+       JOptionPane.showMessageDialog(this,
+           "Vui lòng chọn ngày công chiếu!",
+           "Lỗi", JOptionPane.ERROR_MESSAGE);
+       return;
+   }
     
-    // Kiểm tra ngày chiếu không được nhỏ hơn ngày hiện tại
-    Date ngayHienTai = new Date();
-    // Đặt giờ, phút, giây, mili giây về 0 để so sánh chỉ ngày
-    Calendar cal = Calendar.getInstance();
-    cal.setTime(ngayHienTai);
-    cal.set(Calendar.HOUR_OF_DAY, 0);
-    cal.set(Calendar.MINUTE, 0);
-    cal.set(Calendar.SECOND, 0);
-    cal.set(Calendar.MILLISECOND, 0);
-    ngayHienTai = cal.getTime();
+   // Kiểm tra ngày chiếu không được nhỏ hơn ngày hiện tại
+   Date ngayHienTai = new Date();
+   // Đặt giờ, phút, giây, mili giây về 0 để so sánh chỉ ngày
+   Calendar cal = Calendar.getInstance();
+   cal.setTime(ngayHienTai);
+   cal.set(Calendar.HOUR_OF_DAY, 0);
+   cal.set(Calendar.MINUTE, 0);
+   cal.set(Calendar.SECOND, 0);
+   cal.set(Calendar.MILLISECOND, 0);
+   ngayHienTai = cal.getTime();
     
-    // Tương tự cho ngày chiếu
-    cal.setTime(ngayChieu);
-    cal.set(Calendar.HOUR_OF_DAY, 0);
-    cal.set(Calendar.MINUTE, 0);
-    cal.set(Calendar.SECOND, 0);
-    cal.set(Calendar.MILLISECOND, 0);
-    ngayChieu = cal.getTime();
+   // Tương tự cho ngày chiếu
+   cal.setTime(ngayChieu);
+   cal.set(Calendar.HOUR_OF_DAY, 0);
+   cal.set(Calendar.MINUTE, 0);
+   cal.set(Calendar.SECOND, 0);
+   cal.set(Calendar.MILLISECOND, 0);
+   ngayChieu = cal.getTime();
     
-    if (ngayChieu.before(ngayHienTai)) {
-        JOptionPane.showMessageDialog(this,
-            "Ngày công chiếu không thể trước ngày hiện tại!",
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+   if (ngayChieu.before(ngayHienTai)) {
+       JOptionPane.showMessageDialog(this,
+           "Ngày công chiếu không thể trước ngày hiện tại!",
+           "Lỗi", JOptionPane.ERROR_MESSAGE);
+       return;
+   }
     
-    // Xác định trạng thái phim dựa trên ngày chiếu
-    String trangThai;
-    if (ngayChieu.equals(ngayHienTai)) {
-        trangThai = "Đang chiếu";
-    } else {
-        trangThai = "Sắp chiếu";
-    }
+   // Xác định trạng thái phim dựa trên ngày chiếu
+   String trangThai;
+   if (ngayChieu.equals(ngayHienTai)) {
+       trangThai = "Đang chiếu";
+   } else {
+       trangThai = "Sắp chiếu";
+   }
     
-    // Xử lý ảnh poster - Sử dụng ImageHandler của bạn
-    byte[] posterData = null;
-    BufferedImage selectedImage = imageHandler.getSelectedImage();
+   // Tạo mã phim mới
+   PhimDAO phimDAO = new PhimDAO();
+   String maPhimMoi = phimDAO.taoMaPhimMoi();
+   
+   // Lấy số suất đã chiếu từ bảng HopDong
+   HopDongDAO hopDongDAO = new HopDongDAO();
+   int suatDaChieu = hopDongDAO.laySuatDaChieuTheoTenPhim(tenPhim);
+   
+   // Tạo đối tượng PhimDTO với suất đã chiếu lấy từ HopDong
+   PhimDTO phimMoi = new PhimDTO(
+       maPhimMoi, tenPhim, thoiLuong, theLoai, doTuoi, 
+       ngayChieu, suatDaChieu, trangThai
+   );
     
-    if (selectedImage != null) {
-        try {
-            // Chuyển BufferedImage thành byte array
-            java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
-            javax.imageio.ImageIO.write(selectedImage, "jpg", baos);
-            baos.flush();
-            posterData = baos.toByteArray();
-            baos.close();
-        } catch (java.io.IOException e) {
-            JOptionPane.showMessageDialog(this,
-                "Lỗi khi xử lý ảnh: " + e.getMessage(),
-                "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-    }
+   // Thêm phim vào CSDL
+   boolean themThanhCong = phimDAO.themPhim(phimMoi);
     
-    // Tạo mã phim mới
-    PhimDAO phimDAO = new PhimDAO();
-    String maPhimMoi = phimDAO.taoMaPhimMoi();
-    
-    // Tạo đối tượng PhimDTO mới
-    PhimDTO phimMoi = new PhimDTO(
-        maPhimMoi, tenPhim, thoiLuong, theLoai, doTuoi, 
-        ngayChieu, 0, trangThai, posterData
-    );
-    
-    // Thêm phim vào CSDL
-    boolean themThanhCong = phimDAO.themPhim(phimMoi);
-    
-    if (themThanhCong) {
-        JOptionPane.showMessageDialog(this,
-            "Thêm phim thành công!",
-            "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+   if (themThanhCong) {
+       JOptionPane.showMessageDialog(this,
+           "Thêm phim thành công!",
+           "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         
-        // Làm mới bảng phim
-        loadPhimToTable();
+       loadPhimToTable();
+       loadPhimToXemTongTable(); // Cập nhật bảng xem tổng
         
-        // Reset các trường nhập liệu
-        resetForm();
-    } else {
-        JOptionPane.showMessageDialog(this,
-            "Thêm phim thất bại! Vui lòng kiểm tra lại dữ liệu.",
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-    }
+       resetForm();
+   } else {
+       JOptionPane.showMessageDialog(this,
+           "Thêm phim thất bại! Vui lòng kiểm tra lại dữ liệu.",
+           "Lỗi", JOptionPane.ERROR_MESSAGE);
+   }
     }//GEN-LAST:event_btnThemPhimActionPerformed
 
     
@@ -1525,11 +1565,11 @@ private void TimKiemPhim(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel TimkiemTong;
     private javax.swing.JPanel View;
     private javax.swing.JPanel Xemtong;
-    private my_component.RoundedPanel addImg;
     private javax.swing.JButton btnCapnhat;
     private javax.swing.JButton btnExport;
     private testlib.RoundedButton btnHuybo;
     private javax.swing.JButton btnImport;
+    private javax.swing.JButton btnNangCao;
     private javax.swing.JButton btnThem;
     private testlib.RoundedButton btnThemPhim;
     private testlib.RoundedButton btnTimkiemPhim;
@@ -1537,22 +1577,30 @@ private void TimKiemPhim(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton btnView;
     private javax.swing.JButton btnXemtong;
     private javax.swing.JButton btnXoa;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.JComboBox<String> cbDanhsachPhim;
-    private javax.swing.JPanel disPoster;
     private com.toedter.calendar.JDateChooser dtCongChieu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JRadioButton rAll;
+    private javax.swing.JRadioButton rMaPhim;
+    private javax.swing.JRadioButton rTenPhim;
     private javax.swing.JTable tbPhim;
     private javax.swing.JTable tbXemtong;
-    private javax.swing.JLabel themAnh;
     private javax.swing.JTextField truyxuatNgaychieu;
     private javax.swing.JTextField truyxuatPhim;
     private javax.swing.JTextField truyxuatTheloai;
     private javax.swing.JTextField truyxuatThoiluong;
     private javax.swing.JTextField truyxuatTuoi;
+    private javax.swing.JTextField txNangCao;
     private javax.swing.JLabel txNgaychieu;
     private javax.swing.JLabel txPhim;
     private javax.swing.JLabel txTheloai;

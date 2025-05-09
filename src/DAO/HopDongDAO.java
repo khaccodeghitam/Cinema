@@ -231,4 +231,37 @@ public class HopDongDAO {
         
         return danhSachTenPhim;
     }
+    
+    public int laySuatDaChieuTheoTenPhim(String tenPhim) {
+    String sql = "SELECT suat_da_chieu FROM HopDong WHERE ten_phim = ?";
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    int suatDaChieu = 0; // Giá trị mặc định nếu không tìm thấy
+    
+    try {
+        conn = DatabaseConnection.getConnection();
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, tenPhim);
+        rs = pstmt.executeQuery();
+        
+        if (rs.next()) {
+            suatDaChieu = rs.getInt("suat_da_chieu");
+        }
+    } catch (SQLException e) {
+        System.out.println("Lỗi khi lấy số suất đã chiếu: " + e.getMessage());
+        e.printStackTrace();
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+            if (conn != null) DatabaseConnection.closeConnection(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    return suatDaChieu;
+}
+    
     }

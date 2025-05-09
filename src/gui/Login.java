@@ -1,24 +1,34 @@
 
 package gui;
 
+import BUS.NhanVienBUS;
+import DAO.NhanVienDAO;
+import DAO.TaiKhoanDAO;
+import DTO.NhanVienDTO;
+import DTO.TaiKhoanDTO;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 /**
  *
  * @author dinhp
  */
 public class Login extends javax.swing.JFrame {
+ private TaiKhoanDAO taiKhoanDAO;
+     private NhanVienDAO nhanVienDAO;
 
     public Login() {
-        initComponents();
+       initComponents();
         txtTaikhoan.setFocusable(false);
         txtMatkhau.setFocusable(false);
         GiaodienLog.setLayout(new CardLayout());
         GiaodienLog.add(Login, "Login");
         GiaodienLog.add(Register, "Register");
+        taiKhoanDAO = new TaiKhoanDAO();
+        nhanVienDAO = new NhanVienDAO();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -450,22 +460,48 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_Reaction2
 
     private void Dangnhap(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dangnhap
-        String soDienThoai = txtTaikhoan.getText();
+      String tenDangNhap = txtTaikhoan.getText();
         String matKhau = txtMatkhau.getText();
-
-        if(soDienThoai.equals("0123") && matKhau.equals("123")) {
+        
+        // Hard-coded login (for testing)
+        if(tenDangNhap.equals("0123") && matKhau.equals("123")) {
             this.setVisible(false);
-
             new UIa().setVisible(true);
         }
-        
-        else if(soDienThoai.equals("0987") && matKhau.equals("987")){
+        else if(tenDangNhap.equals("0987") && matKhau.equals("987")) {
             this.setVisible(false);
             new UIu().setVisible(true);
         } 
-        
         else {
-            JOptionPane.showMessageDialog(this, "Sai số điện thoại hoặc mật khẩu!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            // Try to authenticate from database
+            TaiKhoanDTO taiKhoan = kiemTraDangNhap(tenDangNhap, matKhau);
+            
+            if (taiKhoan != null) {
+                // Get the employee information
+                NhanVienDTO nhanVien = null;
+                if (taiKhoan.getMaNhanVien() != null && !taiKhoan.getMaNhanVien().isEmpty()) {
+                    nhanVien = layThongTinNhanVien(taiKhoan.getMaNhanVien());
+                }
+                
+                if (nhanVien != null) {
+                    this.setVisible(false);
+                    
+                    // Create UIa instance
+                    UIa uia = new UIa();
+                    
+                    // Set the account and employee information
+                    // Note: Order matters here - set employee info first, then account
+                    uia.setNhanVienInfo(nhanVien);
+                    uia.setTaiKhoan(taiKhoan);
+                    
+                    // Show the UI
+                    uia.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin nhân viên!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Sai tên đăng nhập hoặc mật khẩu!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_Dangnhap
 
@@ -520,7 +556,29 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_ReturnLogin
 
 
+  
+   private TaiKhoanDTO kiemTraDangNhap(String tenDangNhap, String matKhau) {
+        ArrayList<TaiKhoanDTO> danhSachTaiKhoan = taiKhoanDAO.getDanhSachTaiKhoan();
+        for (TaiKhoanDTO taiKhoan : danhSachTaiKhoan) {
+            if (taiKhoan.getTenDangNhap().equals(tenDangNhap) && 
+                taiKhoan.getMatKhau().equals(matKhau)) {
+                return taiKhoan;
+            }
+        }
+        return null;
+    }
     
+    private NhanVienDTO layThongTinNhanVien(String maNhanVien) {
+        ArrayList<NhanVienDTO> danhSachNhanVien = nhanVienDAO.getAllNhanVienDTO();
+        for (NhanVienDTO nv : danhSachNhanVien) {
+            if (nv.getMaNhanVien().equals(maNhanVien)) {
+                return nv;
+            }
+        }
+        return null;
+    }
+
+
     
     
 //    public static void main(String args[]) {

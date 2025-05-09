@@ -82,7 +82,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="689" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnXem" min="-2" pref="72" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnThem" min="-2" pref="72" max="-2" attributes="0"/>
@@ -140,6 +140,9 @@
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXemActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnThem">
               <Properties>
@@ -163,6 +166,9 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnXoaphieu">
               <Properties>
@@ -194,6 +200,9 @@
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="15" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/update.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Chi ti&#x1ebf;t"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -359,43 +368,44 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="Quanlydocgia" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Quanlyphieunhapsach" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Quanlyphanquyen" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Quanlyphieumuon" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Quanlytaikhoan" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Quanlythongke" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Quanlynguonnhap" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Quanlyanvat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Quanlyphongchieu" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Quanlyuudai" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Quanlynhanvien" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Quanlyhopdong" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="Quanlykhachhang" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="Quanlythongke" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="618" max="-2" attributes="0"/>
+                                              <Component id="btnThemquyen" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="620" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnCapnhat" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnThemquyen" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="Quanlysach" min="-2" max="-2" attributes="0"/>
+                                              <Component id="Quanlyphim" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                                               <Component id="txQuanlysach1" max="32767" attributes="0"/>
                                               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                                              <Component id="Quanlysach1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="Quanlynpp" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="Quanlynhanvien" min="-2" max="-2" attributes="0"/>
+                                              <Component id="Quanlylichchieu" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
                                                       <Component id="txQuanlysach3" max="32767" attributes="0"/>
                                                       <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                                                      <Component id="Quanlysach3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="Quanlyphanquyen" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" attributes="0">
                                                       <Component id="txQuanlysach2" max="32767" attributes="0"/>
                                                       <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                                                      <Component id="Quanlysach2" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="Quanlytaikhoan" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -416,54 +426,306 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jSeparator2" min="-2" pref="5" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace pref="257" max="32767" attributes="0"/>
-                                      <Component id="btnThemquyen" min="-2" pref="50" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnCapnhat" min="-2" pref="39" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="334" max="-2" attributes="0"/>
+                                      <Component id="Quanlyhopdong" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="334" max="-2" attributes="0"/>
-                                              <Component id="Quanlynguonnhap" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="txQuanlyphieumuon" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="txQuanlyphieumuon" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="1" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Group type="102" alignment="1" attributes="0">
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Group type="102" alignment="1" attributes="0">
-                                                                      <Component id="Quanlychucnang" min="-2" max="-2" attributes="0"/>
-                                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                                      <Component id="txQuanlysach" min="-2" max="-2" attributes="0"/>
-                                                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <Component id="Quanlynhanvien" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                                      <Group type="102" attributes="0">
-                                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                                              <Group type="102" alignment="1" attributes="0">
-                                                                                  <Component id="txQuanlysach1" min="-2" max="-2" attributes="0"/>
-                                                                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                                              </Group>
-                                                                              <Component id="Quanlysach1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                                          </Group>
-                                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                                              <Group type="102" alignment="1" attributes="0">
-                                                                                  <Component id="txQuanlysach2" min="-2" max="-2" attributes="0"/>
-                                                                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                                              </Group>
-                                                                              <Component id="Quanlysach2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                                          </Group>
+                                                              <Component id="Quanlychucnang" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                              <Component id="txQuanlysach" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Component id="Quanlylichchieu" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                              <Group type="102" attributes="0">
+                                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                                      <Group type="102" alignment="1" attributes="0">
+                                                                          <Component id="txQuanlysach1" min="-2" max="-2" attributes="0"/>
+                                                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                                                       </Group>
-                                                                      <Group type="102" attributes="0">
-                                                                          <Component id="Quanlysach" min="-2" max="-2" attributes="0"/>
-                                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                                  
+                                                                      <Component id="Quanlynpp" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                                      <Group type="102" alignment="1" attributes="0">
+                                                                          <Component id="txQuanlysach2" min="-2" max="-2" attributes="0"/>
+                                                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                      <Component id="Quanlytaikhoan" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
+                                                              <Group type="102" attributes="0">
+                                                                  <Component id="Quanlyphim" min="-2" max="-2" attributes="0"/>
+                                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                                  <Component id="txQuanlynhanvien" min="-2" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" attributes="0">
+                                                              <Component id="txQuanlyphieunhapsach" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                                              <Group type="102" alignment="1" attributes="0">
+                                                                  <Component id="txQuanlysach3" min="-2" max="-2" attributes="0"/>
+                                                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <Component id="Quanlyphanquyen" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="Quanlyphongchieu" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="txQuanlydocgia" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="Quanlyanvat" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="txQuanlyphanquyen" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="Quanlyuudai" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="Quanlynhanvien" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="Quanlythongke" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="Quanlykhachhang" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txQuanlytaikhoan" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="txQuanlythongke" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Component id="txQuanlynguonnhap" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnThemquyen" min="-2" pref="50" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="Nhapten">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="16" style="1"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p t&#xea;n quy&#x1ec1;n:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtNhapten">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="14" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="jTextField1"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                            <MatteColorBorder bottom="1" left="0" right="0" top="0"/>
+                          </Border>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="Quanlychucnang">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; ch&#x1ee9;c n&#x103;ng"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                            <MatteColorBorder bottom="1" left="0" right="0" top="0"/>
+                          </Border>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlysach">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; phim"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JSeparator" name="jSeparator2">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlynhanvien">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; l&#x1ecb;ch chi&#x1ebf;u"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlyphieunhapsach">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; ph&#xf2;ng chi&#x1ebf;u"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlydocgia">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; &#x103;n v&#x1eb7;t"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlyphanquyen">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; &#x1b0;u &#x111;&#xe3;i"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlyphieumuon">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; nh&#xe2;n vi&#xea;n"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlytaikhoan">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; kh&#xe1;ch h&#xe0;ng"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlythongke">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; th&#x1ed1;ng k&#xea;"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlynguonnhap">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; h&#x1ee3;p &#x111;&#x1ed3;ng"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlyphim">
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlylichchieu">
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlyphongchieu">
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlyanvat">
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlyuudai">
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlynhanvien">
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlykhachhang">
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlythongke">
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlyhopdong">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnThemquyen">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4d" green="7a" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="20" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Th&#xea;m quy&#x1ec1;n"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder thickness="3">
+                              <Color PropertyName="color" blue="f2" green="f2" red="f2" type="rgb"/>
+                            </LineBorder>
+                          </Border>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlysach1">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; nh&#xe0; ph&#xe2;n ph&#x1ed1;i"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlynpp">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlysach2">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; t&#xe0;i kho&#x1ea3;n"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlytaikhoan">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txQuanlysach3">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="15" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; ph&#xe2;n quy&#x1ec1;n"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="Quanlyphanquyen">
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

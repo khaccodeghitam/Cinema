@@ -12,9 +12,14 @@ public class PhimDAO {
         conn = DatabaseConnection.getConnection();
     }
 
- public List<PhimDTO> layDanhSachPhim() {
+   public List<PhimDTO> layDanhSachPhim() {
     List<PhimDTO> dsPhim = new ArrayList<>();
-    String sql = "SELECT ma_phim, ten_phim, thoi_luong, the_loai, do_tuoi, ngay_chieu, suat_da_chieu, trang_thai, poster FROM Phim";
+    String sql = "SELECT p.ma_phim, p.ten_phim, p.thoi_luong, p.the_loai, p.do_tuoi, " +
+                "p.ngay_chieu, COALESCE(h.suat_da_chieu, p.suat_da_chieu) as suat_da_chieu, " +
+                "p.trang_thai " +
+                "FROM Phim p " +
+                "LEFT JOIN HopDong h ON p.ten_phim = h.ten_phim";
+                
     try (Statement stmt = conn.createStatement();
          ResultSet rs = stmt.executeQuery(sql)) {
         SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -33,8 +38,7 @@ public class PhimDAO {
                 rs.getString("do_tuoi"),
                 utilDate,
                 rs.getInt("suat_da_chieu"),
-                rs.getString("trang_thai"),
-                rs.getBytes("poster")
+                rs.getString("trang_thai")
             );
             dsPhim.add(p);
         }
@@ -43,68 +47,73 @@ public class PhimDAO {
     }
     return dsPhim;
 }
-   
-
-   
-   public List<PhimDTO> getAllPhim() {
-        List<PhimDTO> listPhim = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+    
+  public List<PhimDTO> getAllPhim() {
+    List<PhimDTO> listPhim = new ArrayList<>();
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    
+    try {
+        conn = DatabaseConnection.getConnection();
         
-        try {
-            conn = DatabaseConnection.getConnection();
-            String sql = "SELECT ma_phim, ten_phim, thoi_luong, the_loai, do_tuoi, ngay_chieu, suat_da_chieu, trang_thai, poster FROM Phim";
-            stmt = conn.prepareStatement(sql);
-            rs = stmt.executeQuery();
+        // Cập nhật câu SQL để lấy suat_da_chieu từ HopDong khi có sẵn
+        String sql = "SELECT p.ma_phim, p.ten_phim, p.thoi_luong, p.the_loai, p.do_tuoi, " +
+                    "p.ngay_chieu, COALESCE(h.suat_da_chieu, p.suat_da_chieu) as suat_da_chieu, " +
+                    "p.trang_thai " +
+                    "FROM Phim p " +
+                    "LEFT JOIN HopDong h ON p.ten_phim = h.ten_phim";
+                    
+        stmt = conn.prepareStatement(sql);
+        rs = stmt.executeQuery();
+        
+        while (rs.next()) {
+            String maPhim = rs.getString("ma_phim");
+            String tenPhim = rs.getString("ten_phim");
+            int thoiLuong = rs.getInt("thoi_luong");
+            String theLoai = rs.getString("the_loai");
+            String doTuoi = rs.getString("do_tuoi");
+            java.util.Date ngayChieu = rs.getDate("ngay_chieu");
+            int suatDaChieu = rs.getInt("suat_da_chieu");
+            String trangThai = rs.getString("trang_thai");
             
-            while (rs.next()) {
-                String maPhim = rs.getString("ma_phim");
-                String tenPhim = rs.getString("ten_phim");
-                int thoiLuong = rs.getInt("thoi_luong");
-                String theLoai = rs.getString("the_loai");
-                String doTuoi = rs.getString("do_tuoi");
-                java.util.Date ngayChieu = rs.getDate("ngay_chieu");
-                int suatDaChieu = rs.getInt("suat_da_chieu");
-                String trangThai = rs.getString("trang_thai");
-                byte[] poster = rs.getBytes("poster");
-                
-                PhimDTO phim = new PhimDTO(maPhim, tenPhim, thoiLuong, theLoai, doTuoi, 
-                                          ngayChieu, suatDaChieu, trangThai, poster);
-                listPhim.add(phim);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            PhimDTO phim = new PhimDTO(maPhim, tenPhim, thoiLuong, theLoai, doTuoi, 
+                                      ngayChieu, suatDaChieu, trangThai);
+            listPhim.add(phim);
         }
-        
-        return listPhim;
-    }
-   
-   public boolean capNhatTrangThaiPhim(String maPhim, String trangThai) {
-    String sql = "UPDATE Phim SET trang_thai = ? WHERE ma_phim = ?";
-    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-        stmt.setString(1, trangThai);
-        stmt.setString(2, maPhim);
-        int rowsAffected = stmt.executeUpdate();
-        return rowsAffected > 0;
     } catch (SQLException e) {
         e.printStackTrace();
-        return false;
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+            if (conn != null) conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+    
+    return listPhim;
 }
    
-      public String taoMaPhimMoi() {
+    public boolean capNhatTrangThaiPhim(String maPhim, String trangThai) {
+        String sql = "UPDATE Phim SET trang_thai = ? WHERE ma_phim = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, trangThai);
+            stmt.setString(2, maPhim);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+   
+    public String taoMaPhimMoi() {
         String maPhimMoi = "P001"; // Mã mặc định nếu không có dữ liệu
         
-        String sql = "SELECT TOP 1 ma_phim FROM Phim ORDER BY ma_phim DESC";
+        // Thay đổi SQL Server's TOP sang MySQL's LIMIT
+        String sql = "SELECT ma_phim FROM Phim ORDER BY ma_phim DESC LIMIT 1";
         
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -125,10 +134,9 @@ public class PhimDAO {
         return maPhimMoi;
     }
     
-
     public boolean themPhim(PhimDTO phim) {
-        String sql = "INSERT INTO Phim (ma_phim, ten_phim, thoi_luong, the_loai, do_tuoi, ngay_chieu, suat_da_chieu, trang_thai, poster) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Phim (ma_phim, ten_phim, thoi_luong, the_loai, do_tuoi, ngay_chieu, suat_da_chieu, trang_thai) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, phim.getMaPhim());
@@ -146,13 +154,6 @@ public class PhimDAO {
             
             pstmt.setInt(7, 0); // suat_da_chieu mặc định là 0
             pstmt.setString(8, phim.getTrangThai());
-            
-            // Xử lý poster nếu có
-            if (phim.getPoster() != null) {
-                pstmt.setBytes(9, phim.getPoster());
-            } else {
-                pstmt.setNull(9, java.sql.Types.VARBINARY);
-            }
             
             int ketQua = pstmt.executeUpdate();
             return ketQua > 0;
@@ -188,4 +189,17 @@ public class PhimDAO {
             return false;
         }
     }
+    
+    public boolean capNhatSuatDaChieu(String maPhim, int suatDaChieu) {
+    String sql = "UPDATE Phim SET suat_da_chieu = ? WHERE ma_phim = ?";
+    try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, suatDaChieu);
+        ps.setString(2, maPhim);
+        return ps.executeUpdate() > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+    
 }

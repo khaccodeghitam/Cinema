@@ -5,6 +5,7 @@ import log_reg.UI;
 import javax.swing.table.*;
 import DTO.PhongChieuDTO;
 import DAO.PhongChieuDAO;
+import BUS.PhongChieuBUS; // Import lớp PhongChieuBUS mới
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -13,18 +14,14 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.table.JTableHeader;
 import java.util.*;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import javax.swing.*;
 import java.awt.Component;
 
 public class PhongchieuGUI extends javax.swing.JPanel {
-
+private PhongChieuBUS phongChieuBUS = new PhongChieuBUS();
     private JButton selectedButton = null;
     private PhongChieuDAO phongChieuDAO = new PhongChieuDAO();
     private String selectedMaPhong = null;
@@ -52,6 +49,7 @@ private boolean updatePhongChieuInDB(String maPhongChieu, int sucChua, String lo
 //        UI.addPlaceHolderEffect(txtMaPhong,"Nhập mã phòng");
          UI.addPlaceHolderEffect(txtSucchua,"Nhập sức chứa");
          UI.addPlaceHolderEffect(txtTheloai,"Nhập giá vé");
+         UI.addPlaceHolderEffect(txNangCao,"Nhập tìm kiếm");
          // Gọi hàm loadDataToTable để hiển thị dữ liệu
     loadDataToTable();
       loadLoaiChieuToComboBox();
@@ -127,6 +125,9 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
             txtTimkiemTong.setText("Nhập mã phòng.....");
         }
     }
+    
+    
+    
 });
  
   tbPhongchieu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,12 +162,19 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
     }
 });
    
+   btnNangCao.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        performAdvancedSearch();
+    }
+});
+   
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         btnView = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
@@ -189,6 +197,7 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
         truyxuatLoaichieu = new javax.swing.JTextField();
         truyxuatGiave = new javax.swing.JTextField();
         txLoaichieu = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         ThemPhongchieu = new javax.swing.JPanel();
         txtSucchua = new testlib.RoundedTextField();
         Succhua = new javax.swing.JLabel();
@@ -206,6 +215,12 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
         txtTimkiemTong = new javax.swing.JTextField();
         btnTimkiemTong = new testlib.RoundedButton();
         jSeparator3 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        txNangCao = new javax.swing.JTextField();
+        btnNangCao = new javax.swing.JButton();
+        rMaPhong = new javax.swing.JRadioButton();
+        rSucChua = new javax.swing.JRadioButton();
+        rAll = new javax.swing.JRadioButton();
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -504,6 +519,8 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
         txLoaichieu.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         txLoaichieu.setText("Loại chiếu:");
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout ViewLayout = new javax.swing.GroupLayout(View);
         View.setLayout(ViewLayout);
         ViewLayout.setHorizontalGroup(
@@ -511,7 +528,10 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
             .addGroup(ViewLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ViewLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ViewLayout.createSequentialGroup()
                         .addComponent(Timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -546,27 +566,30 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
                     .addComponent(TimkiemPhongchieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTimkiemPhongchieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ViewLayout.createSequentialGroup()
-                        .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(truyxuatSucchua, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txSucchua))
-                        .addGap(17, 17, 17)
-                        .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(truyxuatLoaichieu, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txLoaichieu))
-                        .addGap(14, 14, 14)
-                        .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(truyxuatGiave, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txGiave)))
-                    .addGroup(ViewLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCapnhat, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ViewLayout.createSequentialGroup()
+                                .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(truyxuatSucchua, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txSucchua))
+                                .addGap(17, 17, 17)
+                                .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(truyxuatLoaichieu, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txLoaichieu))
+                                .addGap(14, 14, 14)
+                                .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(truyxuatGiave, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txGiave)))
+                            .addGroup(ViewLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCapnhat, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -620,7 +643,7 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
                             .addComponent(txtTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSucchua, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbLoaichieu, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(385, Short.MAX_VALUE))
         );
         ThemPhongchieuLayout.setVerticalGroup(
             ThemPhongchieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -818,7 +841,7 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
                     .addGroup(XemtongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE)
                         .addComponent(jSeparator2)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         XemtongLayout.setVerticalGroup(
             XemtongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -840,12 +863,52 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Tìm kiếm nâng cao");
+
+        txNangCao.setBackground(new java.awt.Color(204, 204, 204));
+        txNangCao.setForeground(new java.awt.Color(0, 0, 0));
+        txNangCao.setText("jTextField2");
+
+        btnNangCao.setBackground(new java.awt.Color(204, 204, 204));
+        btnNangCao.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNangCao.setForeground(new java.awt.Color(0, 0, 0));
+        btnNangCao.setText("Tìm kiếm");
+
+        buttonGroup1.add(rMaPhong);
+        rMaPhong.setText("Mã phòng");
+
+        buttonGroup1.add(rSucChua);
+        rSucChua.setText("Sức chứa");
+
+        buttonGroup1.add(rAll);
+        rAll.setText("Tất cả");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txNangCao, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNangCao))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(rMaPhong)
+                                .addGap(27, 27, 27)
+                                .addComponent(rSucChua)
+                                .addGap(28, 28, 28))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(226, 226, 226)
+                        .addComponent(rAll)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -866,13 +929,24 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnXemtong, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                    .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txNangCao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNangCao))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rMaPhong)
+                            .addComponent(rSucChua))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rAll)))
+                .addGap(7, 7, 7)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(GiaodienPhongchieu, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -890,18 +964,237 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {
+    private void performAdvancedSearch() {
+    // Get search text from txNangCao
+    String searchText = txNangCao.getText().trim();
+    
+    // Check if search text is empty or default placeholder
+    if (searchText.isEmpty() || searchText.equals("Nhập tìm kiếm")) {
+        // Reset both tables to show all data
+        loadDataToTable();
+        loadAllDataToXemTongTable();
+        return;
+    }
+    
+    // Check if any radio button is selected
+    if (!rMaPhong.isSelected() && !rSucChua.isSelected() && !rAll.isSelected()) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Vui lòng chọn loại tìm kiếm (Mã phòng, Sức chứa hoặc Tất cả)!",
+            "Thông báo",
+            javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    // Perform search based on the selected criteria
+    if (rMaPhong.isSelected()) {
+        searchByMaPhong(searchText);
+    } else if (rSucChua.isSelected()) {
+        searchBySucChua(searchText);
+    } else if (rAll.isSelected()) {
+        searchByAll(searchText);
+    }
+}
+
+// Search by Room ID (Mã phòng)
+private void searchByMaPhong(String searchText) {
+    // Get all data
+    List<PhongChieuDTO> allPhongChieu = phongChieuDAO.getAllPhongChieu();
+    
+    // Search in active rooms for tbPhongchieu
+    DefaultTableModel modelActive = (DefaultTableModel) tbPhongchieu.getModel();
+    modelActive.setRowCount(0);
+    
+    // Search in all rooms for tbXemtong
+    DefaultTableModel modelAll = (DefaultTableModel) tbXemtong.getModel();
+    modelAll.setRowCount(0);
+    
+    boolean foundActive = false;
+    boolean foundAll = false;
+    
+    // Check each room
+    for (PhongChieuDTO phongChieu : allPhongChieu) {
+        String maPhong = phongChieu.getMaPhongChieu().toLowerCase();
+        
+        // Check if the room ID contains the search text
+        if (maPhong.contains(searchText.toLowerCase())) {
+            // Add to tbXemtong (all rooms)
+            modelAll.addRow(new Object[]{
+                phongChieu.getMaPhongChieu(),
+                phongChieu.getSucChua(),
+                phongChieu.getLoaiChieu(),
+                phongChieu.getGiaVe(),
+                phongChieu.getTrangThai()
+            });
+            foundAll = true;
+            
+            // Only add active rooms to tbPhongchieu
+            if ("Đang hoạt động".equals(phongChieu.getTrangThai())) {
+                modelActive.addRow(new Object[]{
+                    phongChieu.getMaPhongChieu(),
+                    phongChieu.getSucChua(),
+                    phongChieu.getLoaiChieu(),
+                    phongChieu.getGiaVe()
+                });
+                foundActive = true;
+            }
+        }
+    }
+    
+    // Show message if no results found
+    if (!foundAll && !foundActive) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Không tìm thấy phòng chiếu nào có mã phòng chứa \"" + searchText + "\"!",
+            "Thông báo",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        
+        // Reset tables
+        loadDataToTable();
+        loadAllDataToXemTongTable();
+    }
+}
+
+// Search by Capacity (Sức chứa)
+private void searchBySucChua(String searchText) {
+    // Try to parse the search text as an integer
+    int searchCapacity;
     try {
-        // Create a new workbook
-        Workbook workbook = new XSSFWorkbook();
+        searchCapacity = Integer.parseInt(searchText);
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Vui lòng nhập số nguyên cho tìm kiếm sức chứa!",
+            "Lỗi",
+            javax.swing.JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // Get all data
+    List<PhongChieuDTO> allPhongChieu = phongChieuDAO.getAllPhongChieu();
+    
+    // Search in active rooms for tbPhongchieu
+    DefaultTableModel modelActive = (DefaultTableModel) tbPhongchieu.getModel();
+    modelActive.setRowCount(0);
+    
+    // Search in all rooms for tbXemtong
+    DefaultTableModel modelAll = (DefaultTableModel) tbXemtong.getModel();
+    modelAll.setRowCount(0);
+    
+    boolean foundActive = false;
+    boolean foundAll = false;
+    
+    // Check each room
+    for (PhongChieuDTO phongChieu : allPhongChieu) {
+        int sucChua = phongChieu.getSucChua();
         
-        // Determine which table is currently visible
-        CardLayout cardLayout = (CardLayout) GiaodienPhongchieu.getLayout();
-        JTable activeTable;
-        String sheetName;
-        String[] columns;
+        // Check if the capacity matches
+        if (sucChua == searchCapacity) {
+            // Add to tbXemtong (all rooms)
+            modelAll.addRow(new Object[]{
+                phongChieu.getMaPhongChieu(),
+                phongChieu.getSucChua(),
+                phongChieu.getLoaiChieu(),
+                phongChieu.getGiaVe(),
+                phongChieu.getTrangThai()
+            });
+            foundAll = true;
+            
+            // Only add active rooms to tbPhongchieu
+            if ("Đang hoạt động".equals(phongChieu.getTrangThai())) {
+                modelActive.addRow(new Object[]{
+                    phongChieu.getMaPhongChieu(),
+                    phongChieu.getSucChua(),
+                    phongChieu.getLoaiChieu(),
+                    phongChieu.getGiaVe()
+                });
+                foundActive = true;
+            }
+        }
+    }
+    
+    // Show message if no results found
+    if (!foundAll && !foundActive) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Không tìm thấy phòng chiếu nào có sức chứa " + searchCapacity + "!",
+            "Thông báo",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);
         
-        // Check which panel is currently visible
+        // Reset tables
+        loadDataToTable();
+        loadAllDataToXemTongTable();
+    }
+}
+
+// Search by All Fields
+private void searchByAll(String searchText) {
+    String searchTextLower = searchText.toLowerCase();
+    
+    // Get all data
+    List<PhongChieuDTO> allPhongChieu = phongChieuDAO.getAllPhongChieu();
+    
+    // Search in active rooms for tbPhongchieu
+    DefaultTableModel modelActive = (DefaultTableModel) tbPhongchieu.getModel();
+    modelActive.setRowCount(0);
+    
+    // Search in all rooms for tbXemtong
+    DefaultTableModel modelAll = (DefaultTableModel) tbXemtong.getModel();
+    modelAll.setRowCount(0);
+    
+    boolean foundActive = false;
+    boolean foundAll = false;
+    
+    // Check each room
+    for (PhongChieuDTO phongChieu : allPhongChieu) {
+        // Convert all fields to strings for case-insensitive search
+        String maPhong = phongChieu.getMaPhongChieu().toLowerCase();
+        String sucChua = String.valueOf(phongChieu.getSucChua()).toLowerCase();
+        String loaiChieu = phongChieu.getLoaiChieu().toLowerCase();
+        String giaVe = String.valueOf(phongChieu.getGiaVe()).toLowerCase();
+        String trangThai = phongChieu.getTrangThai().toLowerCase();
+        
+        // Check if any field contains the search text
+        if (maPhong.contains(searchTextLower) || 
+            sucChua.contains(searchTextLower) || 
+            loaiChieu.contains(searchTextLower) || 
+            giaVe.contains(searchTextLower) || 
+            trangThai.contains(searchTextLower)) {
+            
+            // Add to tbXemtong (all rooms)
+            modelAll.addRow(new Object[]{
+                phongChieu.getMaPhongChieu(),
+                phongChieu.getSucChua(),
+                phongChieu.getLoaiChieu(),
+                phongChieu.getGiaVe(),
+                phongChieu.getTrangThai()
+            });
+            foundAll = true;
+            
+            // Only add active rooms to tbPhongchieu
+            if ("Đang hoạt động".equals(phongChieu.getTrangThai())) {
+                modelActive.addRow(new Object[]{
+                    phongChieu.getMaPhongChieu(),
+                    phongChieu.getSucChua(),
+                    phongChieu.getLoaiChieu(),
+                    phongChieu.getGiaVe()
+                });
+                foundActive = true;
+            }
+        }
+    }
+    
+    // Show message if no results found
+    if (!foundAll && !foundActive) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Không tìm thấy phòng chiếu nào chứa thông tin \"" + searchText + "\"!",
+            "Thông báo",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        
+        // Reset tables
+        loadDataToTable();
+        loadAllDataToXemTongTable();
+    }
+}
+    
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {
+        // Xác định component nào đang hiển thị
         Component visibleComponent = null;
         for (Component comp : GiaodienPhongchieu.getComponents()) {
             if (comp.isVisible()) {
@@ -910,109 +1203,9 @@ txtTheloai.addFocusListener(new java.awt.event.FocusAdapter() {
             }
         }
         
-        if (View.equals(visibleComponent)) {
-            activeTable = tbPhongchieu;
-            sheetName = "Danh Sách Phòng Chiếu";
-            columns = new String[]{"Mã phòng", "Sức chứa", "Loại chiếu", "Giá vé"};
-        } else if (Xemtong.equals(visibleComponent)) {
-            activeTable = tbXemtong;
-            sheetName = "Tổng Hợp Phòng Chiếu";
-            columns = new String[]{"Mã phòng", "Sức chứa", "Loại chiếu", "Giá vé", "Trạng thái"};
-        } else {
-            // Default to tbPhongchieu if neither view is visible (shouldn't happen in normal operation)
-            activeTable = tbPhongchieu;
-            sheetName = "Danh Sách Phòng Chiếu";
-            columns = new String[]{"Mã phòng", "Sức chứa", "Loại chiếu", "Giá vé"};
-        }
-        
-        // Create sheet with appropriate name
-        Sheet sheet = workbook.createSheet(sheetName);
-        
-        // Create header row
-        Row headerRow = sheet.createRow(0);
-        
-        // Create a cell style for the header
-        CellStyle headerStyle = workbook.createCellStyle();
-        org.apache.poi.ss.usermodel.Font headerFont = workbook.createFont();
-        headerFont.setBold(true);
-        headerStyle.setFont(headerFont);
-        
-        // Create header cells
-        for (int i = 0; i < columns.length; i++) {
-            Cell cell = headerRow.createCell(i);
-            cell.setCellValue(columns[i]);
-            cell.setCellStyle(headerStyle);
-        }
-        
-        // Get data from the active table model
-        DefaultTableModel model = (DefaultTableModel) activeTable.getModel();
-        int rowCount = model.getRowCount();
-        int colCount = Math.min(model.getColumnCount(), columns.length);
-        
-        // Create data rows
-        for (int i = 0; i < rowCount; i++) {
-            Row row = sheet.createRow(i + 1);
-            for (int j = 0; j < colCount; j++) {
-                Object value = model.getValueAt(i, j);
-                Cell cell = row.createCell(j);
-                if (value != null) {
-                    cell.setCellValue(value.toString());
-                } else {
-                    cell.setCellValue("");
-                }
-            }
-        }
-        
-        // Resize all columns to fit the content size
-        for (int i = 0; i < columns.length; i++) {
-            sheet.autoSizeColumn(i);
-        }
-        
-        // Ask user where to save the file
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Lưu file Excel");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Excel Files", "xlsx"));
-        
-        // Set default filename based on the active table
-        String defaultFileName = (activeTable == tbPhongchieu) ? "DanhSachPhongChieu.xlsx" : "TongHopPhongChieu.xlsx";
-        fileChooser.setSelectedFile(new File(defaultFileName));
-        
-        int result = fileChooser.showSaveDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            // Get the selected file
-            File selectedFile = fileChooser.getSelectedFile();
-            String filePath = selectedFile.getAbsolutePath();
-            
-            // Add .xlsx extension if not present
-            if (!filePath.endsWith(".xlsx")) {
-                filePath += ".xlsx";
-                selectedFile = new File(filePath);
-            }
-            
-            // Write the workbook to the file
-            try (FileOutputStream outputStream = new FileOutputStream(selectedFile)) {
-                workbook.write(outputStream);
-                JOptionPane.showMessageDialog(this, 
-                    "Xuất file thành công!\nĐường dẫn: " + filePath, 
-                    "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        
-        // Close the workbook
-        workbook.close();
-        
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, 
-            "Lỗi khi xuất file: " + e.getMessage(), 
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, 
-            "Lỗi không xác định: " + e.getMessage(), 
-            "Lỗi", JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();
+        // Gọi phương thức exportToExcel từ PhongChieuBUS
+        phongChieuBUS.exportToExcel(this, visibleComponent, tbPhongchieu, tbXemtong, View, Xemtong);
     }
-}
     
     private void loadAllDataToXemTongTable() {
     // Lấy tất cả dữ liệu phòng chiếu từ DAO
@@ -1427,6 +1620,7 @@ private void resetTruyXuatFields() {
     private javax.swing.JButton btnExport;
     private testlib.RoundedButton btnHuybo;
     private javax.swing.JButton btnImport;
+    private javax.swing.JButton btnNangCao;
     private javax.swing.JButton btnThem;
     private testlib.RoundedButton btnThemPhong;
     private testlib.RoundedButton btnTimkiemPhongchieu;
@@ -1434,13 +1628,19 @@ private void resetTruyXuatFields() {
     private javax.swing.JButton btnView;
     private javax.swing.JButton btnXemtong;
     private javax.swing.JButton btnXoa;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbLoaichieu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JRadioButton rAll;
+    private javax.swing.JRadioButton rMaPhong;
+    private javax.swing.JRadioButton rSucChua;
     private javax.swing.JTable tbPhongchieu;
     private javax.swing.JTable tbXemtong;
     private javax.swing.JTextField truyxuatGiave;
@@ -1448,6 +1648,7 @@ private void resetTruyXuatFields() {
     private javax.swing.JTextField truyxuatSucchua;
     private javax.swing.JLabel txGiave;
     private javax.swing.JLabel txLoaichieu;
+    private javax.swing.JTextField txNangCao;
     private javax.swing.JLabel txSucchua;
     private testlib.RoundedTextField txtSucchua;
     private testlib.RoundedTextField txtTheloai;

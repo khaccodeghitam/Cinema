@@ -8,23 +8,55 @@
             <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/ImagePanel.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/BackgroundPanel.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/RoundedLabel.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/HopdongGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhimGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UIa.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/ThongkeGUI.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/log_reg/register.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/PhimDTO.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/PhimDAO.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/UIu.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/LichchieuGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/PhongchieuGUI.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/DatabaseConnection.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/HopDongDAO.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/PhongChieuDAO.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/NhanvienGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/NhaphanphoiGUI.java</file>
-            <file>file:/D:/sinh%20vien/DoAn_Java/src/ui/TaikhoanGUI.java</file>
             <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/LichChieuDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/UuDaiDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/mySQLConnect.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/UuDaiDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/BUS/LichChieuBUS.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/BUS/UuDaiBUS.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/NhaPhanPhoiDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/LichChieuDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/HopDongDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/NhanVienDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/UIa.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/PhanquyenGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/AnvatGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/HopdongGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/ImageHandler.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/IntroGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/KhachhangGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/LichchieuGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/Login.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/Main.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/MoviePosterManager.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/NhanvienGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/NhaphanphoiGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/PhimGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/PhongchieuGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/TaikhoanGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/ThongkeGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/UIu.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/gui/UudaiGUI.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/JDBCutil.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/PhongChieuDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/NhanVienDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/AnVatDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/AnVatDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/BUS/NhanVienBUS.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/ChucNangDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/PhanQuyenDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DTO/TaiKhoanDTO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/TaiKhoanDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/PhanQuyenDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/DAO/ChucNangDAO.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/BUS/PhimBUS.java</file>
+            <file>file:/D:/sinh%20vien/DoAn_Java/src/BUS/PhongChieuBUS.java</file>
         </group>
     </open-files>
 </project-private>
