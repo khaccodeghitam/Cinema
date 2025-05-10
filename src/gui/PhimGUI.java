@@ -20,6 +20,14 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.text.*;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.FileInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class PhimGUI extends javax.swing.JPanel {
 private ImageHandler imageHandler;
@@ -96,6 +104,12 @@ btnExport.addActionListener(new java.awt.event.ActionListener() {
 btnNangCao.addActionListener(new java.awt.event.ActionListener() {
     public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnNangCaoActionPerformed(evt);
+    }
+});
+
+btnImport.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnImportActionPerformed(evt);
     }
 });
 
@@ -888,6 +902,17 @@ btnNangCao.addActionListener(new java.awt.event.ActionListener() {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {
+    // Gọi phương thức nhập file Excel từ PhimBUS
+    boolean importSuccess = phimBUS.nhapFileExcel(this);
+    
+    if (importSuccess) {
+        // Nếu nhập thành công, cập nhật lại cả hai bảng
+        loadPhimToTable();
+        loadPhimToXemTongTable();
+    }
+}
+    
     private void btnNangCaoActionPerformed(java.awt.event.ActionEvent evt) {
     // Lấy từ khóa tìm kiếm và xử lý placeholder text
     String keyword = txNangCao.getText().trim();

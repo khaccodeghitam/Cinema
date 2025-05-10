@@ -202,4 +202,45 @@ public class PhimDAO {
     }
 }
     
+    public boolean kiemTraTonTaiPhim(String maPhim) {
+        String sql = "SELECT COUNT(*) FROM Phim WHERE ma_phim = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, maPhim);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    
+/**
+ * Cập nhật đầy đủ thông tin của một phim, bao gồm cả số suất đã chiếu và trạng thái
+ * @param p Đối tượng PhimDTO chứa thông tin cần cập nhật
+ * @return true nếu cập nhật thành công, false nếu có lỗi
+ */
+public boolean capNhatPhimDayDu(PhimDTO p) {
+    String sql = "UPDATE Phim SET ten_phim = ?, thoi_luong = ?, the_loai = ?, " + 
+                 "do_tuoi = ?, ngay_chieu = ?, suat_da_chieu = ?, trang_thai = ? " + 
+                 "WHERE ma_phim = ?";
+    try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setString(1, p.getTenPhim());
+        ps.setInt(2, p.getThoiLuong());
+        ps.setString(3, p.getTheLoai());
+        ps.setString(4, p.getDoTuoi());
+        ps.setDate(5, new java.sql.Date(p.getNgayChieu().getTime()));
+        ps.setInt(6, p.getSuatDaChieu());
+        ps.setString(7, p.getTrangThai());
+        ps.setString(8, p.getMaPhim());
+        
+        return ps.executeUpdate() > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
 }
